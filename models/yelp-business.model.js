@@ -31,7 +31,8 @@ const yelpBusinessSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  note: String
+  note: String,
+  addedIndex: Number
 }, {
   timestamps: true
 });

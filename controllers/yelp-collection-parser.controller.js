@@ -1,5 +1,6 @@
 const YelpParsedCollection = require('../models/yelp-parsed-collection.model');
 const YelpCollection = require('../models/yelp-collection.model');
+const YelpBusiness = require('../models/yelp-business.model');
 const jsdom = require('jsdom');
 const axios = require('axios');
 
@@ -7,7 +8,7 @@ const YELP_BIZ_API_URI = 'https://api.yelp.com/v3/businesses/';
 // const CORS_PROXY_URL = 'https://thingproxy.freeboard.io/fetch/';
 require('dotenv').config('../');
 const blackStar = String.fromCharCode(11088);
-let collection = {};
+let collection = {items: [], businesses: []};
 
 const yelpAxiosOptions = {
     method: 'get',
@@ -64,18 +65,13 @@ async function loadCollectionPage(yelpCollectionId) {
     const response = await axios.get(`https://www.yelp.com/collection/${yelpCollectionId}`, yelpAxiosOptions);
     const dom = new jsdom.JSDOM(response.data);
 
-    // console.log('axios response', response);
     collection.doc = dom.window.document;
     collection.itemCount = Number(collection.doc.querySelector(".ylist").getAttribute("data-item-count"));
     collection.lastUpdated = new Date(collection.doc.getElementsByTagName("time")[0].dateTime);
     collection.title = collection.doc.querySelector('meta[property="og:title"]').content;
-
-    // const collectionItems = getCollectionItems(collection.doc);
     
     console.log('collection title: ', collection.title);
     console.log('collection item count: ', collection.itemCount);
-    // console.log('collectionItems: ', collectionItems);
-    // collection.parsed = parseCollectionItems(collectionItems);
     console.log('last updated: ', collection.lastUpdated);
 }
 
@@ -89,13 +85,55 @@ async function populateRenderedCollection(yelpCollectionId) {
         const dom = new jsdom.JSDOM(response.data.list_markup);
 
         collection.doc = dom.window.document;
-        collection.items = getCollectionItems(collection.doc);
-        collection.parsed = parseCollectionItems(collection.items, collection.parsed);
+        collection.items = [...collection.items, ...getCollectionItems(collection.doc)];
+        console.log(`offset ${renderedOffset}, items count`, collection.items.length);
+        collection.parsed = parseCollectionItems(getCollectionItems(collection.doc), collection.parsed);
 
         // console.log(`parsed collection (offset ${renderedOffset})`, collection.parsed);
 
         renderedOffset += offsetStep;
     }
+
+    // collection.items.forEach((item, index) => {
+    //     console.log(`${index}: ${item.querySelector('.js-info-content').textContent}`);
+    // });
+
+
+}
+
+function populateBusinessInfo(yelpCollectionId) {
+    collection.items.forEach((item, index) => {
+        const url = item.querySelector('.biz-name').href;
+        const alias = url.substring(url.lastIndexOf('/') + 1);
+        const note = item.querySelector('.js-info-content').textContent;
+        const addedIndex = collection.itemCount - index - 1;
+        collection.businesses.push({
+            alias,
+            note,
+            addedIndex,
+            yelpCollectionId
+        })
+    })
+}
+
+function addToBusinessDatabase(request, response) {
+    Promise.all(collection.businesses.map(async business => {
+        console.log(`${business.addedIndex}: ${business.alias}`);
+        await YelpBusiness.findOneAndUpdate(
+            {alias: business.alias},
+            business,
+            {new: true, upsert: true},
+            (error, result) => {
+                if (error) {
+                    response.status(400).json('D02 error updating or adding new business' + error);
+                    console.log(`error adding ${business.addedIndex}: ${business.alias}`, result, error);
+                } else {
+                    // response.json(`D01 new business added/updated: ${business.alias}`);
+                    console.log(`successfully added ${business.addedIndex}: ${business.alias}`);
+                }            
+            }
+        )
+    }));    
 }
 
 const YelpCollectionController = {
@@ -114,8 +152,8 @@ const YelpCollectionController = {
                     {yelpCollectionId: yelpCollectionId},
                     {yelpCollectionId: yelpCollectionId, title: collection.title},
                     {new: true, upsert: true},  
-                    (err, result) => {
-                        if (err) {
+                    (error, result) => {
+                        if (error) {
                             response.status(400).json('A03 error updating or adding new collection' + error);
                         } else {
                             response.json(`A01 new collection added: ${collection.title}`);
@@ -134,7 +172,6 @@ const YelpParsedCollectionController = {
         const yelpCollectionId = request.params.yelp_collection_id;
         loadCollectionPage(yelpCollectionId).then(() => {
             populateRenderedCollection(yelpCollectionId).then(() => {
-                response.status(200).json(collection);
                 const parsedCollection = collection.parsedCollection;
                 const lastUpdated = collection.lastUpdated;
                 const title = collection.title;
@@ -148,9 +185,13 @@ const YelpParsedCollectionController = {
                   itemCount
                 });
 
-                newCollection.save()
-                    .then(() => response.json('B01 new parsed collection added'))
-                    .catch(err => response.status(400).json('error: ' + err));
+                // newCollection.save()
+                //     .then(() => response.json('B01 new parsed collection added'))
+                //     .catch(err => response.status(400).json('error: ' + err));
+
+                populateBusinessInfo(yelpCollectionId);
+                addToBusinessDatabase(request, response);
+                console.log('after update');
             })
         })
     }
