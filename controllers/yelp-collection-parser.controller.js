@@ -3,21 +3,13 @@ const YelpCollection = require('../models/yelp-collection.model');
 const YelpBusiness = require('../models/yelp-business.model');
 const jsdom = require('jsdom');
 const axios = require('axios');
+const {yelpAxiosOptions} = require('./yelp-connection');
 
-const YELP_BIZ_API_URI = 'https://api.yelp.com/v3/businesses/';
+
 // const CORS_PROXY_URL = 'https://thingproxy.freeboard.io/fetch/';
 require('dotenv').config('../');
 const blackStar = String.fromCharCode(11088);
 let collection = {items: [], businesses: []};
-
-const yelpAxiosOptions = {
-    method: 'get',
-    headers: {
-        'Authorization': `Bearer ${process.env.YELP_API_ID}`,
-        'Access-Control-Allow-Origin': '*'
-    }
-    // referrerPolicy: 'no-referrer',
-}
 
 function getCollectionItems(collectionDoc) {
     const collectionItems = collectionDoc.querySelectorAll('.collection-item');
@@ -89,16 +81,8 @@ async function populateRenderedCollection(yelpCollectionId) {
         console.log(`offset ${renderedOffset}, items count`, collection.items.length);
         collection.parsed = parseCollectionItems(getCollectionItems(collection.doc), collection.parsed);
 
-        // console.log(`parsed collection (offset ${renderedOffset})`, collection.parsed);
-
         renderedOffset += offsetStep;
     }
-
-    // collection.items.forEach((item, index) => {
-    //     console.log(`${index}: ${item.querySelector('.js-info-content').textContent}`);
-    // });
-
-
 }
 
 function populateBusinessInfo(yelpCollectionId) {
@@ -125,10 +109,8 @@ function addToBusinessDatabase(request, response) {
             {new: true, upsert: true},
             (error, result) => {
                 if (error) {
-                    response.status(400).json('D02 error updating or adding new business' + error);
                     console.log(`error adding ${business.addedIndex}: ${business.alias}`, result, error);
                 } else {
-                    // response.json(`D01 new business added/updated: ${business.alias}`);
                     console.log(`successfully added ${business.addedIndex}: ${business.alias}`);
                 }            
             }
@@ -191,92 +173,10 @@ const YelpParsedCollectionController = {
 
                 populateBusinessInfo(yelpCollectionId);
                 addToBusinessDatabase(request, response);
-                console.log('after update');
             })
         })
     }
 }
-
-
-// window.onload = () => {
-//     loadCollectionPage().then(() => {
-//         let stored_data = JSON.parse(localStorage.getItem(yelpCollectionId));
-//         if (stored_data) {
-//             stored_data.lastUpdated = new Date(stored_data.lastUpdated);
-//             if (+stored_data.lastUpdated < +collection.lastUpdated) {
-//                 console.log('loading updated data');
-//                 populateRenderedCollection().then(() => {
-//                     saveData();
-//                 })
-//             } else {
-//                 console.log('showing previously-stored data');
-//                 loadData(stored_data);
-//             }
-//         } else {
-//             console.log('loading new data');
-//             populateRenderedCollection().then(() => {
-//                 saveData();
-//             })
-//         }
-        
-        
-        
-//     });
-
-    
-    
-        
-        
-        
-
-//     // const collectionItems = collection.doc.querySelectorAll('.collection-item');
-
-//     // console.log(collectionItems);
-
-//     // for (const item of collectionItems) {
-//     //     const bizInfo = item.querySelector('.biz-name');
-//     //     const url = bizInfo.href;
-//     //     const bizId = url.substring(url.lastIndexOf('/') + 1);
-//     //     const name = bizInfo.querySelector('span').textContent;
-//     //     const note = item.querySelector('.js-info-content').textContent;
-//     //     const ratingInt = parseInt(item.getElementsByTagName('meta')[0].content.trim());
-//     //     const ratingSym = blackStar.repeat(ratingInt);
-
-//     //     const categoriesList = item.querySelector('.category-str-list').querySelectorAll('a');
-//     //     const numCategories = categoriesList.length;
-//     //     let categories = '';
-//     //     for (let i = 0; i < numCategories; i++) {
-//     //         categories += categoriesList[i].textContent;
-//     //         if (i < numCategories - 1) categories += ', ';
-//     //     }
-
-//     //     console.log(name, '\n', url, '\n', note, '\n', ratingSym, '\n', categories);
-
-        
-
-//     //     console.log('fetch url:', `${CORS_PROXY_URL}${YELP_BIZ_API_URI}${bizId}`, yelpAxiosOptions)
-
-//     //     fetch(`${CORS_PROXY_URL}${YELP_BIZ_API_URI}${bizId}`, yelpAxiosOptions)
-//     //         .then(response => {
-//     //             response.json().then(jsonData => {
-//     //                 console.log(jsonData);
-//     //             })
-//     //         })
-//     //         .catch(error => {
-//     //             console.log(error);
-//     //         });
-
-//     //     break;
-//     // }
-
-//     // let google_http_request;
-
-//     // google_http_request = new XMLHttpRequest;
-//     // google_http_request.setRequestHeader('key', 'AIzaSyAEoV6r3-BPVwnw8MvGep1Ok1oMsNMW9ZY');
-
-
-
-// }
 
 module.exports = {
     YelpCollectionController,

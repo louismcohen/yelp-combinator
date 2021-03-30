@@ -13,6 +13,7 @@ router.route('/yelp-business/').get(YelpBusinessController.getAllBusinesses);
 router.route('/yelp-business/:alias').get(YelpBusinessController.getBusinessById);
 
 router.route('/yelp-business/').post(YelpBusinessController.addOrUpdateBusiness);
+router.route('/yelp-business/update-all').post(YelpBusinessController.getAllBusinesses, YelpBusinessController.updateAllBusinesses);
 
 
 
