@@ -1,26 +1,14 @@
 const router = require('express').Router();
 // const {YelpCollectionController} = require('../controllers/yelp-collection-parser.controller');
-const YelpBusiness = require('../models/yelp-business.model');
-const YelpBusinessController = require('../controllers/yelp-business-controller');
-
-// router.route('/yelp-business/').get((request, response) => {
-//   YelpBusiness.find()
-//     .then(businesses => response.json(businesses))
-//     .catch(error => response.status(400).json('Error: ' + error));
-// });
-
-router.route('/yelp-business').all(YelpBusinessController);
-
-// router.route('/yelp-business/').get(YelpBusinessController.getAllBusinesses);
-// router.route('/yelp-business/:alias').get(YelpBusinessController.getBusinessById);
-
-// router.route('/yelp-business/').post(YelpBusinessController.addOrUpdateBusinessByAlias);
-// router.route('/yelp-business/update-all').post(YelpBusinessController.getAllBusinesses, YelpBusinessController.updateAllBusinesses);
-
-
-
+const YelpCollectionController = require('../controllers/yelp-collection.controller'); 
 
 // router.route('/yelp-collections/').post(YelpCollectionController.addNewCollection);
+
+router.route('/yelp-collections/all').get(YelpCollectionController.getAllCollections);
+router.route('/yelp-collections/scrape').get(YelpCollectionController.scrapeCollectionById);
+router.route('/yelp-collections/id/:yelp_collection_id').get(YelpCollectionController.getCollectionById);
+
+router.route('/yelp-collections/').put(YelpCollectionController.addOrUpdateCollectionById);
 
 // router.route('/yelp-collections').get((request, response) => {
 //   YelpCollection.find()

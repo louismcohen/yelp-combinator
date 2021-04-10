@@ -1,6 +1,14 @@
 const YelpBusiness = require('../models/yelp-business.model');
 const axios = require('axios');
-const {yelpAxiosOptions, YELP_BIZ_API_URI} = require('./yelp-connection');
+const {
+  getYelpBusinessInfo, 
+  updateBusinessByAlias,
+  updateAllBusinesses,
+  updateIncompleteBusinesses,
+  populateBasicBusinessInfo,
+  getAllBusinesses,
+  getBusinessByAlias,
+} = require('../services/yelp-business.service');
 const Bottleneck = require('bottleneck');
 
 const maxIndex = -1;
@@ -10,7 +18,7 @@ const limiter = new Bottleneck({
   minTime: 333
 })
 
-const updateAllBusinesses = async (request, response, next) => {
+const updateAllIncompleteBusinesses = async (request, response, next) => {
   const businesses = request.businesses;
   businesses.filter(x => !x.name).map(async business => {
     console.log(business);
@@ -36,50 +44,76 @@ const updateAllBusinesses = async (request, response, next) => {
   response.json('Updates successful');
 }
 
-const addOrUpdateBusiness = (request, response) => {
-  const alias = request.body.alias;
-  YelpBusiness.findOneAndUpdate(
-    {alias: alias},
-    request.body,
-    {new: true, upsert: true},
-    (error, result) => {
-      if (error) {
-        response.status(400).json('C01 error updating or adding business' + error);
-      } else {
-          response.json(`C02 business added/updated: ${result.name}`);
+async function addOrUpdateBusinessByAlias(request, response) {
+  const alias = request.query.alias;
+  const updated = await updateBusiness(alias);
+  response.json(updated);
+}
+
+const getAll = async (request, response) => {
+  const businesses = await getAllBusinesses();
+  businesses ?
+    response.json(businesses) :
+    response.status(400).json(`Error getting all businesses`);          
+}
+
+const getByAlias = async (request, response) => {
+  const business = await getBusinessByAlias(request.query.alias);
+  business ?
+    response.json(business) :
+    response.status(400).json(`Error getting business with alias ${request.query.alias}`);
+}
+
+const updateAll = async (request, response) => {
+  
+}
+
+const updateIncomplete = async (request, response) => {
+  const updated = await updateIncompleteBusinesses();
+  update ?
+    response.json(updated) :
+    response.status(400).json(`Error updated incomplete businesses`);
+}
+
+const YelpBusinessController = async (request, response) => {
+  const method = request.method;
+  const action = request.query.action;
+  
+  switch (method) {
+    case 'GET':
+      switch (action) {
+        case 'getAll':
+          getAll(request, response);
+          break;
+        case 'getByAlias':
+          getByAlias(request, response);
+          break;
+        default:
+          response.status(400).json(`Invalid action ${action} for method ${method}`);
       }
-    }
-  )
+      break;
+    case 'PUT':
+      switch (action) {
+        case 'addOrUpdate':
+          console.log(1);
+          break;
+        case 'updateAll':
+          updateAll(request, response);
+          break;
+        case 'updateIncomplete':
+          updateIncomplete(request, response);
+        default:
+          response.status(400).json(`Invalid action ${action} for method ${method}`);
+      }
+      break;
+    default:
+      response.status(400).json(`Invalid method: ${method}`);
+  }
+  // addOrUpdateBusiness,
+  // updateAllBusinesses,
+  // addOrUpdateBusinessByAlias,
+  // getAllBusinesses,
+  // getBusinessById,
 }
-
-const getAllBusinesses = (request, response, next) => {
-  YelpBusiness.find()
-    .then(businesses => {
-      request.businesses = businesses;
-      if (request.method == 'GET') response.json(businesses);
-      next();
-    })
-    .catch(error => response.status(400).json('Error: ' + error));
-}
-
-const getBusinessById = (request, response) => {
-  YelpBusiness.findOne({alias: request.params.alias})
-    .then(business => response.json(business))
-    .catch(error => response.status(400).json('Error: ' + error));
-}
-
-async function getYelpBusinessInfo(alias) {
-  const info = await axios(`${YELP_BIZ_API_URI}${alias}`, yelpAxiosOptions);
-  return info.data;
-}
-
-const YelpBusinessController = {
-  addOrUpdateBusiness,
-  updateAllBusinesses,
-  getAllBusinesses,
-  getBusinessById,
-}
-
-
 
 module.exports = YelpBusinessController;

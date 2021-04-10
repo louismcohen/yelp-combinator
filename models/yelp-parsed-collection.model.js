@@ -8,7 +8,7 @@ const yelpParsedCollectionSchema = new mongoose.Schema({
     trim: true
   },
   parsedCollection: {
-    type: Array
+    type: String
   },
   lastUpdated: {
     type: String
@@ -19,6 +19,12 @@ const yelpParsedCollectionSchema = new mongoose.Schema({
   itemCount: {
     type: Number
   }, 
+  items: {
+    type: String
+  },
+  businesses: {
+    type: String
+  }
 }, {
   timestamps: true
 });

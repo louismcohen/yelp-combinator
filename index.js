@@ -5,16 +5,18 @@ const mongoose = require('mongoose');
 const app = express();
 
 const yelpParsedCollectionsRouter = require('./routes/yelp-parsed-collections');
-const yelpCollectionsRouter = require('./routes/yelp-collections');
+const yelpCollectionRouter = require('./routes/yelp-collection');
 const yelpBusinessRouter = require('./routes/yelp-business');
+const yelpRouter = require('./routes/yelp.router');
 
 const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
 app.use('/', yelpParsedCollectionsRouter);
-app.use('/', yelpCollectionsRouter);
+app.use('/', yelpCollectionRouter);
 app.use('/', yelpBusinessRouter);
+app.use('/', yelpRouter);
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false});
