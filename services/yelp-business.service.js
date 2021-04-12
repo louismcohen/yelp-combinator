@@ -22,7 +22,7 @@ const populateBasicBusinessInfo = (collection) => {
     const note = item.querySelector('.js-info-content').textContent;
     const addedIndex = collection.itemCount - index - 1;
     const yelpCollectionId = collection.yelpCollectionId;
-    if (alias == 'mian-滋味小面-san-gabriel-3' || alias == 'sáu-can-tho-vietnamese-kitchen-rosemead-5' || addedIndex < 0) {
+    if (addedIndex < 0) {
       console.log('NEGATIVE ADDEDINDEX');
       console.log({alias, item, index, addedIndex, itemCount: collection.itemCount});
     }
