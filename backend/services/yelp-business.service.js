@@ -10,7 +10,7 @@ const limiter = new Bottleneck({
 })
 
 const getYelpBusinessInfo = async (alias) => {
-  const info = await axios(`${YELP_BIZ_API_URI}${alias}`, yelpAxiosOptions);
+  const info = await axios(`${YELP_BIZ_API_URI}${encodeURI(alias)}`, yelpAxiosOptions);
   return info.data;
 }
 
@@ -18,7 +18,7 @@ const populateBasicBusinessInfo = (collection) => {
   console.log('populateBasicBusinessInfo', collection.title);
   collection.items.forEach((item, index) => {
     const url = item.querySelector('.biz-name').href;
-    const alias = url.substring(url.lastIndexOf('/') + 1);
+    const alias = decodeURI(url.substring(url.lastIndexOf('/') + 1));
     const note = item.querySelector('.js-info-content').textContent;
     const addedIndex = collection.itemCount - index - 1;
     const yelpCollectionId = collection.yelpCollectionId;
@@ -37,6 +37,26 @@ const populateBasicBusinessInfo = (collection) => {
   return collection;
 }
 
+const updateBusinessById = async (id) => {
+  const data = await limiter.schedule(() => getYelpBusinessInfo(id));
+
+  const updatedBusiness = await YelpBusiness.findOneAndUpdate(
+    {id: id},
+    data,
+    {new: true, upsert: true},
+    (error, result) => {
+      if (error) {
+        console.log('Error: ', error);
+      } else {
+        console.log(`Successfully updated ${result.addedIndex}: ${data.name} (${data.alias})`);
+        return result;
+      }
+    }
+  )
+
+  return updatedBusiness;  
+}
+
 const updateBusinessByAlias = async (alias) => {
   const data = await limiter.schedule(() => getYelpBusinessInfo(alias));
 
@@ -46,7 +66,7 @@ const updateBusinessByAlias = async (alias) => {
     {new: true, upsert: true},
     (error, result) => {
       if (error) {
-        console.log('Error: ', error.response.status);
+        console.log('Error: ', error);
       } else {
         console.log(`Successfully updated ${result.addedIndex}: ${data.name} (${data.alias})`);
         return result;
@@ -75,7 +95,7 @@ const updateAllBusinesses = async () => {
     const businesses = await YelpBusiness.find();
     const updatedBusinesses = Promise.all(
       businesses.map(async business => {
-        const updated = await updateBusinessByAlias(business.alias);
+        const updated = await updateBusinessByAlias(business.alias);      
         business = updated.data;
       })
     )
@@ -134,6 +154,7 @@ const updateIncompleteBusinesses = async () => {
     const businesses = await YelpBusiness.find();
     const incomplete = businesses.filter(business => !business.name);
     incomplete.map(async business => {
+      console.log(business);
       const updated = await updateBusinessByAlias(business.alias);
       business = updated.data;
     })
@@ -154,9 +175,19 @@ const getAllBusinesses = async () => {
 
 const getBusinessByAlias = async (alias) => {
   try {
-    const business =  YelpBusiness.findOne({alias});
+    const business = YelpBusiness.findOne({alias});
     return business;
   } catch {
+    return {error: error};
+  }
+}
+
+const deleteAllBusinesses = async () => {
+  try {
+    const result = await YelpBusiness.deleteMany({});
+    console.log(`Deleted all businesses (${result.deletedCount})`);
+    return result;
+  } catch (error) {
     return {error: error};
   }
 }
@@ -168,9 +199,11 @@ module.exports = {
   updateBusinessBasicInfo,
   updateAllBusinessesBasicInfo,
   updateBusinessByAlias,
+  updateBusinessById,
   updateAllBusinesses,
   updateAllBusinessesBasicInfo,
   updateIncompleteBusinesses,
   checkAndUpdateIncompleteBusinesses,
-  populateBasicBusinessInfo
+  populateBasicBusinessInfo,
+  deleteAllBusinesses,
 }

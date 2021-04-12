@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {
   GoogleMap,
@@ -18,15 +18,15 @@ import mapStyles from './mapStyles';
 //   })
 // }
 
-async function fetchCollections() {
-  axios.get('http://localhost:3001/yelp-parsed-collections/scrape/g6DLKiR2ReMs-N5hN6zDwg')
-    .then(response => {
-      console.log(response);
-    })
-    .catch((error) => {
-      console.log(error);
-    })
-}
+// const getAllBusinesses = async () => {
+//   try {
+//     const response = await axios.get('http://localhost:3001');
+//     console.log({response: response}, {data: response.data});
+//     return response.data;
+//   } catch (error) {
+//     return {error: error};
+//   }
+// }
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -44,23 +44,40 @@ const options = {
   zoomControl: true
 }
 
-function Map() {
+const Map = () => {
   // fetchCollections();
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries
   });
 
-  const [markers, setMarkers] = React.useState([]);
+  const [businesses, setBusinesses] = useState([]);
+
+  useEffect(() => {
+    const getAllBusinesses = async () => {
+      const response = await axios.get('http://localhost:3001');
+      setBusinesses(response.data);
+    }
+    
+    getAllBusinesses();
+  }, []);
+
+  console.log(businesses);
+  const [markers, setMarkers] = useState([]);
 
   if (loadError) return 'Error loading maps';
   if (!isLoaded) return 'Loading maps';
 
   return (
   <div>
-    <h1>Title goes here</h1>
+    <h1>Yelp Combinator</h1>
     <GoogleMap mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={center} options={options}>
-
+    {businesses.filter(biz => !!biz.coordinates).map(biz => {
+      const position = {lat: biz.coordinates.latitude, lng: biz.coordinates.longitude};
+      return (
+        <Marker key={biz.alias} position={position} />
+      )
+    })}
     </GoogleMap>
   </div>
   )

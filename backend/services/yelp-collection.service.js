@@ -182,6 +182,16 @@ const updateManyLoadedCollections = async (loadedCollections) => {
   return updatedCollections;
 }
 
+const deleteAllCollections = async () => {
+  try {
+    const response = await YelpCollection.deleteMany({});
+    console.log(`Deleted all collections (${response.deletedCount})`);
+    return response;
+  } catch (error) {
+    return {error: error};
+  }
+}
+
 module.exports = {
   getCollectionItems,
   findCollection,
@@ -195,4 +205,5 @@ module.exports = {
   addOrUpdateCollection,
   compareSavedToLoadedCollections,
   updateManyLoadedCollections,
+  deleteAllCollections,
 }

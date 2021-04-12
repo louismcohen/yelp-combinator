@@ -9,6 +9,7 @@ const {
   populateBasicBusinessInfo,
   getAllBusinesses,
   getBusinessByAlias,
+  deleteAllBusinesses,
 } = require('../services/yelp-business.service');
 const Bottleneck = require('bottleneck');
 const { request } = require('express');
@@ -78,7 +79,7 @@ const updateAll = async (request, response) => {
 
 const updateIncomplete = async (request, response) => {
   const updated = await updateIncompleteBusinesses();
-  update ?
+  updated ?
     response.json(updated) :
     response.status(400).json(`Error updated incomplete businesses`);
 }
@@ -89,6 +90,15 @@ const updateAllBasicInfo = async (request, response) => {
     response.json(updatedBusinesses);
   } catch (error) {
     response.status(400).json(`Error updating all basic info ${error}`);
+  }
+}
+
+const deleteAll = async (request, response) => {
+  try {
+    const result = await deleteAllBusinesses();
+    response.json(result);
+  } catch (error) {
+    response.status(400).json(`Error deleting all businesses ${error}`);
   }
 }
 
@@ -127,14 +137,18 @@ const YelpBusinessController = async (request, response) => {
           response.status(400).json(`Invalid action ${action} for method ${method}`);
       }
       break;
+    case 'DELETE':
+      switch (action) {
+        case 'deleteAll':
+          deleteAll(request, response);
+          break;
+        default:
+          response.status(400).json(`Invalid action ${action} for method ${method}`);
+      }
+      break;
     default:
       response.status(400).json(`Invalid method: ${method}`);
   }
-  // addOrUpdateBusiness,
-  // updateAllBusinesses,
-  // addOrUpdateBusinessByAlias,
-  // getAllBusinesses,
-  // getBusinessById,
 }
 
 module.exports = YelpBusinessController;

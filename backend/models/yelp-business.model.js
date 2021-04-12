@@ -1,7 +1,10 @@
 const mongoose = require('mongoose');
 
 const yelpBusinessSchema = new mongoose.Schema({
-  alias: String,
+  alias: {
+    type: String,
+    unique: true,
+  },
   name: String,
   image_url: String,
   phone: String,

@@ -7,6 +7,7 @@ const {
   addOrUpdateCollection,
   getAllCollections,
   scrapeAllCollections,
+  deleteAllCollections,
 } = require('../services/yelp-collection.service');
 
 const getAll = async (request, response) => {
@@ -35,7 +36,7 @@ const addOrUpdateCollectionById = async (request, response) => {
     
     const result = await addOrUpdateCollection(scrapedCollection);
     const action = result.updatedAt == result.createdAt ? 'added' : 'updated';
-    updatedCollection ?
+    result ?
       response.json(`F02 collection ${action}: ${scrapedCollection.title}`) :
       response.status(400).json(`F03 error updating or adding new collection ${scrapedCollection.title}`);
   } else {
@@ -64,13 +65,22 @@ const scrapeAll = async (request, response) => {
   }
 }
 
+const deleteAll = async (request, response) => {
+  try {
+    const result = await deleteAllCollections();
+    response.json(result);
+  } catch (error) {
+    response.status(400).json(`Error deleting all collections ${error}`);
+  }
+}
+
 const YelpCollectionController = {
   scrapeCollectionById,
   scrapeAll,
   getCollectionById,
-  getAllCollections,
   addOrUpdateCollectionById,
   getAll,
+  deleteAll,
 }
 
 module.exports = YelpCollectionController;
