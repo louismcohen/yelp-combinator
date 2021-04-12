@@ -32,7 +32,24 @@ const yelpBusinessSchema = new mongoose.Schema({
     trim: true
   },
   note: String,
-  addedIndex: Number
+  addedIndex: Number,
+  hours: [{
+    open: [{
+      is_overnight: Boolean,
+      start: String,
+      end: String,
+      day: Number
+    }],
+    hours_type: String,
+    is_open_now: Boolean
+  }],
+  special_hours: [{
+    date: String,
+    is_closed: Boolean,
+    start: String,
+    end: String,
+    is_overnight: Boolean
+  }]
 }, {
   timestamps: true
 });

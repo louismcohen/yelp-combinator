@@ -6,6 +6,7 @@ const {
   parseRequestForId,
   addOrUpdateCollection,
   getAllCollections,
+  scrapeAllCollections,
 } = require('../services/yelp-collection.service');
 
 const getAll = async (request, response) => {
@@ -54,8 +55,18 @@ const scrapeCollectionById = async (request, response) => {
   }
 };
 
+const scrapeAll = async (request, response) => {
+  try {
+    const scrapedCollections = await scrapeAllCollections();
+    response.json(scrapedCollections);
+  } catch (error) {
+    response.status(400).json(`Error scraping all collections ${error}`);
+  }
+}
+
 const YelpCollectionController = {
   scrapeCollectionById,
+  scrapeAll,
   getCollectionById,
   getAllCollections,
   addOrUpdateCollectionById,

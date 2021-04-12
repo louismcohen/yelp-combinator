@@ -5,11 +5,13 @@ const {
   updateBusinessByAlias,
   updateAllBusinesses,
   updateIncompleteBusinesses,
+  updateAllBusinessesBasicInfo,
   populateBasicBusinessInfo,
   getAllBusinesses,
   getBusinessByAlias,
 } = require('../services/yelp-business.service');
 const Bottleneck = require('bottleneck');
+const { request } = require('express');
 
 const maxIndex = -1;
 const delay = 1000;
@@ -46,9 +48,10 @@ const updateAllIncompleteBusinesses = async (request, response, next) => {
 
 async function addOrUpdateBusinessByAlias(request, response) {
   const alias = request.query.alias;
-  const updated = await updateBusiness(alias);
+  const updated = await updateBusinessByAlias(alias);
   response.json(updated);
 }
+
 
 const getAll = async (request, response) => {
   const businesses = await getAllBusinesses();
@@ -65,7 +68,12 @@ const getByAlias = async (request, response) => {
 }
 
 const updateAll = async (request, response) => {
-  
+  try {
+    const allBusinesses = await updateAllBusinesses();
+    response.json(allBusinesses);
+  } catch (error) {
+    response.status(400).json(`Error updating all businesses\n${error}`);
+  }
 }
 
 const updateIncomplete = async (request, response) => {
@@ -73,6 +81,15 @@ const updateIncomplete = async (request, response) => {
   update ?
     response.json(updated) :
     response.status(400).json(`Error updated incomplete businesses`);
+}
+
+const updateAllBasicInfo = async (request, response) => {
+  try {
+    const updatedBusinesses = await updateAllBusinessesBasicInfo();
+    response.json(updatedBusinesses);
+  } catch (error) {
+    response.status(400).json(`Error updating all basic info ${error}`);
+  }
 }
 
 const YelpBusinessController = async (request, response) => {
@@ -95,13 +112,17 @@ const YelpBusinessController = async (request, response) => {
     case 'PUT':
       switch (action) {
         case 'addOrUpdate':
-          console.log(1);
+          addOrUpdateBusinessByAlias(request, response);
           break;
         case 'updateAll':
           updateAll(request, response);
           break;
         case 'updateIncomplete':
           updateIncomplete(request, response);
+          break;
+        case 'updateAllBasicInfo':
+          updateAllBasicInfo(request, response);
+          break;
         default:
           response.status(400).json(`Invalid action ${action} for method ${method}`);
       }

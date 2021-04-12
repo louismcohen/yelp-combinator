@@ -68,7 +68,7 @@ async function loadCollectionPage(collection, yelpCollectionId) {
     
     console.log('collection title: ', collection.title);
     console.log('collection item count: ', collection.itemCount);
-    console.log('last updated: ', collection.lastUpdated);
+    console.log('last updated on Yelp: ', collection.lastUpdated);
 }
 
 async function populateRenderedCollection(collection, yelpCollectionId) {

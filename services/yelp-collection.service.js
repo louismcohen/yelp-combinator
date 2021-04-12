@@ -2,10 +2,12 @@ const YelpCollection = require('../models/yelp-collection.model');
 const {
   populateBasicBusinessInfo,
   updateBusinessByAlias,
+  updateBusinessBasicInfo,
 } = require('./yelp-business.service');
 const jsdom = require('jsdom');
 const axios = require('axios');
 const {yelpAxiosOptions, YELP_RENDERED_ITEMS_URI, YELP_COLLECTION_URI} = require('../config/yelp-connection.config');
+const { response } = require('express');
 
 const initializeCollection = () => {
   return {items: [], businesses: []}; 
@@ -54,7 +56,7 @@ const loadCollectionPage = async (yelpCollectionId) => {
     collection.lastUpdated = new Date(collection.doc.getElementsByTagName("time")[0].dateTime);
     collection.title = collection.doc.querySelector('meta[property="og:title"]').content;
     
-    console.log(`collection ${collection.title}: ${collection.itemCount} items, last updated ${collection.lastUpdated}`);
+    console.log(`collection ${collection.title}: ${collection.itemCount} items, last updated on Yelp ${collection.lastUpdated}`);
 
     return collection;
   } catch (error) {
@@ -75,7 +77,7 @@ const populateRenderedItems = async (collection) => {
 
       collection.doc = dom.window.document;
       collection.items = [...collection.items, ...getCollectionItems(collection)];
-      console.log(`offset ${renderedOffset}, items count`, collection.items.length);
+      console.log(`${collection.title}: offset ${renderedOffset}, items count`, collection.items.length);
 
       renderedOffset += offsetStep;
   }
@@ -86,8 +88,29 @@ const populateRenderedItems = async (collection) => {
 const scrapeCollection = async (yelpCollectionId) => {
   const loadedResult = await loadCollectionPage(yelpCollectionId);
   const populatedItemsResult = await populateRenderedItems(loadedResult);
-  const populatedBusinessesResult = await populateBasicBusinessInfo(populatedItemsResult);
+  const populatedBusinessesResult = populateBasicBusinessInfo(populatedItemsResult);
+  // console.log(JSON.stringify(populatedBusinessesResult));
+  const updatedBasicBusinessInfo = Promise.all(
+    populatedBusinessesResult.businesses.map(async business => await updateBusinessBasicInfo(business))
+  )
   return populatedBusinessesResult;
+}
+
+const scrapeAllCollections = async () => {
+  try {
+    const collections = await getAllCollections();
+    const scrapedCollections = Promise.all(
+      collections.map(async collection => {
+        const scrapedCollection = await scrapeCollection(collection.yelpCollectionId);
+        console.log(`scraped collection ${scrapedCollection.title}`);
+        return scrapedCollection;
+      })
+    ) 
+    return scrapedCollections;
+  } catch (error) {
+    return {error: error};
+  }
+  
 }
 
 const getAllCollections = async () => {
@@ -165,6 +188,7 @@ module.exports = {
   loadCollectionPage,
   populateRenderedItems,
   scrapeCollection,
+  scrapeAllCollections,
   initializeCollection,
   parseRequestForId,
   getAllCollections,

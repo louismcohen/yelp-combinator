@@ -9,6 +9,7 @@ router.route('/yelp-collections/scrape').get(YelpCollectionController.scrapeColl
 router.route('/yelp-collections/id/:yelp_collection_id').get(YelpCollectionController.getCollectionById);
 
 router.route('/yelp-collections/').put(YelpCollectionController.addOrUpdateCollectionById);
+router.route('/yelp-collections/scrape').put(YelpCollectionController.scrapeAll);
 
 // router.route('/yelp-collections').get((request, response) => {
 //   YelpCollection.find()
