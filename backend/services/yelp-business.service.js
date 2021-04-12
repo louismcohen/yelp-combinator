@@ -10,8 +10,12 @@ const limiter = new Bottleneck({
 })
 
 const getYelpBusinessInfo = async (alias) => {
-  const info = await axios(`${YELP_BIZ_API_URI}${encodeURI(alias)}`, yelpAxiosOptions);
-  return info.data;
+  try {
+    const info = await axios(`${YELP_BIZ_API_URI}${encodeURI(alias)}`, yelpAxiosOptions);
+    return info.data;
+  } catch (error) {
+    return error.response.data;
+  }
 }
 
 const populateBasicBusinessInfo = (collection) => {
@@ -60,21 +64,26 @@ const updateBusinessById = async (id) => {
 const updateBusinessByAlias = async (alias) => {
   const data = await limiter.schedule(() => getYelpBusinessInfo(alias));
 
-  const updatedBusiness = await YelpBusiness.findOneAndUpdate(
-    {alias: alias},
-    data,
-    {new: true, upsert: true},
-    (error, result) => {
-      if (error) {
-        console.log('Error: ', error);
-      } else {
-        console.log(`Successfully updated ${result.addedIndex}: ${data.name} (${data.alias})`);
-        return result;
+  if (!data.error) {
+    console.log('no error');
+    const updatedBusiness = await YelpBusiness.findOneAndUpdate(
+      {alias: alias},
+      data,
+      {new: true, upsert: true},
+      (error, result) => {
+        if (error) {
+          console.log('Error: ', error);
+        } else {
+          console.log(`Successfully updated ${result.addedIndex}: ${data.name} (${data.alias})`);
+          return result;
+        }
       }
-    }
-  )
-
-  return updatedBusiness;
+    )
+  
+    return updatedBusiness;
+  } else {
+    return null;
+  }
 }
 
 const checkAndUpdateIncompleteBusinesses = async (collections) => {
@@ -95,8 +104,12 @@ const updateAllBusinesses = async () => {
     const businesses = await YelpBusiness.find();
     const updatedBusinesses = Promise.all(
       businesses.map(async business => {
-        const updated = await updateBusinessByAlias(business.alias);      
-        business = updated.data;
+        const updated = await updateBusinessByAlias(business.alias);
+        console.log({updated});
+        if (updated) {
+          console.log('in updated');
+          business = updated.data;
+        }    
       })
     )
     return updatedBusinesses;
@@ -153,12 +166,16 @@ const updateIncompleteBusinesses = async () => {
   try {
     const businesses = await YelpBusiness.find();
     const incomplete = businesses.filter(business => !business.name);
-    incomplete.map(async business => {
-      console.log(business);
-      const updated = await updateBusinessByAlias(business.alias);
-      business = updated.data;
-    })
-    return incomplete;
+    const updatedBusinesses = Promise.all(
+      incomplete.map(async business => {
+        const updated = await updateBusinessByAlias(business.alias);
+        if (updated) {
+          business = updated.data;
+          return business;
+        }
+      })
+    )
+    return updatedBusinesses;
   } catch {
     return {error: error};
   }
