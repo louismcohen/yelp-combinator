@@ -65,7 +65,6 @@ const updateBusinessByAlias = async (alias) => {
   const data = await limiter.schedule(() => getYelpBusinessInfo(alias));
 
   if (!data.error) {
-    console.log('no error');
     const updatedBusiness = await YelpBusiness.findOneAndUpdate(
       {alias: alias},
       data,

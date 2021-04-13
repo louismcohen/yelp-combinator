@@ -28,6 +28,8 @@ import mapStyles from './mapStyles';
 //   }
 // }
 
+// businesses.filter(x => x.categories.map(y => y.alias).some(x => x == 'noodles'))
+
 const libraries = ['places'];
 const mapContainerStyle = {
   width: '100vw',
@@ -55,15 +57,24 @@ const Map = () => {
 
   useEffect(() => {
     const getAllBusinesses = async () => {
-      const response = await axios.get('http://localhost:3001');
+      let response = await axios.get('http://localhost:3001');
+      response.data = response.data.filter(biz => !!biz.name);
+      response.data.map(biz => (
+        biz.position = {lat: biz.coordinates.latitude, lng: biz.coordinates.longitude}
+      ));
       setBusinesses(response.data);
+      console.log(businesses);
     }
     
     getAllBusinesses();
   }, []);
 
-  console.log(businesses);
-  const [markers, setMarkers] = useState([]);
+
+  const [selected, setSelected] = useState({});
+  const onSelect = item => {
+    console.log(item);
+    setSelected(item);
+  }
 
   if (loadError) return 'Error loading maps';
   if (!isLoaded) return 'Loading maps';
@@ -71,13 +82,28 @@ const Map = () => {
   return (
   <div>
     <h1>Yelp Combinator</h1>
+
     <GoogleMap mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={center} options={options}>
-    {businesses.filter(biz => !!biz.coordinates).map(biz => {
-      const position = {lat: biz.coordinates.latitude, lng: biz.coordinates.longitude};
-      return (
-        <Marker key={biz.alias} position={position} />
-      )
-    })}
+      {businesses.filter(biz => !!biz.coordinates).map(biz => {
+        return (
+          <Marker 
+            key={biz.alias} 
+            position={biz.position} 
+            animation={Animation.DROP} 
+            onClick={() => onSelect(biz)}  
+          />
+        )
+      })}
+      {
+        selected.alias && (
+          <InfoWindow position={selected.position} clickable={true} onCloseClick={() => setSelected({})}>
+            <div>
+              <img src={selected.image_url} alt={selected.name} style={{float: 'left', maxWidth: 90, height: 'auto'}}/>
+              <p>{selected.name}</p>
+            </div>
+          </InfoWindow>
+        )
+      }
     </GoogleMap>
   </div>
   )
