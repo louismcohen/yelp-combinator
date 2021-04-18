@@ -8,6 +8,7 @@ const yelpParsedCollectionsRouter = require('./routes/yelp-parsed-collections');
 const yelpCollectionRouter = require('./routes/yelp-collection');
 const yelpBusinessRouter = require('./routes/yelp-business');
 const yelpRouter = require('./routes/yelp.router');
+const googleRouter = require('./routes/google.router');
 
 const PORT = process.env.PORT || 3001;
 
@@ -17,6 +18,7 @@ app.use('/', yelpParsedCollectionsRouter);
 app.use('/', yelpCollectionRouter);
 app.use('/', yelpBusinessRouter);
 app.use('/', yelpRouter);
+app.use('/', googleRouter);
 
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false});
