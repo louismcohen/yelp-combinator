@@ -1,3 +1,7 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
 .App {
   text-align: center;
 }
