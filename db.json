@@ -1,0 +1,1760 @@
+{
+  "parsed_collection": [
+    {
+      "biz_id": "go-go-bird-los-angeles",
+      "name": "Go Go Bird",
+      "note": "",
+      "rating_int": 5,
+      "rating_sym": "⭐⭐⭐⭐⭐",
+      "categories": "Chicken Shop"
+    },
+    {
+      "biz_id": "cilantro-lime-los-angeles",
+      "name": "Cilantro Lime",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mexican, Breakfast & Brunch"
+    },
+    {
+      "biz_id": "xtra-cheese-whittier",
+      "name": "Xtra Cheese",
+      "note": "Halal Detroit style pizza",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza"
+    },
+    {
+      "biz_id": "xiaolongkan-chinese-hot-pot-alhambra",
+      "name": "XiaoLongKan Chinese Hot Pot",
+      "note": "Diners can choose between mild, medium, or extreme spice levels, but even the restaurant’s mild broth is considered too spicy by those unaccustomed to searing heat. Xiao Long Kan is known for its “butter,” which is made of slabs of solidified beef tallow marinated with spicy and numbing spices. The slab of butter dissolves, giving the stock its full flavor.",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Hot Pot, Szechuan"
+    },
+    {
+      "biz_id": "dalongyi-hot-pot-san-gabriel-2",
+      "name": "DaLongYi Hot Pot",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Hot Pot, Szechuan"
+    },
+    {
+      "biz_id": "hibiscus-tree-%E8%8A%99%E8%93%89%E6%A8%B9%E4%B8%8B-san-gabriel",
+      "name": "Hibiscus Tree 芙蓉樹下",
+      "note": "Maocai (Sichuan specialty that hails from Chengdu in Sichuan province)",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Szechuan, Hot Pot"
+    },
+    {
+      "biz_id": "%E9%87%8D%E5%BA%86%E5%B0%8F%E9%9D%A2-best-noodle-house-rosemead-3",
+      "name": "重庆小面 Best Noodle House",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Noodles, Szechuan"
+    },
+    {
+      "biz_id": "delicious-chengdu-temple-city-7",
+      "name": "Delicious Chengdu",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Noodles, Hot Pot"
+    },
+    {
+      "biz_id": "sichuan-kungfu-fish-arcadia-5",
+      "name": "Sichuan Kungfu Fish",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Szechuan, Seafood"
+    },
+    {
+      "biz_id": "haidilao-hot-pot-los-angeles-3",
+      "name": "Haidilao Hot Pot",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Hot Pot"
+    },
+    {
+      "biz_id": "szechuan-place-northridge",
+      "name": "Szechuan Place",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Szechuan, Soup"
+    },
+    {
+      "biz_id": "hanchic-los-angeles",
+      "name": "hanchic.",
+      "note": "Korean Italian / pasta fusion",
+      "rating_int": 5,
+      "rating_sym": "⭐⭐⭐⭐⭐",
+      "categories": "Korean, American (New)"
+    },
+    {
+      "biz_id": "versailles-cuban-food-los-angeles-2",
+      "name": "Versailles Cuban Food",
+      "note": "Happy Hour M-F 3-7pm",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Cuban, Sandwiches"
+    },
+    {
+      "biz_id": "fatimas-grill-downey",
+      "name": "Fatima’s Grill",
+      "note": "cheesy, Flamin’ Hot Cheetos-laced burgers, giant quesaritos, overloaded fries, and halal Lebanese shawarma sandwiches alike",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Lebanese, Mediterranean"
+    },
+    {
+      "biz_id": "el-barrio-neighborhood-tacos-los-angeles",
+      "name": "El Barrio Neighborhood Tacos",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mexican, Latin American"
+    },
+    {
+      "biz_id": "new-light-and-healthy-sushi-bar-woodland-hills",
+      "name": "New Light & Healthy Sushi Bar",
+      "note": "AYCE sushi",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Sushi Bars"
+    },
+    {
+      "biz_id": "far-east-joint-west-covina",
+      "name": "Far East Joint",
+      "note": "Korean fusion",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Asian Fusion, Chicken Wings"
+    },
+    {
+      "biz_id": "sichuan-impression-los-angeles-2",
+      "name": "Sichuan Impression",
+      "note": "Stir fry cumin lamb, tea smoked ribs",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Chinese"
+    },
+    {
+      "biz_id": "xiang-la-hui%E9%A6%99%E8%BE%A3%E6%B1%87-alhambra",
+      "name": "Xiang La Hui香辣汇",
+      "note": "Cumin / toothpick lamb",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Szechuan"
+    },
+    {
+      "biz_id": "broad-street-oyster-company-malibu",
+      "name": "Broad Street Oyster Company",
+      "note": "Lobster roll (possibly with squid ink)",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Seafood"
+    },
+    {
+      "biz_id": "rasselbock-l-a-kitchen-and-beer-garden-los-angeles",
+      "name": "Rasselbock L.A. Kitchen & Beer Garden",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "German, Pubs"
+    },
+    {
+      "biz_id": "pizzana-los-angeles-3",
+      "name": "Pizzana",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza, Italian"
+    },
+    {
+      "biz_id": "yang-san-bak-los-angeles",
+      "name": "Yang San Bak",
+      "note": "AYCE KBBQ, indoor seating with open window ",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Barbeque"
+    },
+    {
+      "biz_id": "the-hat-pasadena",
+      "name": "The Hat",
+      "note": "Pastrami sandwich ",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "American (Traditional), Sandwiches"
+    },
+    {
+      "biz_id": "marios-italian-deli-and-market-glendale",
+      "name": "Mario’s Italian Deli & Market",
+      "note": "S.O.B. (Soppresdata, oven roasted chicken, balsamic vinegar) sandwich",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Delis, Grocery"
+    },
+    {
+      "biz_id": "larchmont-village-wine-spirits-and-cheese-los-angeles",
+      "name": "Larchmont Village Wine Spirits & Cheese",
+      "note": "Soppressata Salami sando",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Beer, Wine & Spirits, Sandwiches"
+    },
+    {
+      "biz_id": "sandwiches-by-connal-pasadena",
+      "name": "Sandwiches by Connal",
+      "note": "Grinders",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Sandwiches, Burgers"
+    },
+    {
+      "biz_id": "golden-deli-san-gabriel-san-gabriel-2",
+      "name": "Golden Deli - San Gabriel",
+      "note": "Bahn Mi",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Vietnamese, Noodles"
+    },
+    {
+      "biz_id": "roma-market-pasadena",
+      "name": "Roma Market",
+      "note": "Italian sandwich",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Delis, Specialty Food"
+    },
+    {
+      "biz_id": "bay-cities-italian-deli-santa-monica",
+      "name": "Bay Cities Italian Deli",
+      "note": "Godmother sandwich",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Delis, Sandwiches"
+    },
+    {
+      "biz_id": "bubble-republic-san-gabriel",
+      "name": "Bubble Republic",
+      "note": "Salted egg yolk popcorn chicken",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Taiwanese, Cafes"
+    },
+    {
+      "biz_id": "solidarity-restaurant-santa-monica-2",
+      "name": "Solidarity Restaurant",
+      "note": "Happy Hour Tuesday - Friday 5-7pm",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Polish, Bars"
+    },
+    {
+      "biz_id": "the-prince-los-angeles-2",
+      "name": "The Prince",
+      "note": "Korean fried chicken ",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Bars, Korean"
+    },
+    {
+      "biz_id": "aikan-sushi-and-ramen-pasadena-2",
+      "name": "Aikan Sushi & Ramen",
+      "note": "AYCE Sushi",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Sushi Bars, Izakaya"
+    },
+    {
+      "biz_id": "matsui-torrance",
+      "name": "Matsui",
+      "note": "Tempura + soba",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese, Sushi Bars"
+    },
+    {
+      "biz_id": "supamu-los-angeles-2",
+      "name": "SUPAMU",
+      "note": "Spam takoyaki onigiri",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese"
+    },
+    {
+      "biz_id": "mee-dee-thai-kitchen-los-angeles",
+      "name": "Mee Dee Thai Kitchen",
+      "note": "Interesting menu options ",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Thai, Noodles"
+    },
+    {
+      "biz_id": "sababa-falafel-shop-garden-grove",
+      "name": "Sababa Falafel Shop",
+      "note": "",
+      "rating_int": 5,
+      "rating_sym": "⭐⭐⭐⭐⭐",
+      "categories": "Falafel, Middle Eastern"
+    },
+    {
+      "biz_id": "the-bombay-frankie-company-culver-city",
+      "name": "The Bombay Frankie Company",
+      "note": "Indian burritos",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Indian"
+    },
+    {
+      "biz_id": "banh-mi-my-tho-alhambra",
+      "name": "Banh Mi My Tho",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Sandwiches, Vietnamese"
+    },
+    {
+      "biz_id": "schellz-pizza-los-angeles-6",
+      "name": "Schellz Pizza",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza, Desserts"
+    },
+    {
+      "biz_id": "hironori-craft-ramen-long-beach-2",
+      "name": "HiroNori Craft Ramen",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen, Noodles"
+    },
+    {
+      "biz_id": "hironori-craft-ramen-pasadena-3",
+      "name": "HiroNori Craft Ramen",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen, Noodles"
+    },
+    {
+      "biz_id": "masa-of-echo-park-los-angeles",
+      "name": "Masa of Echo Park",
+      "note": "Chicago-style deep dish",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza"
+    },
+    {
+      "biz_id": "the-chori-man-san-pedro",
+      "name": "The Chori-Man",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mexican, Meat Shops"
+    },
+    {
+      "biz_id": "sakae-sushi-gardena",
+      "name": "Sakae Sushi",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese, Sushi Bars"
+    },
+    {
+      "biz_id": "hawkins-house-of-burgers-los-angeles",
+      "name": "Hawkins House of Burgers",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Burgers, Chicken Wings"
+    },
+    {
+      "biz_id": "el-ruso-los-angeles",
+      "name": "El Ruso",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Tacos, Breakfast & Brunch"
+    },
+    {
+      "biz_id": "katsu-sando-los-angeles",
+      "name": "Katsu Sando",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Sandwiches, Japanese Curry"
+    },
+    {
+      "biz_id": "gamboge-los-angeles",
+      "name": "Gamboge",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Cambodian, Delis"
+    },
+    {
+      "biz_id": "northern-thai-food-club-los-angeles",
+      "name": "Northern Thai Food Club",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Thai"
+    },
+    {
+      "biz_id": "me-crepe-pasadena",
+      "name": "Me + Crepe",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Chinese"
+    },
+    {
+      "biz_id": "monta-factory-glendale-4",
+      "name": "Monta Factory",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Armenian"
+    },
+    {
+      "biz_id": "pizza-of-venice-altadena-2",
+      "name": "Pizza Of Venice",
+      "note": "Unusual toppings",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza, American (New)"
+    },
+    {
+      "biz_id": "fifty-one-culver-city-4",
+      "name": "Fifty One",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Asian Fusion"
+    },
+    {
+      "biz_id": "angels-tijuana-tacos-los-angeles-2",
+      "name": "Angel’s tijuana tacos",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Tacos"
+    },
+    {
+      "biz_id": "tacos-tamix-culver-city",
+      "name": "Tacos Tamix",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Food Trucks, Tacos"
+    },
+    {
+      "biz_id": "yen-sushi-and-sake-bar-los-angeles",
+      "name": "Yen Sushi & Sake Bar",
+      "note": "Happy Hour every day",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Sushi Bars, Japanese"
+    },
+    {
+      "biz_id": "la-morra-pizzeria-los-angeles-2",
+      "name": "La Morra Pizzeria",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza"
+    },
+    {
+      "biz_id": "es-con-sabor-west-los-angeles",
+      "name": "Es Con Sabor West",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Salvadoran"
+    },
+    {
+      "biz_id": "mikes-new-york-pizzeria-los-angeles",
+      "name": "Mike’s New York Pizzeria",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza"
+    },
+    {
+      "biz_id": "sushime-rolln-west-covina",
+      "name": "SushiMe Roll’n",
+      "note": "AYCE sushi",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Sushi Bars, Japanese"
+    },
+    {
+      "biz_id": "airport-royal-cuisine-inglewood",
+      "name": "Airport Royal Cuisine",
+      "note": "Ghanan",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "African, American (Traditional)"
+    },
+    {
+      "biz_id": "african-chop-los-angeles",
+      "name": "African Chop",
+      "note": "Cameroonian",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Food Trucks, African"
+    },
+    {
+      "biz_id": "aduke-nigerian-cuisine-inglewood-3",
+      "name": "Aduke Nigerian Cuisine",
+      "note": "Nigerian",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "African"
+    },
+    {
+      "biz_id": "revolutionario-north-african-tacos-los-angeles",
+      "name": "Revolutionario: North African Tacos",
+      "note": "Algerian",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "African, Mexican"
+    },
+    {
+      "biz_id": "cafe-dahab-los-angeles",
+      "name": "Cafe Dahab",
+      "note": "Egyptian ",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Middle Eastern, Hookah Bars"
+    },
+    {
+      "biz_id": "harissa-restaurant-los-angeles",
+      "name": "Harissa Restaurant",
+      "note": "Tunisian",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mediterranean, Kosher"
+    },
+    {
+      "biz_id": "flavors-from-afar-los-angeles-2",
+      "name": "Flavors From Afar",
+      "note": "Rotating chefs\nEritrean / Somalian / Kenyan ",
+      "rating_int": 5,
+      "rating_sym": "⭐⭐⭐⭐⭐",
+      "categories": "Comfort Food, Personal Chefs"
+    },
+    {
+      "biz_id": "mizlala-los-angeles-5",
+      "name": "Mizlala",
+      "note": "Moroccan ",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Falafel, Middle Eastern"
+    },
+    {
+      "biz_id": "springbok-bar-and-grill-van-nuys",
+      "name": "Springbok Bar & Grill",
+      "note": "South African",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Sports Bars, American (New)"
+    },
+    {
+      "biz_id": "jaliz-cuisine-of-east-africa-van-nuys-2",
+      "name": "Jaliz Cuisine of East Africa",
+      "note": "Ugandan",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "African"
+    },
+    {
+      "biz_id": "aburi-sushi-long-beach",
+      "name": "Aburi Sushi",
+      "note": "Happy Hour pricing ",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Sushi Bars, Japanese"
+    },
+    {
+      "biz_id": "d-town-pizzeria-west-hollywood",
+      "name": "D Town Pizzeria",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza, Gluten-Free"
+    },
+    {
+      "biz_id": "bootleg-pizza-los-angeles-4",
+      "name": "Bootleg Pizza",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza"
+    },
+    {
+      "biz_id": "brooklyn-ave-pizza-co-los-angeles",
+      "name": "Brooklyn Ave Pizza Co",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza"
+    },
+    {
+      "biz_id": "tandoori-eats-los-angeles",
+      "name": "Tandoori Eats",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Indian"
+    },
+    {
+      "biz_id": "mr-fries-man-gardena-2",
+      "name": "Mr Fries Man",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "American (Traditional)"
+    },
+    {
+      "biz_id": "easy-street-burgers-los-angeles",
+      "name": "Easy Street Burgers",
+      "note": "Wild fries",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Burgers"
+    },
+    {
+      "biz_id": "prince-street-pizza-west-hollywood",
+      "name": "Prince Street Pizza",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza"
+    },
+    {
+      "biz_id": "rose-city-pizza-rosemead",
+      "name": "Rose City Pizza",
+      "note": "Korean fried chicken pizza “Dynamite”",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza, Italian"
+    },
+    {
+      "biz_id": "moos-craft-barbecue-los-angeles-3",
+      "name": "Moo’s Craft Barbecue",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Barbeque, Food Stands"
+    },
+    {
+      "biz_id": "mega-grille-culver-city-3",
+      "name": "Mega Grille",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Persian/Iranian, Scandinavian"
+    },
+    {
+      "biz_id": "tony-khachapuri-los-angeles",
+      "name": "Tony Khachapuri",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza, Georgian"
+    },
+    {
+      "biz_id": "l-fish-los-angeles-3",
+      "name": "L Fish",
+      "note": "Fish tacos",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Seafood, Food Stands"
+    },
+    {
+      "biz_id": "hironori-craft-ramen-irvine-3",
+      "name": "HiroNori Craft Ramen",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen, Noodles"
+    },
+    {
+      "biz_id": "ji-rong-peking-duck-rosemead",
+      "name": "Ji Rong Peking Duck",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Chinese"
+    },
+    {
+      "biz_id": "atlantic-seafood-and-dim-sum-restaurant-monterey-park-2",
+      "name": "Atlantic Seafood & Dim Sum Restaurant",
+      "note": "",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Dim Sum, Seafood"
+    },
+    {
+      "biz_id": "delicious-food-corner-monterey-park-monterey-park",
+      "name": "Delicious Food Corner - Monterey Park",
+      "note": "Zhilang - Chinese Donut wrapped in rice noodle",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Chinese, Hong Kong Style Cafe"
+    },
+    {
+      "biz_id": "indimex-eats-los-angeles-3",
+      "name": "IndiMex Eats",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Indian, Mexican"
+    },
+    {
+      "biz_id": "hangari-kalguksu-los-angeles-4",
+      "name": "Hangari Kalguksu",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Noodles"
+    },
+    {
+      "biz_id": "jjukku-jjukku-bbq-los-angeles-3",
+      "name": "JJUKKU JJUKKU BBQ",
+      "note": "AYCE",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Barbeque"
+    },
+    {
+      "biz_id": "road-to-seoul-los-angeles",
+      "name": "Road To Seoul",
+      "note": "AYCE",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Barbeque"
+    },
+    {
+      "biz_id": "bak-kung-korean-bbq-los-angeles-2",
+      "name": "Bak Kung Korean BBQ",
+      "note": "AYCE",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Barbeque"
+    },
+    {
+      "biz_id": "farsi-cafe-los-angeles-2",
+      "name": "Farsi Cafe",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Persian/Iranian, Mediterranean"
+    },
+    {
+      "biz_id": "cafe-areni-sherman-oaks",
+      "name": "Cafe Areni",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Russian, Armenian"
+    },
+    {
+      "biz_id": "noodle-st-arcadia",
+      "name": "Noodle St",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Noodles"
+    },
+    {
+      "biz_id": "foo-foo-tei-hacienda-heights",
+      "name": "Foo Foo Tei",
+      "note": "5 outdoor tables",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Tapas/Small Plates, Ramen"
+    },
+    {
+      "biz_id": "yangmani-los-angeles-2",
+      "name": "Yangmani",
+      "note": "high-quality cow stomach and intestines called gopchang and makchang",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Barbeque"
+    },
+    {
+      "biz_id": "parks-bbq-los-angeles",
+      "name": "Park’s BBQ",
+      "note": "premier KBBQ, banchan",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Barbeque, Korean"
+    },
+    {
+      "biz_id": "dumpling-house-los-angeles-2",
+      "name": "Dumpling House",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Dim Sum"
+    },
+    {
+      "biz_id": "sun-nong-dan-los-angeles-4",
+      "name": "Sun Nong Dan",
+      "note": "galbi jjim with cheese",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Soup"
+    },
+    {
+      "biz_id": "mdk-noodles-los-angeles",
+      "name": "MDK  Noodles",
+      "note": "knife-cut noodles, pork dumplings, and chewy spicy cold noodles called jjolmyeon",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Noodles"
+    },
+    {
+      "biz_id": "zzamong-los-angeles",
+      "name": "Zzamong",
+      "note": "jjajjangmyun and champong, respectively black bean noodles and spicy seafood noodle soup",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Chinese"
+    },
+    {
+      "biz_id": "han-bat-sul-lung-tang-los-angeles-2",
+      "name": "Han Bat Sul Lung Tang",
+      "note": "Bone marrow broth",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Comfort Food"
+    },
+    {
+      "biz_id": "midoh-sawtelle-west-los-angeles-2",
+      "name": "Midoh Sawtelle",
+      "note": "Hamburg curry rice",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese, Desserts"
+    },
+    {
+      "biz_id": "burnin-daylight-brewing-lomita",
+      "name": "Burnin Daylight Brewing",
+      "note": "Garlic jalapeño burger",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Brewpubs"
+    },
+    {
+      "biz_id": "omar-restaurant-san-gabriel-2",
+      "name": "Omar Restaurant",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Chinese, Halal"
+    },
+    {
+      "biz_id": "dolans-uyghur-cuisine-alhambra",
+      "name": "Dolans Uyghur Cuisine",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Uzbek, Asian Fusion"
+    },
+    {
+      "biz_id": "bkk101-thai-cuisine-los-angeles",
+      "name": "BKK101 Thai Cuisine",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Thai, Soup"
+    },
+    {
+      "biz_id": "sun-ha-jang-los-angeles",
+      "name": "Sun Ha Jang",
+      "note": "Duck",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Korean, Barbeque"
+    },
+    {
+      "biz_id": "fukagawa-gardena",
+      "name": "Fukagawa",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese"
+    },
+    {
+      "biz_id": "la-fuente-restaurant-los-angeles-3",
+      "name": "La Fuente Restaurant",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mexican"
+    },
+    {
+      "biz_id": "shin-sen-gumi-hakata-ramen-west-l-a-los-angeles-5",
+      "name": "Shin-Sen-Gumi Hakata Ramen - West L.A.",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen, Tapas/Small Plates"
+    },
+    {
+      "biz_id": "moto-ramen-culver-city-2",
+      "name": "Moto Ramen",
+      "note": "",
+      "rating_int": 5,
+      "rating_sym": "⭐⭐⭐⭐⭐",
+      "categories": "Ramen, Izakaya"
+    },
+    {
+      "biz_id": "daikokuya-sawtelle-los-angeles",
+      "name": "Daikokuya Sawtelle",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen, Noodles"
+    },
+    {
+      "biz_id": "ramen-yamadaya-torrance",
+      "name": "Ramen Yamadaya",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen"
+    },
+    {
+      "biz_id": "hakata-ikkousha-los-angeles-4",
+      "name": "Hakata Ikkousha",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen, Noodles"
+    },
+    {
+      "biz_id": "hakata-ikkousha-ramen-torrance",
+      "name": "Hakata Ikkousha Ramen",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen"
+    },
+    {
+      "biz_id": "banadir-somali-restaurant-inglewood",
+      "name": "Banadir Somali Restaurant",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Somali"
+    },
+    {
+      "biz_id": "a-ri-rang-tofu-house-san-gabriel",
+      "name": "A Ri Rang Tofu House",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Seafood"
+    },
+    {
+      "biz_id": "mariscos-jalisco-los-angeles-8",
+      "name": "Mariscos Jalisco",
+      "note": "",
+      "rating_int": 5,
+      "rating_sym": "⭐⭐⭐⭐⭐",
+      "categories": "Seafood, Food Trucks"
+    },
+    {
+      "biz_id": "carrot-and-daikon-banh-mi-garden-grove",
+      "name": "Carrot & Daikon Banh Mi",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Vietnamese, Sandwiches"
+    },
+    {
+      "biz_id": "elite-restaurant-monterey-park",
+      "name": "Elite Restaurant",
+      "note": "",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Dim Sum, Seafood"
+    },
+    {
+      "biz_id": "destroyer-culver-city",
+      "name": "Destroyer",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "American (New)"
+    },
+    {
+      "biz_id": "antojitos-oaxaque%C3%B1os-mary-oxnard",
+      "name": "Antojitos Oaxaqueños Mary",
+      "note": "Pizzadilla",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Food Trucks, Tacos"
+    },
+    {
+      "biz_id": "indias-tandoori-hollywood-los-angeles",
+      "name": "India’s Tandoori Hollywood",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Indian, Halal"
+    },
+    {
+      "biz_id": "menya-hanabi-arcadia",
+      "name": "Menya Hanabi",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen"
+    },
+    {
+      "biz_id": "yoma-myanmar-monterey-park",
+      "name": "Yoma Myanmar",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Burmese"
+    },
+    {
+      "biz_id": "okamoto-kitchen-los-angeles-2",
+      "name": "Okamoto Kitchen",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Food Trucks, Japanese"
+    },
+    {
+      "biz_id": "brodard-restaurant-fountain-valley",
+      "name": "Brodard Restaurant",
+      "note": "Spring rolls",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Vietnamese, Bakeries"
+    },
+    {
+      "biz_id": "kotsu-ramen-and-gyoza-la-ca%C3%B1ada-flintridge-2",
+      "name": "KOTSU Ramen & Gyoza",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen"
+    },
+    {
+      "biz_id": "kosuke-alhambra",
+      "name": "Kosuke",
+      "note": "Popcorn chicken ramen ",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen"
+    },
+    {
+      "biz_id": "yellow-house-cafe-los-angeles",
+      "name": "Yellow House Cafe",
+      "note": "Kimchi pasta",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Desserts, Coffee & Tea"
+    },
+    {
+      "biz_id": "l-a-birria-pizza-los-angeles",
+      "name": "L.A. Birria Pizza",
+      "note": "Birria ramen",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza"
+    },
+    {
+      "biz_id": "lan-noodle-arcadia-7",
+      "name": "LAN Noodle",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Chinese, Noodles"
+    },
+    {
+      "biz_id": "jasmine-market-and-deli-culver-city",
+      "name": "Jasmine Market & Deli",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Burmese, Indian"
+    },
+    {
+      "biz_id": "meals-by-genet-los-angeles",
+      "name": "Meals by Genet",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ethiopian"
+    },
+    {
+      "biz_id": "bbq-stop-diamond-bar-3",
+      "name": "BBQ Stop",
+      "note": "Outdoor AYCE $25/$30 pp",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Barbeque"
+    },
+    {
+      "biz_id": "azay-los-angeles",
+      "name": "Azay",
+      "note": "Omurice",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese, French"
+    },
+    {
+      "biz_id": "bongchu-los-angeles",
+      "name": "BongChu",
+      "note": "Jjimdak",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Chicken Shop"
+    },
+    {
+      "biz_id": "kai-ramen-west-hollywood-los-angeles",
+      "name": "Kai Ramen West Hollywood",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen, Noodles"
+    },
+    {
+      "biz_id": "lotus-house-temple-city-2",
+      "name": "Lotus House",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Vietnamese"
+    },
+    {
+      "biz_id": "cassia-santa-monica",
+      "name": "Cassia",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Singaporean, Vietnamese"
+    },
+    {
+      "biz_id": "hummus-labs-pasadena-2",
+      "name": "Hummus Labs",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mediterranean"
+    },
+    {
+      "biz_id": "bang-bang-noodles-los-angeles",
+      "name": "Bang Bang Noodles",
+      "note": "Biang biang mian",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Noodles, Pop-Up Restaurants"
+    },
+    {
+      "biz_id": "tire-shop-taqueria-los-angeles",
+      "name": "Tire Shop Taqueria",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mexican, Food Stands"
+    },
+    {
+      "biz_id": "show-sushi-san-dimas",
+      "name": "Show Sushi",
+      "note": "AYCE Sushi",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Sushi Bars"
+    },
+    {
+      "biz_id": "laoxi-noodle-house-arcadia",
+      "name": "LaoXi Noodle House",
+      "note": "Wife’s Special",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Chinese, Noodles"
+    },
+    {
+      "biz_id": "mian-%E6%BB%8B%E5%91%B3%E5%B0%8F%E9%9D%A2-san-gabriel-3",
+      "name": "MIAN | 滋味小面",
+      "note": "Chengdu Zajiang Noodles",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Szechuan, Noodles"
+    },
+    {
+      "biz_id": "borneo-kalimantan-cuisine-alhambra-2",
+      "name": "Borneo Kalimantan Cuisine",
+      "note": "Hakka noodles",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Indonesian, Singaporean"
+    },
+    {
+      "biz_id": "corner-beef-noodle-house-el-monte",
+      "name": "Corner Beef Noodle House",
+      "note": "Taiwanese beef noodle soup",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Taiwanese, Noodles"
+    },
+    {
+      "biz_id": "smoke-and-fire-social-eatery-la-habra-2",
+      "name": "Smoke & Fire Social Eatery",
+      "note": "Brisket",
+      "rating_int": 5,
+      "rating_sym": "⭐⭐⭐⭐⭐",
+      "categories": "Comfort Food, Barbeque"
+    },
+    {
+      "biz_id": "nadi-myanmar-cafe-alhambra-2",
+      "name": "NADI Myanmar Cafe",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Burmese"
+    },
+    {
+      "biz_id": "jichans-onigiri-ya-monterey-park",
+      "name": "Jichan’s Onigiri-ya",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese"
+    },
+    {
+      "biz_id": "101-noodle-express-alhambra",
+      "name": "101 Noodle Express",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Chinese, Noodles"
+    },
+    {
+      "biz_id": "beijing-pie-house-alhambra-2",
+      "name": "Beijing Pie House",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Chinese, Noodles"
+    },
+    {
+      "biz_id": "1919-lanzhou-beef-noodle-temple-city",
+      "name": "1919 Lanzhou Beef Noodle",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Noodles, Chinese"
+    },
+    {
+      "biz_id": "ho-kee-cafe-san-gabriel-san-gabriel",
+      "name": "Ho Kee Cafe - San Gabriel",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Cantonese, Hong Kong Style Cafe"
+    },
+    {
+      "biz_id": "chengdu-taste-alhambra-4",
+      "name": "Chengdu Taste",
+      "note": "",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Szechuan"
+    },
+    {
+      "biz_id": "chong-qing-special-noodles-san-gabriel-22",
+      "name": "Chong Qing Special Noodles",
+      "note": "Dandanmien",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Noodles, Seafood"
+    },
+    {
+      "biz_id": "yamashiro-hollywood-hollywood",
+      "name": "Yamashiro Hollywood",
+      "note": "Views of LA",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Japanese, Asian Fusion"
+    },
+    {
+      "biz_id": "el-cochinito-restaurant-los-angeles",
+      "name": "El Cochinito Restaurant",
+      "note": "Best Cuban sandwich",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Cuban"
+    },
+    {
+      "biz_id": "sun-nong-dan-rowland-heights-2",
+      "name": "Sun Nong Dan",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Soup"
+    },
+    {
+      "biz_id": "tu-madre-westwood-los-angeles",
+      "name": "Tu Madre - Westwood",
+      "note": "",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Tapas/Small Plates, Mexican"
+    },
+    {
+      "biz_id": "uovo-santa-monica",
+      "name": "Uovo",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Noodles, Italian"
+    },
+    {
+      "biz_id": "ten-raku-los-angeles-4",
+      "name": "Ten-Raku",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Barbeque"
+    },
+    {
+      "biz_id": "asuka-los-angeles-2",
+      "name": "Asuka",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Sushi Bars, Japanese"
+    },
+    {
+      "biz_id": "mogumogu-los-angeles-3",
+      "name": "Mogumogu",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen"
+    },
+    {
+      "biz_id": "birrieria-gonzalez-east-los-angeles",
+      "name": "Birrieria Gonzalez",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Food Trucks, Tacos"
+    },
+    {
+      "biz_id": "homestate-los-angeles",
+      "name": "HomeState",
+      "note": "Best queso (Texas style)",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Tex-Mex, Breakfast & Brunch"
+    },
+    {
+      "biz_id": "tacos-el-primo-los-angeles-9",
+      "name": "Tacos El Primo",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Tacos, Street Vendors"
+    },
+    {
+      "biz_id": "asadero-chikali-los-angeles",
+      "name": "Asadero Chikali",
+      "note": "Quesatacos",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mexican, Food Stands"
+    },
+    {
+      "biz_id": "elbows-mac-n-cheese-torrance",
+      "name": "Elbows Mac N’ Cheese",
+      "note": "",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "American (Traditional), Comfort Food"
+    },
+    {
+      "biz_id": "taste-of-tehran-los-angeles",
+      "name": "Taste of Tehran",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Persian/Iranian, Middle Eastern"
+    },
+    {
+      "biz_id": "cali-tandoor-culver-city",
+      "name": "Cali Tandoor",
+      "note": "AYCE Indian buffet ",
+      "rating_int": 5,
+      "rating_sym": "⭐⭐⭐⭐⭐",
+      "categories": "Indian, Buffets"
+    },
+    {
+      "biz_id": "lonzos-restaurant-culver-city-3",
+      "name": "Lonzo’s Restaurant",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Bakeries, Peruvian"
+    },
+    {
+      "biz_id": "cafe-brasil-los-angeles",
+      "name": "Cafe Brasil",
+      "note": "Cool courtyard",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Brazilian, Italian"
+    },
+    {
+      "biz_id": "the-country-kitchen-malibu",
+      "name": "The Country Kitchen",
+      "note": "Breakfast burritos",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Burgers"
+    },
+    {
+      "biz_id": "sonoritas-prime-tacos-los-angeles",
+      "name": "Sonoritas Prime Tacos",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mexican"
+    },
+    {
+      "biz_id": "south-end-venice",
+      "name": "South End",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Wine Bars, Pizza"
+    },
+    {
+      "biz_id": "jackson-market-culver-city",
+      "name": "Jackson Market",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Grocery, Delis"
+    },
+    {
+      "biz_id": "holbox-los-angeles-2",
+      "name": "Holbox",
+      "note": "",
+      "rating_int": 5,
+      "rating_sym": "⭐⭐⭐⭐⭐",
+      "categories": "Latin American, Seafood"
+    },
+    {
+      "biz_id": "red-rock-sawtelle-los-angeles-9",
+      "name": "Red Rock - Sawtelle",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese, Steakhouses"
+    },
+    {
+      "biz_id": "la-flor-de-yucatan-catering-and-bakery-los-angeles-2",
+      "name": "La Flor De Yucatan Catering & Bakery",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Bakeries, Mexican"
+    },
+    {
+      "biz_id": "otomisan-restaurant-los-angeles",
+      "name": "Otomisan Restaurant",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese, Sushi Bars"
+    },
+    {
+      "biz_id": "ricebox-los-angeles",
+      "name": "RiceBox",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Barbeque, Cantonese"
+    },
+    {
+      "biz_id": "aduke-african-cuisine-los-angeles-4",
+      "name": "Aduke African Cuisine",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "African, Halal"
+    },
+    {
+      "biz_id": "dwitgolmok-los-angeles-2",
+      "name": "DwitGolMok",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Bars"
+    },
+    {
+      "biz_id": "viet-huong-restaurant-el-monte",
+      "name": "Viet Huong Restaurant",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Vietnamese, Seafood"
+    },
+    {
+      "biz_id": "dai-ho-restaurant-temple-city",
+      "name": "Dai Ho Restaurant",
+      "note": "",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Taiwanese, Chinese"
+    },
+    {
+      "biz_id": "you-kitchen-alhambra",
+      "name": "You Kitchen",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Chinese"
+    },
+    {
+      "biz_id": "malubianbian-san-gabriel",
+      "name": "Malubianbian",
+      "note": "",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Hot Pot, Szechuan"
+    },
+    {
+      "biz_id": "paraiso-juice-bar-and-grill-la-mirada",
+      "name": "Paraiso Juice Bar & Grill",
+      "note": "",
+      "rating_int": 2,
+      "rating_sym": "⭐⭐",
+      "categories": "Juice Bars & Smoothies, Mexican"
+    },
+    {
+      "biz_id": "la-ddong-ggo-los-angeles",
+      "name": "La Ddong Ggo",
+      "note": "Korean fire chicken",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Korean, Asian Fusion"
+    },
+    {
+      "biz_id": "ob-bear-los-angeles",
+      "name": "OB Bear",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Chicken Wings"
+    },
+    {
+      "biz_id": "hyesung-noodle-house-los-angeles",
+      "name": "Hyesung Noodle House",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Korean, Noodles"
+    },
+    {
+      "biz_id": "malibu-seafood-fresh-fish-market-and-patio-cafe-malibu",
+      "name": "Malibu Seafood Fresh Fish Market & Patio Cafe",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Seafood Markets, Seafood"
+    },
+    {
+      "biz_id": "joy-los-angeles-11",
+      "name": "Joy",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Taiwanese, Chinese"
+    },
+    {
+      "biz_id": "chocolate-cafe-ll-los-angeles-5",
+      "name": "Chocolate Cafe ll",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Cafes"
+    },
+    {
+      "biz_id": "s%C3%A1u-can-tho-vietnamese-kitchen-rosemead-5",
+      "name": "Sáu Can Tho Vietnamese Kitchen",
+      "note": "Grilled fish",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Vietnamese"
+    },
+    {
+      "biz_id": "india-sweets-and-spices-culver-city",
+      "name": "India Sweets & Spices",
+      "note": "",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Indian, Pizza"
+    },
+    {
+      "biz_id": "palms-ramen-yumeya-los-angeles",
+      "name": "Palms Ramen Yumeya",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen, Soup"
+    },
+    {
+      "biz_id": "teddys-red-tacos-venice",
+      "name": "Teddy’s Red Tacos",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Tacos, Food Trucks"
+    },
+    {
+      "biz_id": "killer-noodle-tsujita-los-angeles",
+      "name": "Killer Noodle Tsujita",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen, Noodles"
+    },
+    {
+      "biz_id": "marugame-udon-los-angeles-6",
+      "name": "Marugame Udon",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese, Noodles"
+    },
+    {
+      "biz_id": "chinchikurin-sawtelle-los-angeles-2",
+      "name": "Chinchikurin - Sawtelle",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Japanese"
+    },
+    {
+      "biz_id": "continental-gourmet-sausage-glendale",
+      "name": "Continental Gourmet Sausage",
+      "note": "German breads",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Meat Shops, Delis"
+    },
+    {
+      "biz_id": "sonoratown-los-angeles",
+      "name": "Sonoratown",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mexican"
+    },
+    {
+      "biz_id": "humble-potato-los-angeles-2",
+      "name": "Humble Potato",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "American (New), Burgers"
+    },
+    {
+      "biz_id": "hatchet-hall-los-angeles",
+      "name": "Hatchet Hall",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Cocktail Bars, American (Traditional)"
+    },
+    {
+      "biz_id": "fathers-office-los-angeles",
+      "name": "Father’s Office",
+      "note": "",
+      "rating_int": 3,
+      "rating_sym": "⭐⭐⭐",
+      "categories": "Burgers, Cocktail Bars"
+    },
+    {
+      "biz_id": "slab-los-angeles-5",
+      "name": "Slab",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Barbeque"
+    },
+    {
+      "biz_id": "hidden-garden-thai-cuisine-culver-city-5",
+      "name": "Hidden Garden Thai Cuisine",
+      "note": "Medium = spicy af",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Thai, Noodles"
+    },
+    {
+      "biz_id": "the-stinking-rose-beverly-hills-4",
+      "name": "The Stinking Rose",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Italian, American (New)"
+    },
+    {
+      "biz_id": "prime-pizza-los-angeles-4",
+      "name": "Prime Pizza",
+      "note": "NY slice",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Pizza"
+    },
+    {
+      "biz_id": "kotoya-ramen-los-angeles-8",
+      "name": "Kotoya Ramen",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Ramen"
+    },
+    {
+      "biz_id": "rutts-hawaiian-cafe-los-angeles-4",
+      "name": "Rutt’s Hawaiian Cafe",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Hawaiian, Breakfast & Brunch"
+    },
+    {
+      "biz_id": "l-a-birria-los-angeles",
+      "name": "L.A. Birria",
+      "note": "",
+      "rating_int": 4,
+      "rating_sym": "⭐⭐⭐⭐",
+      "categories": "Mexican, Food Trucks"
+    }
+  ],
+  "last_updated": "2021-03-20T20:50:43.000Z",
+  "title": "LA Restaurants",
+  "item_count": 219,
+  "yelp_collection_id": "g6DLKiR2ReMs-N5hN6zDwg"
+}

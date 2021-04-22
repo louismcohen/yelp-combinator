@@ -1,0 +1,2350 @@
+[
+  {
+    "items": [],
+    "_id": "6062778e5a26587ca7819e96",
+    "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g",
+    "__v": 0,
+    "createdAt": "2021-03-30T00:57:50.797Z",
+    "title": "LA Cafes",
+    "updatedAt": "2021-04-09T06:17:48.037Z",
+    "businesses": [
+      {
+        "_id": "606ff18c7caf87a26becd642",
+        "alias": "able-coffee-roasters-huntington-beach-2",
+        "note": "Employ people with autism and disabilities e.g. Down’s Syndrome",
+        "addedIndex": 50,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd643",
+        "alias": "koffywood-los-angeles",
+        "note": "",
+        "addedIndex": 49,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd644",
+        "alias": "black-canvas-coffee-los-angeles",
+        "note": "",
+        "addedIndex": 48,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd645",
+        "alias": "stereoscope-coffee-company-newport-beach-10",
+        "note": "",
+        "addedIndex": 47,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd646",
+        "alias": "balcony-coffee-and-tea-los-angeles",
+        "note": "Cool interior aesthetic",
+        "addedIndex": 46,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd647",
+        "alias": "rye-goods-newport-beach",
+        "note": "",
+        "addedIndex": 45,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd648",
+        "alias": "toluca-cup-north-hollywood",
+        "note": "",
+        "addedIndex": 44,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd649",
+        "alias": "azucanela-hawthorne",
+        "note": "",
+        "addedIndex": 43,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd64a",
+        "alias": "little-flower-pasadena",
+        "note": "",
+        "addedIndex": 42,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd64b",
+        "alias": "pillow-talk-pasadena-2",
+        "note": "",
+        "addedIndex": 41,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd64c",
+        "alias": "fresh-roast-san-gabriel",
+        "note": "Egg waffles",
+        "addedIndex": 40,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd64d",
+        "alias": "compelling-coffee-los-angeles",
+        "note": "",
+        "addedIndex": 39,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd64e",
+        "alias": "house-roots-coffee-granada-hills-2",
+        "note": "",
+        "addedIndex": 38,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd64f",
+        "alias": "g-and-b-coffee-los-angeles-2",
+        "note": "",
+        "addedIndex": 37,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd650",
+        "alias": "cafe-dulce-los-angeles",
+        "note": "",
+        "addedIndex": 36,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd651",
+        "alias": "the-boy-and-the-bear-los-angeles-7",
+        "note": "",
+        "addedIndex": 35,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd652",
+        "alias": "dayglow-west-hollywood",
+        "note": "",
+        "addedIndex": 34,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd653",
+        "alias": "endorffeine-los-angeles",
+        "note": "Try espresso",
+        "addedIndex": 33,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd654",
+        "alias": "goodpeople-los-angeles",
+        "note": "",
+        "addedIndex": 32,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd655",
+        "alias": "dogtown-coffee-santa-monica",
+        "note": "",
+        "addedIndex": 31,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd656",
+        "alias": "holy-grounds-at-st-monica-santa-monica",
+        "note": "",
+        "addedIndex": 30,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd657",
+        "alias": "tilt-coffee-bar-los-angeles-2",
+        "note": "",
+        "addedIndex": 29,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd658",
+        "alias": "bloom-and-plume-coffee-los-angeles-4",
+        "note": "",
+        "addedIndex": 28,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd659",
+        "alias": "caf%C3%A9-de-leche-los-angeles-2",
+        "note": "",
+        "addedIndex": 27,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd65a",
+        "alias": "jameson-brown-coffee-roasters-pasadena",
+        "note": "",
+        "addedIndex": 26,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd65b",
+        "alias": "kumquat-coffee-los-angeles",
+        "note": "",
+        "addedIndex": 25,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd65c",
+        "alias": "coffee-commissary-los-angeles-4",
+        "note": "",
+        "addedIndex": 24,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd65d",
+        "alias": "maru-coffee-los-angeles-2",
+        "note": "",
+        "addedIndex": 23,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd65e",
+        "alias": "maru-coffee-los-angeles-3",
+        "note": "",
+        "addedIndex": 22,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd65f",
+        "alias": "cognoscenti-coffee-culver-city-2",
+        "note": "",
+        "addedIndex": 21,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd660",
+        "alias": "go-get-em-tiger-culver-city",
+        "note": "",
+        "addedIndex": 20,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd661",
+        "alias": "good-boy-bob-coffee-culver-city",
+        "note": "",
+        "addedIndex": 19,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd662",
+        "alias": "6xs-coffee-los-angeles",
+        "note": "",
+        "addedIndex": 18,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd663",
+        "alias": "alchemist-coffee-project-los-angeles-2",
+        "note": "",
+        "addedIndex": 17,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd664",
+        "alias": "parts-and-labor-coffee-los-angeles",
+        "note": "Almond Essence Latte",
+        "addedIndex": 16,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd665",
+        "alias": "alanas-coffee-roasters-los-angeles-3",
+        "note": "",
+        "addedIndex": 15,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd666",
+        "alias": "sightglass-coffee-los-angeles",
+        "note": "",
+        "addedIndex": 14,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd667",
+        "alias": "paradocs-coffee-and-tea-los-angeles",
+        "note": "",
+        "addedIndex": 13,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd668",
+        "alias": "verve-coffee-roasters-west-hollywood-2",
+        "note": "",
+        "addedIndex": 12,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd669",
+        "alias": "good-boy-bob-coffee-santa-monica",
+        "note": "Chapati roll",
+        "addedIndex": 11,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd66a",
+        "alias": "funnel-mill-santa-monica-3",
+        "note": "",
+        "addedIndex": 10,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd66b",
+        "alias": "mystic-water-kava-bar-huntington-beach",
+        "note": "",
+        "addedIndex": 9,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd66c",
+        "alias": "310-coffee-company-los-angeles",
+        "note": "",
+        "addedIndex": 8,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd66d",
+        "alias": "commodity-long-beach",
+        "note": "Cool mural for car photos ",
+        "addedIndex": 7,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd66e",
+        "alias": "hello-boba-el-monte",
+        "note": "",
+        "addedIndex": 6,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd66f",
+        "alias": "bopomofo-cafe-san-gabriel",
+        "note": "",
+        "addedIndex": 5,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd670",
+        "alias": "tan-cha-los-angeles-3",
+        "note": "Amazing cheese foam",
+        "addedIndex": 4,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd671",
+        "alias": "stories-books-and-cafe-los-angeles",
+        "note": "",
+        "addedIndex": 3,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd672",
+        "alias": "alfred-coffee-beverly-hills-beverly-hills",
+        "note": "Edible espresso ",
+        "addedIndex": 2,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd673",
+        "alias": "coffee-attic-los-angeles",
+        "note": "",
+        "addedIndex": 1,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      },
+      {
+        "_id": "606ff18c7caf87a26becd674",
+        "alias": "sachi-la-los-angeles",
+        "note": "Vanilla Latte",
+        "addedIndex": 0,
+        "yelpCollectionId": "MsymJVnRKb4Z-4GUmr1s7g"
+      }
+    ],
+    "itemCount": 51,
+    "lastUpdated": "Fri Mar 26 2021 13:16:29 GMT-0700 (Pacific Daylight Time)"
+  },
+  {
+    "items": [],
+    "_id": "606277c95a26587ca781ac18",
+    "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg",
+    "__v": 0,
+    "createdAt": "2021-03-30T00:58:49.567Z",
+    "title": "LA Restaurants",
+    "updatedAt": "2021-04-09T06:17:54.796Z",
+    "businesses": [
+      {
+        "_id": "606ff1927caf87a26becd6a8",
+        "alias": "the-rose-venice-venice",
+        "note": "Tokyo style pizza",
+        "addedIndex": 228,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6a9",
+        "alias": "vientiane-lao-thai-garden-grove",
+        "note": "Lao cuisine",
+        "addedIndex": 227,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6aa",
+        "alias": "lokal-sandwich-shop-los-angeles",
+        "note": "Banh Mi",
+        "addedIndex": 226,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ab",
+        "alias": "rollypop-los-angeles",
+        "note": "Affordable sushi, breakfast sandwiches",
+        "addedIndex": 225,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ac",
+        "alias": "sam-woo-bbq-van-nuys",
+        "note": "",
+        "addedIndex": 224,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ad",
+        "alias": "simpang-asia-los-angeles",
+        "note": "",
+        "addedIndex": 223,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ae",
+        "alias": "pokitomik-north-hollywood",
+        "note": "Sushi burrito rolled in hot cheetos",
+        "addedIndex": 222,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6af",
+        "alias": "witchs-chicken-los-angeles-2",
+        "note": "Korean fried chicken",
+        "addedIndex": 221,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6b0",
+        "alias": "kingburg-kitchen-san-gabriel",
+        "note": "Noodles, dumplings, dough, all handmade by owner",
+        "addedIndex": 220,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6b1",
+        "alias": "apollonias-pizzeria-los-angeles-2",
+        "note": "",
+        "addedIndex": 219,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6b2",
+        "alias": "go-go-bird-los-angeles",
+        "note": "",
+        "addedIndex": 218,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6b3",
+        "alias": "cilantro-lime-los-angeles",
+        "note": "",
+        "addedIndex": 217,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6b4",
+        "alias": "xtra-cheese-whittier",
+        "note": "Halal Detroit style pizza",
+        "addedIndex": 216,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6b5",
+        "alias": "xiaolongkan-chinese-hot-pot-alhambra",
+        "note": "Diners can choose between mild, medium, or extreme spice levels, but even the restaurant’s mild broth is considered too spicy by those unaccustomed to searing heat. Xiao Long Kan is known for its “butter,” which is made of slabs of solidified beef tallow marinated with spicy and numbing spices. The slab of butter dissolves, giving the stock its full flavor.",
+        "addedIndex": 215,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6b6",
+        "alias": "dalongyi-hot-pot-san-gabriel-2",
+        "note": "",
+        "addedIndex": 214,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6b7",
+        "alias": "hibiscus-tree-%E8%8A%99%E8%93%89%E6%A8%B9%E4%B8%8B-san-gabriel",
+        "note": "Maocai (Sichuan specialty that hails from Chengdu in Sichuan province)",
+        "addedIndex": 213,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6b8",
+        "alias": "%E9%87%8D%E5%BA%86%E5%B0%8F%E9%9D%A2-best-noodle-house-rosemead-3",
+        "note": "",
+        "addedIndex": 212,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6b9",
+        "alias": "delicious-chengdu-temple-city-7",
+        "note": "",
+        "addedIndex": 211,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ba",
+        "alias": "sichuan-kungfu-fish-arcadia-5",
+        "note": "",
+        "addedIndex": 210,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6bb",
+        "alias": "haidilao-hot-pot-los-angeles-3",
+        "note": "",
+        "addedIndex": 209,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6bc",
+        "alias": "szechuan-place-northridge",
+        "note": "",
+        "addedIndex": 208,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6bd",
+        "alias": "hanchic-los-angeles",
+        "note": "Korean Italian / pasta fusion",
+        "addedIndex": 207,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6be",
+        "alias": "versailles-cuban-food-los-angeles-2",
+        "note": "Happy Hour M-F 3-7pm",
+        "addedIndex": 206,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6bf",
+        "alias": "fatimas-grill-downey",
+        "note": "cheesy, Flamin’ Hot Cheetos-laced burgers, giant quesaritos, overloaded fries, and halal Lebanese shawarma sandwiches alike",
+        "addedIndex": 205,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6c0",
+        "alias": "el-barrio-neighborhood-tacos-los-angeles",
+        "note": "",
+        "addedIndex": 204,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6c1",
+        "alias": "new-light-and-healthy-sushi-bar-woodland-hills",
+        "note": "AYCE sushi",
+        "addedIndex": 203,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6c2",
+        "alias": "far-east-joint-west-covina",
+        "note": "Korean fusion",
+        "addedIndex": 202,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6c3",
+        "alias": "sichuan-impression-los-angeles-2",
+        "note": "Stir fry cumin lamb, tea smoked ribs",
+        "addedIndex": 201,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6c4",
+        "alias": "xiang-la-hui%E9%A6%99%E8%BE%A3%E6%B1%87-alhambra",
+        "note": "Cumin / toothpick lamb",
+        "addedIndex": 200,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6c5",
+        "alias": "broad-street-oyster-company-malibu",
+        "note": "Lobster roll (possibly with squid ink)",
+        "addedIndex": 199,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6c6",
+        "alias": "rasselbock-l-a-kitchen-and-beer-garden-los-angeles",
+        "note": "",
+        "addedIndex": 198,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6c7",
+        "alias": "pizzana-los-angeles-3",
+        "note": "",
+        "addedIndex": 197,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6c8",
+        "alias": "yang-san-bak-los-angeles",
+        "note": "AYCE KBBQ, indoor seating with open window ",
+        "addedIndex": 196,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6c9",
+        "alias": "the-hat-pasadena",
+        "note": "Pastrami sandwich ",
+        "addedIndex": 195,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ca",
+        "alias": "marios-italian-deli-and-market-glendale",
+        "note": "S.O.B. (Soppresdata, oven roasted chicken, balsamic vinegar) sandwich",
+        "addedIndex": 194,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6cb",
+        "alias": "larchmont-village-wine-spirits-and-cheese-los-angeles",
+        "note": "Soppressata Salami sando",
+        "addedIndex": 193,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6cc",
+        "alias": "sandwiches-by-connal-pasadena",
+        "note": "Grinders",
+        "addedIndex": 192,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6cd",
+        "alias": "golden-deli-san-gabriel-san-gabriel-2",
+        "note": "Bahn Mi",
+        "addedIndex": 191,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ce",
+        "alias": "roma-market-pasadena",
+        "note": "Italian sandwich",
+        "addedIndex": 190,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6cf",
+        "alias": "bay-cities-italian-deli-santa-monica",
+        "note": "Godmother sandwich",
+        "addedIndex": 189,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6d0",
+        "alias": "bubble-republic-san-gabriel",
+        "note": "Salted egg yolk popcorn chicken",
+        "addedIndex": 188,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6d1",
+        "alias": "solidarity-restaurant-santa-monica-2",
+        "note": "Happy Hour Tuesday - Friday 5-7pm",
+        "addedIndex": 187,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6d2",
+        "alias": "the-prince-los-angeles-2",
+        "note": "Korean fried chicken ",
+        "addedIndex": 186,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6d3",
+        "alias": "aikan-sushi-and-ramen-pasadena-2",
+        "note": "AYCE Sushi",
+        "addedIndex": 185,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6d4",
+        "alias": "matsui-torrance",
+        "note": "Tempura + soba",
+        "addedIndex": 184,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6d5",
+        "alias": "supamu-los-angeles-2",
+        "note": "Spam takoyaki onigiri",
+        "addedIndex": 183,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6d6",
+        "alias": "mee-dee-thai-kitchen-los-angeles",
+        "note": "Interesting menu options ",
+        "addedIndex": 182,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6d7",
+        "alias": "sababa-falafel-shop-garden-grove",
+        "note": "",
+        "addedIndex": 181,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6d8",
+        "alias": "the-bombay-frankie-company-culver-city",
+        "note": "Indian burritos",
+        "addedIndex": 180,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6d9",
+        "alias": "banh-mi-my-tho-alhambra",
+        "note": "",
+        "addedIndex": 179,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6da",
+        "alias": "schellz-pizza-los-angeles-6",
+        "note": "",
+        "addedIndex": 178,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6db",
+        "alias": "hironori-craft-ramen-long-beach-2",
+        "note": "",
+        "addedIndex": 177,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6dc",
+        "alias": "hironori-craft-ramen-pasadena-3",
+        "note": "",
+        "addedIndex": 176,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6dd",
+        "alias": "masa-of-echo-park-los-angeles",
+        "note": "Chicago-style deep dish",
+        "addedIndex": 175,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6de",
+        "alias": "the-chori-man-san-pedro",
+        "note": "",
+        "addedIndex": 174,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6df",
+        "alias": "sakae-sushi-gardena",
+        "note": "",
+        "addedIndex": 173,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6e0",
+        "alias": "hawkins-house-of-burgers-los-angeles",
+        "note": "",
+        "addedIndex": 172,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6e1",
+        "alias": "el-ruso-los-angeles",
+        "note": "",
+        "addedIndex": 171,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6e2",
+        "alias": "katsu-sando-los-angeles",
+        "note": "",
+        "addedIndex": 170,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6e3",
+        "alias": "gamboge-los-angeles",
+        "note": "",
+        "addedIndex": 169,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6e4",
+        "alias": "northern-thai-food-club-los-angeles",
+        "note": "",
+        "addedIndex": 168,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6e5",
+        "alias": "me-crepe-pasadena",
+        "note": "",
+        "addedIndex": 167,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6e6",
+        "alias": "monta-factory-glendale-4",
+        "note": "",
+        "addedIndex": 166,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6e7",
+        "alias": "pizza-of-venice-altadena-2",
+        "note": "Unusual toppings",
+        "addedIndex": 165,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6e8",
+        "alias": "fifty-one-culver-city-4",
+        "note": "",
+        "addedIndex": 164,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6e9",
+        "alias": "angels-tijuana-tacos-los-angeles-2",
+        "note": "",
+        "addedIndex": 163,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ea",
+        "alias": "tacos-tamix-culver-city",
+        "note": "",
+        "addedIndex": 162,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6eb",
+        "alias": "yen-sushi-and-sake-bar-los-angeles",
+        "note": "Happy Hour every day",
+        "addedIndex": 161,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ec",
+        "alias": "la-morra-pizzeria-los-angeles-2",
+        "note": "",
+        "addedIndex": 160,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ed",
+        "alias": "es-con-sabor-west-los-angeles",
+        "note": "",
+        "addedIndex": 159,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ee",
+        "alias": "mikes-new-york-pizzeria-los-angeles",
+        "note": "",
+        "addedIndex": 158,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ef",
+        "alias": "sushime-rolln-west-covina",
+        "note": "AYCE sushi",
+        "addedIndex": 157,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6f0",
+        "alias": "airport-royal-cuisine-inglewood",
+        "note": "Ghanan",
+        "addedIndex": 156,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6f1",
+        "alias": "african-chop-los-angeles",
+        "note": "Cameroonian",
+        "addedIndex": 155,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6f2",
+        "alias": "aduke-nigerian-cuisine-inglewood-3",
+        "note": "Nigerian",
+        "addedIndex": 154,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6f3",
+        "alias": "revolutionario-north-african-tacos-los-angeles",
+        "note": "Algerian",
+        "addedIndex": 153,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6f4",
+        "alias": "cafe-dahab-los-angeles",
+        "note": "Egyptian ",
+        "addedIndex": 152,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6f5",
+        "alias": "harissa-restaurant-los-angeles",
+        "note": "Tunisian",
+        "addedIndex": 151,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6f6",
+        "alias": "flavors-from-afar-los-angeles-2",
+        "note": "Rotating chefs\nEritrean / Somalian / Kenyan ",
+        "addedIndex": 150,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6f7",
+        "alias": "mizlala-los-angeles-5",
+        "note": "Moroccan ",
+        "addedIndex": 149,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6f8",
+        "alias": "springbok-bar-and-grill-van-nuys",
+        "note": "South African",
+        "addedIndex": 148,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6f9",
+        "alias": "jaliz-cuisine-of-east-africa-van-nuys-2",
+        "note": "Ugandan",
+        "addedIndex": 147,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6fa",
+        "alias": "aburi-sushi-long-beach",
+        "note": "Happy Hour pricing ",
+        "addedIndex": 146,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6fb",
+        "alias": "d-town-pizzeria-west-hollywood",
+        "note": "",
+        "addedIndex": 145,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6fc",
+        "alias": "bootleg-pizza-los-angeles-4",
+        "note": "",
+        "addedIndex": 144,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6fd",
+        "alias": "brooklyn-ave-pizza-co-los-angeles",
+        "note": "",
+        "addedIndex": 143,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6fe",
+        "alias": "tandoori-eats-los-angeles",
+        "note": "",
+        "addedIndex": 142,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd6ff",
+        "alias": "mr-fries-man-gardena-2",
+        "note": "",
+        "addedIndex": 141,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd700",
+        "alias": "easy-street-burgers-los-angeles",
+        "note": "Wild fries",
+        "addedIndex": 140,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd701",
+        "alias": "prince-street-pizza-west-hollywood",
+        "note": "",
+        "addedIndex": 139,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd702",
+        "alias": "rose-city-pizza-rosemead",
+        "note": "Korean fried chicken pizza “Dynamite”",
+        "addedIndex": 138,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd703",
+        "alias": "moos-craft-barbecue-los-angeles-3",
+        "note": "",
+        "addedIndex": 137,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd704",
+        "alias": "mega-grille-culver-city-3",
+        "note": "",
+        "addedIndex": 136,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd705",
+        "alias": "tony-khachapuri-los-angeles",
+        "note": "",
+        "addedIndex": 135,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd706",
+        "alias": "l-fish-los-angeles-3",
+        "note": "Fish tacos",
+        "addedIndex": 134,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd707",
+        "alias": "hironori-craft-ramen-irvine-3",
+        "note": "",
+        "addedIndex": 133,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd708",
+        "alias": "ji-rong-peking-duck-rosemead",
+        "note": "",
+        "addedIndex": 132,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd709",
+        "alias": "atlantic-seafood-and-dim-sum-restaurant-monterey-park-2",
+        "note": "",
+        "addedIndex": 131,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd70a",
+        "alias": "delicious-food-corner-monterey-park-monterey-park",
+        "note": "Zhilang - Chinese Donut wrapped in rice noodle",
+        "addedIndex": 130,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd70b",
+        "alias": "indimex-eats-los-angeles-3",
+        "note": "",
+        "addedIndex": 129,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd70c",
+        "alias": "hangari-kalguksu-los-angeles-4",
+        "note": "",
+        "addedIndex": 128,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd70d",
+        "alias": "jjukku-jjukku-bbq-los-angeles-3",
+        "note": "AYCE",
+        "addedIndex": 127,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd70e",
+        "alias": "road-to-seoul-los-angeles",
+        "note": "AYCE",
+        "addedIndex": 126,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd70f",
+        "alias": "bak-kung-korean-bbq-los-angeles-2",
+        "note": "AYCE",
+        "addedIndex": 125,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd710",
+        "alias": "farsi-cafe-los-angeles-2",
+        "note": "",
+        "addedIndex": 124,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd711",
+        "alias": "cafe-areni-sherman-oaks",
+        "note": "",
+        "addedIndex": 123,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd712",
+        "alias": "noodle-st-arcadia",
+        "note": "",
+        "addedIndex": 122,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd713",
+        "alias": "foo-foo-tei-hacienda-heights",
+        "note": "5 outdoor tables",
+        "addedIndex": 121,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd714",
+        "alias": "yangmani-los-angeles-2",
+        "note": "high-quality cow stomach and intestines called gopchang and makchang",
+        "addedIndex": 120,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd715",
+        "alias": "parks-bbq-los-angeles",
+        "note": "premier KBBQ, banchan",
+        "addedIndex": 119,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd716",
+        "alias": "dumpling-house-los-angeles-2",
+        "note": "",
+        "addedIndex": 118,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd717",
+        "alias": "sun-nong-dan-los-angeles-4",
+        "note": "galbi jjim with cheese",
+        "addedIndex": 117,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd718",
+        "alias": "mdk-noodles-los-angeles",
+        "note": "knife-cut noodles, pork dumplings, and chewy spicy cold noodles called jjolmyeon",
+        "addedIndex": 116,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd719",
+        "alias": "zzamong-los-angeles",
+        "note": "jjajjangmyun and champong, respectively black bean noodles and spicy seafood noodle soup",
+        "addedIndex": 115,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd71a",
+        "alias": "han-bat-sul-lung-tang-los-angeles-2",
+        "note": "Bone marrow broth",
+        "addedIndex": 114,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd71b",
+        "alias": "midoh-sawtelle-west-los-angeles-2",
+        "note": "Hamburg curry rice",
+        "addedIndex": 113,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd71c",
+        "alias": "burnin-daylight-brewing-lomita",
+        "note": "Garlic jalapeño burger",
+        "addedIndex": 112,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd71d",
+        "alias": "omar-restaurant-san-gabriel-2",
+        "note": "",
+        "addedIndex": 111,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd71e",
+        "alias": "dolans-uyghur-cuisine-alhambra",
+        "note": "",
+        "addedIndex": 110,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd71f",
+        "alias": "bkk101-thai-cuisine-los-angeles",
+        "note": "",
+        "addedIndex": 109,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd720",
+        "alias": "sun-ha-jang-los-angeles",
+        "note": "Duck",
+        "addedIndex": 108,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd721",
+        "alias": "fukagawa-gardena",
+        "note": "",
+        "addedIndex": 107,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd722",
+        "alias": "la-fuente-restaurant-los-angeles-3",
+        "note": "",
+        "addedIndex": 106,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd723",
+        "alias": "shin-sen-gumi-hakata-ramen-west-l-a-los-angeles-5",
+        "note": "",
+        "addedIndex": 105,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd724",
+        "alias": "moto-ramen-culver-city-2",
+        "note": "",
+        "addedIndex": 104,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd725",
+        "alias": "daikokuya-sawtelle-los-angeles",
+        "note": "",
+        "addedIndex": 103,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd726",
+        "alias": "ramen-yamadaya-torrance",
+        "note": "",
+        "addedIndex": 102,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd727",
+        "alias": "hakata-ikkousha-los-angeles-4",
+        "note": "",
+        "addedIndex": 101,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd728",
+        "alias": "hakata-ikkousha-ramen-torrance",
+        "note": "",
+        "addedIndex": 100,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd729",
+        "alias": "banadir-somali-restaurant-inglewood",
+        "note": "",
+        "addedIndex": 99,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd72a",
+        "alias": "a-ri-rang-tofu-house-san-gabriel",
+        "note": "",
+        "addedIndex": 98,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd72b",
+        "alias": "mariscos-jalisco-los-angeles-8",
+        "note": "",
+        "addedIndex": 97,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd72c",
+        "alias": "carrot-and-daikon-banh-mi-garden-grove",
+        "note": "",
+        "addedIndex": 96,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd72d",
+        "alias": "elite-restaurant-monterey-park",
+        "note": "",
+        "addedIndex": 95,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd72e",
+        "alias": "destroyer-culver-city",
+        "note": "",
+        "addedIndex": 94,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd72f",
+        "alias": "antojitos-oaxaque%C3%B1os-mary-oxnard",
+        "note": "Pizzadilla",
+        "addedIndex": 93,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd730",
+        "alias": "indias-tandoori-hollywood-los-angeles",
+        "note": "",
+        "addedIndex": 92,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd731",
+        "alias": "menya-hanabi-arcadia",
+        "note": "",
+        "addedIndex": 91,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd732",
+        "alias": "yoma-myanmar-monterey-park",
+        "note": "",
+        "addedIndex": 90,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd733",
+        "alias": "okamoto-kitchen-los-angeles-2",
+        "note": "",
+        "addedIndex": 89,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd734",
+        "alias": "brodard-restaurant-fountain-valley",
+        "note": "Spring rolls",
+        "addedIndex": 88,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd735",
+        "alias": "kotsu-ramen-and-gyoza-la-ca%C3%B1ada-flintridge-2",
+        "note": "",
+        "addedIndex": 87,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd736",
+        "alias": "kosuke-alhambra",
+        "note": "Popcorn chicken ramen ",
+        "addedIndex": 86,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd737",
+        "alias": "yellow-house-cafe-los-angeles",
+        "note": "Kimchi pasta",
+        "addedIndex": 85,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd738",
+        "alias": "l-a-birria-pizza-los-angeles",
+        "note": "Birria ramen",
+        "addedIndex": 84,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd739",
+        "alias": "lan-noodle-arcadia-7",
+        "note": "",
+        "addedIndex": 83,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd73a",
+        "alias": "jasmine-market-and-deli-culver-city",
+        "note": "",
+        "addedIndex": 82,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd73b",
+        "alias": "meals-by-genet-los-angeles",
+        "note": "",
+        "addedIndex": 81,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd73c",
+        "alias": "bbq-stop-diamond-bar-3",
+        "note": "Outdoor AYCE $25/$30 pp",
+        "addedIndex": 80,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd73d",
+        "alias": "azay-los-angeles",
+        "note": "Omurice",
+        "addedIndex": 79,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd73e",
+        "alias": "bongchu-los-angeles",
+        "note": "Jjimdak",
+        "addedIndex": 78,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd73f",
+        "alias": "kai-ramen-west-hollywood-los-angeles",
+        "note": "",
+        "addedIndex": 77,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd740",
+        "alias": "lotus-house-temple-city-2",
+        "note": "",
+        "addedIndex": 76,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd741",
+        "alias": "cassia-santa-monica",
+        "note": "",
+        "addedIndex": 75,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd742",
+        "alias": "hummus-labs-pasadena-2",
+        "note": "",
+        "addedIndex": 74,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd743",
+        "alias": "bang-bang-noodles-los-angeles",
+        "note": "Biang biang mian",
+        "addedIndex": 73,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd744",
+        "alias": "tire-shop-taqueria-los-angeles",
+        "note": "",
+        "addedIndex": 72,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd745",
+        "alias": "show-sushi-san-dimas",
+        "note": "AYCE Sushi",
+        "addedIndex": 71,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd746",
+        "alias": "laoxi-noodle-house-arcadia",
+        "note": "Wife’s Special",
+        "addedIndex": 70,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd747",
+        "alias": "mian-%E6%BB%8B%E5%91%B3%E5%B0%8F%E9%9D%A2-san-gabriel-3",
+        "note": "Chengdu Zajiang Noodles",
+        "addedIndex": 69,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd748",
+        "alias": "borneo-kalimantan-cuisine-alhambra-2",
+        "note": "Hakka noodles",
+        "addedIndex": 68,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd749",
+        "alias": "corner-beef-noodle-house-el-monte",
+        "note": "Taiwanese beef noodle soup",
+        "addedIndex": 67,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd74a",
+        "alias": "smoke-and-fire-social-eatery-la-habra-2",
+        "note": "Brisket",
+        "addedIndex": 66,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd74b",
+        "alias": "nadi-myanmar-cafe-alhambra-2",
+        "note": "",
+        "addedIndex": 65,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd74c",
+        "alias": "jichans-onigiri-ya-monterey-park",
+        "note": "",
+        "addedIndex": 64,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd74d",
+        "alias": "101-noodle-express-alhambra",
+        "note": "",
+        "addedIndex": 63,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd74e",
+        "alias": "beijing-pie-house-alhambra-2",
+        "note": "",
+        "addedIndex": 62,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd74f",
+        "alias": "1919-lanzhou-beef-noodle-temple-city",
+        "note": "",
+        "addedIndex": 61,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd750",
+        "alias": "ho-kee-cafe-san-gabriel-san-gabriel",
+        "note": "",
+        "addedIndex": 60,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd751",
+        "alias": "chengdu-taste-alhambra-4",
+        "note": "",
+        "addedIndex": 59,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd752",
+        "alias": "chong-qing-special-noodles-san-gabriel-25",
+        "note": "Dandanmien",
+        "addedIndex": 58,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd753",
+        "alias": "yamashiro-hollywood-hollywood",
+        "note": "Views of LA",
+        "addedIndex": 57,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd754",
+        "alias": "el-cochinito-restaurant-los-angeles",
+        "note": "Best Cuban sandwich",
+        "addedIndex": 56,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd755",
+        "alias": "sun-nong-dan-rowland-heights-2",
+        "note": "",
+        "addedIndex": 55,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd756",
+        "alias": "tu-madre-westwood-los-angeles",
+        "note": "",
+        "addedIndex": 54,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd757",
+        "alias": "uovo-santa-monica",
+        "note": "",
+        "addedIndex": 53,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd758",
+        "alias": "ten-raku-los-angeles-4",
+        "note": "",
+        "addedIndex": 52,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd759",
+        "alias": "asuka-los-angeles-2",
+        "note": "",
+        "addedIndex": 51,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd75a",
+        "alias": "mogumogu-los-angeles-3",
+        "note": "",
+        "addedIndex": 50,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd75b",
+        "alias": "birrieria-gonzalez-east-los-angeles",
+        "note": "",
+        "addedIndex": 49,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd75c",
+        "alias": "homestate-los-angeles",
+        "note": "Best queso (Texas style)",
+        "addedIndex": 48,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd75d",
+        "alias": "tacos-el-primo-los-angeles-9",
+        "note": "",
+        "addedIndex": 47,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd75e",
+        "alias": "asadero-chikali-los-angeles",
+        "note": "Quesatacos",
+        "addedIndex": 46,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd75f",
+        "alias": "elbows-mac-n-cheese-torrance",
+        "note": "",
+        "addedIndex": 45,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd760",
+        "alias": "taste-of-tehran-los-angeles",
+        "note": "",
+        "addedIndex": 44,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd761",
+        "alias": "cali-tandoor-culver-city",
+        "note": "AYCE Indian buffet ",
+        "addedIndex": 43,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd762",
+        "alias": "lonzos-restaurant-culver-city-3",
+        "note": "",
+        "addedIndex": 42,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd763",
+        "alias": "cafe-brasil-los-angeles",
+        "note": "Cool courtyard",
+        "addedIndex": 41,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd764",
+        "alias": "the-country-kitchen-malibu",
+        "note": "Breakfast burritos",
+        "addedIndex": 40,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd765",
+        "alias": "sonoritas-prime-tacos-los-angeles",
+        "note": "",
+        "addedIndex": 39,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd766",
+        "alias": "south-end-venice",
+        "note": "",
+        "addedIndex": 38,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd767",
+        "alias": "jackson-market-culver-city",
+        "note": "",
+        "addedIndex": 37,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd768",
+        "alias": "holbox-los-angeles-2",
+        "note": "",
+        "addedIndex": 36,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd769",
+        "alias": "red-rock-sawtelle-los-angeles-9",
+        "note": "",
+        "addedIndex": 35,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd76a",
+        "alias": "la-flor-de-yucatan-catering-and-bakery-los-angeles-2",
+        "note": "",
+        "addedIndex": 34,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd76b",
+        "alias": "otomisan-restaurant-los-angeles",
+        "note": "",
+        "addedIndex": 33,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd76c",
+        "alias": "ricebox-los-angeles",
+        "note": "",
+        "addedIndex": 32,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd76d",
+        "alias": "aduke-african-cuisine-los-angeles-4",
+        "note": "",
+        "addedIndex": 31,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd76e",
+        "alias": "dwitgolmok-los-angeles-2",
+        "note": "",
+        "addedIndex": 30,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd76f",
+        "alias": "viet-huong-restaurant-el-monte",
+        "note": "",
+        "addedIndex": 29,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd770",
+        "alias": "dai-ho-restaurant-temple-city",
+        "note": "",
+        "addedIndex": 28,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd771",
+        "alias": "you-kitchen-alhambra",
+        "note": "",
+        "addedIndex": 27,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd772",
+        "alias": "malubianbian-san-gabriel",
+        "note": "",
+        "addedIndex": 26,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd773",
+        "alias": "paraiso-juice-bar-and-grill-la-mirada",
+        "note": "",
+        "addedIndex": 25,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd774",
+        "alias": "la-ddong-ggo-los-angeles",
+        "note": "Korean fire chicken",
+        "addedIndex": 24,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd775",
+        "alias": "ob-bear-los-angeles",
+        "note": "",
+        "addedIndex": 23,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd776",
+        "alias": "hyesung-noodle-house-los-angeles",
+        "note": "",
+        "addedIndex": 22,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd777",
+        "alias": "malibu-seafood-fresh-fish-market-and-patio-cafe-malibu",
+        "note": "",
+        "addedIndex": 21,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd778",
+        "alias": "joy-los-angeles-11",
+        "note": "",
+        "addedIndex": 20,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd779",
+        "alias": "chocolate-cafe-ll-los-angeles-5",
+        "note": "",
+        "addedIndex": 19,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd77a",
+        "alias": "s%C3%A1u-can-tho-vietnamese-kitchen-rosemead-5",
+        "note": "Grilled fish",
+        "addedIndex": 18,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd77b",
+        "alias": "india-sweets-and-spices-culver-city",
+        "note": "",
+        "addedIndex": 17,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd77c",
+        "alias": "palms-ramen-yumeya-los-angeles",
+        "note": "",
+        "addedIndex": 16,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd77d",
+        "alias": "teddys-red-tacos-venice",
+        "note": "",
+        "addedIndex": 15,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd77e",
+        "alias": "killer-noodle-tsujita-los-angeles",
+        "note": "",
+        "addedIndex": 14,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd77f",
+        "alias": "marugame-udon-los-angeles-6",
+        "note": "",
+        "addedIndex": 13,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd780",
+        "alias": "chinchikurin-sawtelle-los-angeles-2",
+        "note": "",
+        "addedIndex": 12,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd781",
+        "alias": "continental-gourmet-sausage-glendale",
+        "note": "German breads",
+        "addedIndex": 11,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd782",
+        "alias": "sonoratown-los-angeles",
+        "note": "",
+        "addedIndex": 10,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd783",
+        "alias": "humble-potato-los-angeles-2",
+        "note": "",
+        "addedIndex": 9,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd784",
+        "alias": "hatchet-hall-los-angeles",
+        "note": "",
+        "addedIndex": 8,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd785",
+        "alias": "fathers-office-los-angeles",
+        "note": "",
+        "addedIndex": 7,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd786",
+        "alias": "slab-los-angeles-5",
+        "note": "",
+        "addedIndex": 6,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd787",
+        "alias": "hidden-garden-thai-cuisine-culver-city-5",
+        "note": "Medium = spicy af",
+        "addedIndex": 5,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd788",
+        "alias": "the-stinking-rose-beverly-hills-4",
+        "note": "",
+        "addedIndex": 4,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd789",
+        "alias": "prime-pizza-los-angeles-4",
+        "note": "NY slice",
+        "addedIndex": 3,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd78a",
+        "alias": "kotoya-ramen-los-angeles-8",
+        "note": "",
+        "addedIndex": 2,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd78b",
+        "alias": "rutts-hawaiian-cafe-los-angeles-4",
+        "note": "",
+        "addedIndex": 1,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      },
+      {
+        "_id": "606ff1927caf87a26becd78c",
+        "alias": "l-a-birria-los-angeles",
+        "note": "",
+        "addedIndex": 0,
+        "yelpCollectionId": "g6DLKiR2ReMs-N5hN6zDwg"
+      }
+    ],
+    "itemCount": 229,
+    "lastUpdated": "Wed Apr 07 2021 16:04:01 GMT-0700 (Pacific Daylight Time)"
+  },
+  {
+    "items": [],
+    "_id": "606277ee5a26587ca781b50a",
+    "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g",
+    "__v": 0,
+    "createdAt": "2021-03-30T00:59:26.108Z",
+    "title": "LA Breakfasts",
+    "updatedAt": "2021-04-09T06:17:46.884Z",
+    "businesses": [
+      {
+        "_id": "606ff18a7caf87a26becd5e2",
+        "alias": "cofax-coffee-shop-los-angeles",
+        "note": "Ugly Drum Pastrami breakfast burrito ",
+        "addedIndex": 19,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5e3",
+        "alias": "the-original-brooklyn-water-bagels-los-angeles",
+        "note": "",
+        "addedIndex": 18,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5e4",
+        "alias": "bagel-nosh-deli-santa-monica",
+        "note": "",
+        "addedIndex": 17,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5e5",
+        "alias": "courage-bagels-los-angeles",
+        "note": "",
+        "addedIndex": 16,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5e6",
+        "alias": "buellers-bagels-los-angeles-2",
+        "note": "",
+        "addedIndex": 15,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5e7",
+        "alias": "maurys-los-angeles",
+        "note": "",
+        "addedIndex": 14,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5e8",
+        "alias": "yeastie-boys-los-angeles",
+        "note": "",
+        "addedIndex": 13,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5e9",
+        "alias": "pops-bagels-culver-city-4",
+        "note": "",
+        "addedIndex": 12,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5ea",
+        "alias": "undergrind-cafe-los-angeles",
+        "note": "Shrimp n Grits",
+        "addedIndex": 11,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5eb",
+        "alias": "venice-bakery-and-restaurant-los-angeles",
+        "note": "Chilaquiles",
+        "addedIndex": 10,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5ec",
+        "alias": "homestate-los-angeles-8",
+        "note": "",
+        "addedIndex": 9,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5ed",
+        "alias": "phannys-redondo-beach",
+        "note": "",
+        "addedIndex": 8,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5ee",
+        "alias": "met-her-at-a-bar-los-angeles-2",
+        "note": "",
+        "addedIndex": 7,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5ef",
+        "alias": "the-country-kitchen-malibu",
+        "note": "Breakfast burrito",
+        "addedIndex": 6,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5f0",
+        "alias": "wake-and-late-los-angeles-3",
+        "note": "",
+        "addedIndex": 5,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5f1",
+        "alias": "brooklyn-bagel-bakery-los-angeles",
+        "note": "",
+        "addedIndex": 4,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5f2",
+        "alias": "the-griddle-cafe-hollywood-2",
+        "note": "",
+        "addedIndex": 3,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5f3",
+        "alias": "chocolate-cafe-ll-los-angeles-5",
+        "note": "",
+        "addedIndex": 2,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5f4",
+        "alias": "the-brixton-santa-monica",
+        "note": "Bottomless mimosas",
+        "addedIndex": 1,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      },
+      {
+        "_id": "606ff18a7caf87a26becd5f5",
+        "alias": "gjusta-venice",
+        "note": "",
+        "addedIndex": 0,
+        "yelpCollectionId": "mIiIcJNOz7LiG2avtdKF-g"
+      }
+    ],
+    "itemCount": 20,
+    "lastUpdated": "Mon Mar 15 2021 10:04:18 GMT-0700 (Pacific Daylight Time)"
+  },
+  {
+    "items": [],
+    "_id": "606d45c15a26587ca7f6cf2a",
+    "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A",
+    "__v": 0,
+    "createdAt": "2021-04-07T05:40:17.382Z",
+    "title": "LA Desserts",
+    "updatedAt": "2021-04-09T06:17:47.005Z",
+    "businesses": [
+      {
+        "_id": "606ff18b7caf87a26becd60a",
+        "alias": "paderia-bakehouse-santa-monica",
+        "note": "Portuguese egg tarts ",
+        "addedIndex": 27,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd60b",
+        "alias": "bacio-di-latte-los-angeles",
+        "note": "",
+        "addedIndex": 26,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd60c",
+        "alias": "cheesetella-los-angeles",
+        "note": "",
+        "addedIndex": 25,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd60d",
+        "alias": "mee-dee-thai-kitchen-los-angeles",
+        "note": "Thai tea cheesecake, Thai tea canele",
+        "addedIndex": 24,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd60e",
+        "alias": "roccos-cheesecake-santa-monica",
+        "note": "",
+        "addedIndex": 23,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd60f",
+        "alias": "harriets-cheesecakes-unlimited-inglewood",
+        "note": "",
+        "addedIndex": 22,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd610",
+        "alias": "victory-sweets-anaheim",
+        "note": "",
+        "addedIndex": 21,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd611",
+        "alias": "d%C5%8Dnatsu-los-angeles-2",
+        "note": "",
+        "addedIndex": 20,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd612",
+        "alias": "long-beach-creamery-long-beach-2",
+        "note": "",
+        "addedIndex": 19,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd613",
+        "alias": "delvigne-croissant-culver-city",
+        "note": "",
+        "addedIndex": 18,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd614",
+        "alias": "bae-los-angeles-6",
+        "note": "",
+        "addedIndex": 17,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd615",
+        "alias": "swirlz-creamery-san-gabriel",
+        "note": "",
+        "addedIndex": 16,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd616",
+        "alias": "mr-and-mrs-creamery-arcadia",
+        "note": "Tofu La Cheesecake",
+        "addedIndex": 15,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd617",
+        "alias": "big-softee-monterey-park-2",
+        "note": "Hokkaido",
+        "addedIndex": 14,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd618",
+        "alias": "bake-cheese-tart-los-angeles",
+        "note": "Hokkaido soft serve ",
+        "addedIndex": 13,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd619",
+        "alias": "okayama-kobo-bakery-and-cafe-anaheim-2",
+        "note": "",
+        "addedIndex": 12,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd61a",
+        "alias": "fika-fika-arcadia-2",
+        "note": "",
+        "addedIndex": 11,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd61b",
+        "alias": "love-to-go-san-gabriel-14",
+        "note": "Korean garlic cream cheese roll ",
+        "addedIndex": 10,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd61c",
+        "alias": "sunmerry-bakery-happy-lemon-monterey-park",
+        "note": "Korean garlic cream cheese bread",
+        "addedIndex": 9,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd61d",
+        "alias": "knead-donuts-and-tea-long-beach",
+        "note": "",
+        "addedIndex": 8,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd61e",
+        "alias": "dragon-boba-los-angeles",
+        "note": "Mochi donuts ",
+        "addedIndex": 7,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd61f",
+        "alias": "mochinut-los-angeles",
+        "note": "",
+        "addedIndex": 6,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd620",
+        "alias": "mochinut-cerritos",
+        "note": "",
+        "addedIndex": 5,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd621",
+        "alias": "chocolate-bash-los-angeles-2",
+        "note": "",
+        "addedIndex": 4,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd622",
+        "alias": "fugetsu-do-los-angeles",
+        "note": "Handmade mochi",
+        "addedIndex": 3,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd623",
+        "alias": "portos-bakery-and-cafe-glendale",
+        "note": "",
+        "addedIndex": 2,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd624",
+        "alias": "salt-and-straw-los-angeles-4",
+        "note": "",
+        "addedIndex": 1,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      },
+      {
+        "_id": "606ff18b7caf87a26becd625",
+        "alias": "millet-crepe-los-angeles",
+        "note": "Creme brûlée crepe ",
+        "addedIndex": 0,
+        "yelpCollectionId": "L1IOX9Rcs2k7yk8_Svq70A"
+      }
+    ],
+    "itemCount": 28,
+    "lastUpdated": "Wed Apr 07 2021 22:51:14 GMT-0700 (Pacific Daylight Time)"
+  }
+]
