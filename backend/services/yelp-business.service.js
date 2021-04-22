@@ -61,6 +61,24 @@ const updateBusinessById = async (id) => {
   return updatedBusiness;  
 }
 
+const updatedSavedBusiness = async (data) => {
+  const updatedBusiness = await YelpBusiness.findOneAndUpdate(
+    {alias: data.alias},
+    data,
+    {new: true, upsert: true},
+    (error, result) => {
+      if (error) {
+        console.log('Error: ', error);
+      } else {
+        console.log(`Successfully updated ${result.addedIndex}: ${data.name} (${data.alias})`);
+        return result;
+      }
+    }
+  )
+
+  return updatedBusiness;
+}
+
 const updateBusinessByAlias = async (alias) => {
   const data = await limiter.schedule(() => getYelpBusinessInfo(alias));
 
@@ -215,6 +233,7 @@ module.exports = {
   updateBusinessBasicInfo,
   updateAllBusinessesBasicInfo,
   updateBusinessByAlias,
+  updatedSavedBusiness,
   updateBusinessById,
   updateAllBusinesses,
   updateAllBusinessesBasicInfo,

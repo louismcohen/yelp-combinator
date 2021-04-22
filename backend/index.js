@@ -20,6 +20,13 @@ app.use('/', yelpBusinessRouter);
 app.use('/', yelpRouter);
 app.use('/', googleRouter);
 
+if (process.env.NODE_ENV == 'production') {
+  app.use(express.static('../frontend/build'));
+  app.get('*', (request, response) => {
+    response.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'));
+  })
+}
+
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false});
 const connection = mongoose.connection;

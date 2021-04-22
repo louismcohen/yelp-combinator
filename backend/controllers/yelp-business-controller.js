@@ -10,6 +10,7 @@ const {
   getAllBusinesses,
   getBusinessByAlias,
   deleteAllBusinesses,
+  updatedSavedBusiness,
 } = require('../services/yelp-business.service');
 const Bottleneck = require('bottleneck');
 const { request } = require('express');
@@ -47,12 +48,17 @@ const updateAllIncompleteBusinesses = async (request, response, next) => {
   response.json('Updates successful');
 }
 
-async function addOrUpdateBusinessByAlias(request, response) {
+const addOrUpdateBusinessByAlias = async (request, response) => {
   const alias = request.query.alias;
   const updated = await updateBusinessByAlias(alias);
   response.json(updated);
 }
 
+const updatedSaved = async (request, response) => {
+  const data = request.body;
+  const updated = await updatedSavedBusiness(data);
+  response.json(updated);
+}
 
 const getAll = async (request, response) => {
   const businesses = await getAllBusinesses();
@@ -123,6 +129,9 @@ const YelpBusinessController = async (request, response) => {
       switch (action) {
         case 'addOrUpdate':
           addOrUpdateBusinessByAlias(request, response);
+          break;
+        case 'updateSaved':
+          updatedSaved(request, response);
           break;
         case 'updateAll':
           updateAll(request, response);

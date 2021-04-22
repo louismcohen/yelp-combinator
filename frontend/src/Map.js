@@ -4,10 +4,10 @@ import {
   GoogleMap,
   useLoadScript,
   Marker,
-  InfoWindow
 } from "@react-google-maps/api";
 import mapStyles from './mapStyles';
 import BusinessInfoWindow from './BusinessInfoWindow'
+import MapLoading from './MapLoading'
 
 // const GetBookmarks = () => {
 //   const [bookmarks, setBookmarks] = React.useState([]);
@@ -29,7 +29,7 @@ import BusinessInfoWindow from './BusinessInfoWindow'
 //   }
 // }
 
-// businesses.filter(biz => biz.categories.map(category => category.alias).some(alias => alias == 'noodles'))
+// businesses.filter(business => business.categories.map(category => category.alias).some(alias => alias == 'noodles'))
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -88,10 +88,10 @@ const Map = () => {
   useEffect(() => {
     const getAllBusinesses = async () => {
       let response = await axios.get('http://localhost:3001');
-      response.data = response.data.filter(biz => !!biz.name);
-      response.data.map(biz => (
-        biz.position = {lat: biz.coordinates.latitude, lng: biz.coordinates.longitude}, //easier position parsing 
-        biz.hours = biz.hours[0] //easier hours parsing
+      response.data = response.data.filter(business => !!business.name);
+      response.data.map(business => (
+        business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, //easier position parsing 
+        business.hours = business.hours[0] //easier hours parsing
       ));
       setBusinesses(response.data);
       console.log(response.data);
@@ -102,14 +102,14 @@ const Map = () => {
 
   const [selected, setSelected] = useState(null);
   const onSelect = item => {
-    console.log(item);
+    console.log('selected', item);
     setSelected(item);
   }
 
   const [currentPosition, setCurrentPosition ] = useState({center});
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position, error) => {
-      console.warn(error);
+      if (error) console.warn(error);
       setCurrentPosition({
         lat: position.coords.latitude,
         lng: position.coords.longitude
@@ -117,6 +117,19 @@ const Map = () => {
       console.log({position});
     });
   }, [])
+
+  const setVisited = async (business) => {
+    business.visited = !business.visited;
+    const params = {
+      action: 'updateSaved',
+    }
+    try {
+      const updatedResponse = await axios.put('http://localhost:3001/yelp-business', business, {params});
+      console.log({updatedResponse});
+    } catch (error) {
+      console.log({error});
+    }
+  } 
 
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
@@ -128,8 +141,15 @@ const Map = () => {
     return formattedString;
   }
 
+  const handleClick = (event) => {
+    console.log('clicked');
+    console.log(event);
+  }
+
   if (loadError) return 'Error loading maps';
-  if (!isLoaded) return 'Loading maps';
+  if (!isLoaded) return (
+    <MapLoading />
+  );
 
   // const parsedHoursInfo = selected.alias ? parseHours(selected) : {};
 
@@ -138,29 +158,18 @@ const Map = () => {
     <h1>Yelp Combinator</h1>
 
     <GoogleMap mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={center} options={options} onLoad={onMapLoad}>
-      {businesses.filter(biz => !!biz.coordinates).map(biz => {
+      {businesses.filter(business => !!business.coordinates).map(business => {
         return (
           <Marker 
-            key={biz.alias} 
-            position={biz.position} 
+            key={business.alias} 
+            position={business.position} 
             animation={Animation.DROP} 
-            onClick={() => onSelect(biz)}  
+            onClick={() => onSelect(business)}  
           />
         )
       })}
-      {/* {
-        selected ? (
-          <InfoWindow position={selected.position} clickable={true} onCloseClick={() => setSelected(null)}>
-            <div>
-              <h2>{selected.name}</h2>
-              <div class="categories">{formatCategories(selected.categories)}</div>
-              <img src={selected.image_url} alt={selected.name} style={{float: 'left', maxWidth: 90, height: 'auto'}}/>
-            </div>
-          </InfoWindow>
-        ) : null
-      } */}
       {selected ? 
-        <BusinessInfoWindow business={selected} currentPosition={currentPosition}></BusinessInfoWindow> 
+        <BusinessInfoWindow business={selected} currentPosition={currentPosition} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
         : null
       }
       {
