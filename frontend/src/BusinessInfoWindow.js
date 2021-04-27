@@ -24,13 +24,13 @@ const InfoWindow = styled.div`
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   position: relative;
-  left: -50%;
+  ${'' /* left: -50%;
   top: 100%;
-  transform: translate(0%, -180%);
+  transform: translate(0%, -100%); */}
   z-index: 100;
   display: block;
   margin-bottom: 0.5em;
-  width: 300px;
+  width: 350px;
   background: #fff;
   border-radius: 0.5em;
   overflow: hidden;
@@ -76,51 +76,54 @@ const Content = styled.div`
 `
 
 const Name = styled.h2`
-  font-size: 1.5em;
+  font-size: 2.25em;
   margin: 0;
   margin-bottom: 0.2em;
-  padding: 0 2em 0 0.85em;
+  padding: 0 2em 0 15px;
 `
 
-const Categories = styled.p`
-  font-size: 1.1em;
-  line-height: 1.1em;
+const Categories = styled.div`
+  font-size: 1.2em;
+  line-height: 1.2em;
   margin: 0.5em 0;
   padding: 0 15px;
-  font-style: italic;
+  font-weight: 300;
+  ${'' /* font-style: italic; */}
 `
 
-const Note = styled.p`
-  font-size: 1.1em;
+const Note = styled.div`
+  font-size: 1.2em;
+  font-weight: 300;
+  font-style: italic;
   margin: 0;
   padding: 0.5em 15px;
   background-color: #eee;
 `
 
-const TravelTime = styled.p`
-  font-size: 1.1em;
+const TravelTime = styled.div`
+  font-size: 1.2em;
   margin: 0.5em 0;
   padding: 0 15px;
 `
 
 const StyledCloseButton = styled.div`
   position: absolute;
-  top: 0.5em;
-  right: 0.5em;
-  font-size: 1.5em;
-  line-height: 1.5em;
+  top: 0em;
+  right: 0.25em;
+  font-size: 2em;
+  line-height: 2em;
   text-align: center;
   width: 1.5em;
+  color: #bbb;
 
   &:hover {
     cursor: pointer;
-    background: #aaa;
     border-radius: 3px;
-    color: #fff;
+    color: #888;
   }
 
   &:active {
-    background: #888;
+    color: #666;
   }
 `
 
@@ -155,8 +158,6 @@ const Action = ({icon}) => (
   <FontAwesomeIcon icon={icon} />
 )
 
-
-
 const StyledAction = styled(Action)`
   color: #aaa;
   font-size: 2em;
@@ -166,7 +167,7 @@ const StyledAction = styled(Action)`
   }
 `
 
-const StyledIcon = styled(FontAwesomeIcon)`
+const StyledIcon = styled.div`
   color: ${props => props.color ? props.color : actionColorDefault};
 
   &:hover {
@@ -179,17 +180,11 @@ const StyledIcon = styled(FontAwesomeIcon)`
   }
 `
 
-const Visited = (props) => {
+const Icon = ({icon, color, onClick, hovercolor, visited}) => {
   return (
-    <FontAwesomeIcon icon={props.icon} />
+    <StyledIcon hovercolor={hovercolor} color={color} visited={visited} onClick={onClick}><FontAwesomeIcon icon={icon} /></StyledIcon>
   )
 }
-
-const StyledVisited = styled(Visited)`
-  &:hover {
-    color: ${props => props.hoverColor};
-  }
-`
 
 const onInfoWindowClick = (event) => {
   event.stopPropagation();
@@ -220,10 +215,13 @@ const getTravelTime = async (currentPosition, destination) => {
   
 }
 
-const getPixelPositionOffset = (width, height) => ({
-  x: -(width / 2),
-  y: -(height * 1.5),
-})
+const getPixelPositionOffset = (width, height) => {
+  console.log({height});
+  return {
+    x: -(width / 2),
+    y: -(height + 40),
+  }
+}
 
 const BusinessInfoWindow = (props) => {
   const name = props.business.name;
@@ -232,6 +230,7 @@ const BusinessInfoWindow = (props) => {
   
   const [visited, setVisited] = useState(props.business.visited);
   useEffect(() => {
+    console.log('visited useEffect:', props.business.visited);
     setVisited(props.business.visited);
   }, [props.business.visited]);
   
@@ -240,10 +239,12 @@ const BusinessInfoWindow = (props) => {
     const fetchData = async () => {
       setTravelTime(null);
       const result = await getTravelTime(props.currentPosition, props.business.position);
-      setTravelTime({
-        distance: result.data.rows[0].elements[0].distance.text,
-        duration: result.data.rows[0].elements[0].duration.text,
-      });
+      if (result) {
+        setTravelTime({
+          distance: result.data.rows[0].elements[0].distance.text,
+          duration: result.data.rows[0].elements[0].duration.text,
+        });
+      }
     }
     
     fetchData();
@@ -264,11 +265,12 @@ const BusinessInfoWindow = (props) => {
   const originEncoded = encodeURI(currentPositionString);
   const destinationEncoded = encodeURI(destinationAddress);
 
+  console.log('visited', visited);
   return (
     <OverlayView 
       mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET} 
       position={props.business.position}
-      // getPixelPositionOffset={getPixelPositionOffset}
+      getPixelPositionOffset={getPixelPositionOffset}
       >
       <InfoWindow onClick={onInfoWindowClick}>
         <InfoWindowContainer>
@@ -284,12 +286,12 @@ const BusinessInfoWindow = (props) => {
             {(note ? <Note>{props.business.note}</Note> : null)}
             <StyledActionRow>
               <a href={`${yelpBizUrl}${props.business.alias}`} target='_blank' rel='noopener noreferrer'>
-                <StyledIcon icon={faYelp} hovercolor={'#da200b'} />
+                <Icon icon={faYelp} hovercolor={'#da200b'} />
               </a>
               <a href={`${googleMapsDirectionsUrl}&origin=${originEncoded}&destination=${destinationEncoded}`} target='_blank' rel='noopener noreferrer'>
-                <StyledIcon icon={faDirections} hovercolor={'#c79d00'} />
+                <Icon icon={faDirections} hovercolor={'#c79d00'} />
               </a>
-              <StyledIcon 
+              <Icon 
                 icon={faCheckSquareSolid} 
                 color={determineVisitedColor()}
                 onClick={props.onVisited}

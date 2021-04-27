@@ -84,17 +84,26 @@ const Map = () => {
     libraries
   });
 
+  const applyExtraBusinessInfo = (business) => {
+    business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}; //easier position parsing 
+    business.hours = business.hours[0]; //easier hours parsing
+
+    return business;
+  }
+
   const [businesses, setBusinesses] = useState([]);
   useEffect(() => {
     const getAllBusinesses = async () => {
       let response = await axios.get('http://localhost:3001');
       response.data = response.data.filter(business => !!business.name);
-      response.data.map(business => (
-        business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, //easier position parsing 
-        business.hours = business.hours[0] //easier hours parsing
-      ));
+      // response.data.map(business => (
+      //   business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, //easier position parsing 
+      //   business.hours = business.hours[0] //easier hours parsing
+      // ));
+      response.data.map(applyExtraBusinessInfo);
+      // const businessesData = applyExtraBusinessInfo(response.data);
       setBusinesses(response.data);
-      console.log(response.data);
+      console.log('useEffect getAllBusinesses', response.data);
     }
     
     getAllBusinesses();
@@ -106,7 +115,7 @@ const Map = () => {
     setSelected(item);
   }
 
-  const [currentPosition, setCurrentPosition ] = useState({center});
+  const [currentPosition, setCurrentPosition] = useState({center});
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position, error) => {
       if (error) console.warn(error);
@@ -124,8 +133,11 @@ const Map = () => {
       action: 'updateSaved',
     }
     try {
+      console.log('selected before setVisited:', selected);
       const updatedResponse = await axios.put('http://localhost:3001/yelp-business', business, {params});
-      console.log({updatedResponse});
+      console.log('updatedResponse.data:', updatedResponse.data);
+      const businessData = applyExtraBusinessInfo(updatedResponse.data);
+      setSelected(businessData);
     } catch (error) {
       console.log({error});
     }
