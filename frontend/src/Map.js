@@ -21,7 +21,7 @@ import mapStyles from './mapStyles';
 import BusinessInfoWindow from './BusinessInfoWindow';
 import MapLoading from './MapLoading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faDoorOpen, faDoorClosed, faUserCircle } from '@fortawesome/free-solid-svg-icons/';
+import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle } from '@fortawesome/free-solid-svg-icons/';
 import { faCheckSquare as faCheckSquareRegular } from '@fortawesome/free-regular-svg-icons';
 
 // const GetBookmarks = () => {
@@ -104,8 +104,9 @@ const parseHours = (business) => {
   const findOpeningBlock = (dayOfWeek) => {
     const openHoursThisDay = openingHours.filter(x => x.day === dayOfWeek);
     if (openHoursThisDay.length > 0) {
-      if (openHoursThisDay.filter(open => open.day === now.day() && open.start < nowTimeFormatted && open.end > nowTimeFormatted).length > 0) {
-        // open right now
+      if (openHoursThisDay.filter(open => open.day === now.day() && open.start < nowTimeFormatted && open.end > nowTimeFormatted).length > 0) { // open right now
+        
+
         // console.log(`${business.name} is open right now`);
         const currentOpeningBlock = openHoursThisDay
           .filter(open => open.day === now.day() && open.start < nowTimeFormatted && open.end > nowTimeFormatted)[0];
@@ -117,8 +118,8 @@ const parseHours = (business) => {
         }
   
         // openHoursThisDay.map(open => console.log({start: open.start, end: open.end}));
-      } else if (openHoursThisDay.filter(open => open.day === now.day() && open.start > nowTimeFormatted).length > 0) {
-        // open later today
+      } else if (openHoursThisDay.filter(open => open.day === now.day() && open.start > nowTimeFormatted).length > 0) { // open later today
+        
         // console.log(`${business.name} is open later today`);
         
         const currentOpeningBlock = openHoursThisDay
@@ -132,14 +133,14 @@ const parseHours = (business) => {
         }
   
         // openHoursThisDay.map(open => console.log({start: open.start, end: open.end}));
-      } else if (openHoursThisDay.filter(open => open.day === now.day() && open.end < nowTimeFormatted).length > 0) {
-        // was open today, now closed
+      } else if (openHoursThisDay.filter(open => open.day === now.day() && open.end < nowTimeFormatted).length > 0) { // was open today, now closed
+        
         // console.log(`${business.name} was open today but is now closed, will look on ${daysOfTheWeek[nextDayToCheck(dayOfWeek)]}`);
 
         // openHoursThisDay.map(open => console.log({start: open.start, end: open.end}));
         findOpeningBlock(nextDayToCheck(dayOfWeek));
-      } else if (openHoursThisDay.filter(open => open.day === dayOfWeek)) {
-        // open on another day
+      } else if (openHoursThisDay.filter(open => open.day === dayOfWeek)) { // open on another day
+        
         // console.log(`${business.name} is not open today, but next open on ${daysOfTheWeek[dayOfWeek]}`);
 
         const currentOpeningBlock = openHoursThisDay
@@ -155,12 +156,11 @@ const parseHours = (business) => {
         }
 
         // openHoursThisDay.map(open => console.log({start: open.start, end: open.end}));
-      } else {
-        // not open on this day, look for next day
+      } else { // not open on this day, look for next day
         // console.log(`${business.name} is not open on ${daysOfTheWeek[dayOfWeek]}, will continue looking`);
         findOpeningBlock(nextDayToCheck(dayOfWeek));
       }
-    } else {
+    } else { // not open on this day, look for next day
       // console.log(`${business.name} is not open on ${daysOfTheWeek[dayOfWeek]}, will continue looking`);
       findOpeningBlock(nextDayToCheck(dayOfWeek));
     }
@@ -184,6 +184,10 @@ const ComboboxContainer = styled.div`
   justify-content: center;
   position: absolute;
   z-index: 100;
+`
+
+const StyledCombobox = styled(Combobox)`
+  position: relative;
 `
 
 const StyledComboboxInput = styled(ComboboxInput)`
@@ -210,6 +214,23 @@ const StyledComboboxInput = styled(ComboboxInput)`
     border: 2px solid ${yelpRed};
     filter: drop-shadow(rgba(0, 0, 0, 0.5) 0 0.25em 0.25em);
     outline: none;
+  }
+`
+
+const StyledCloseButton = styled.div`
+  font-size: 1.5em;
+  color: #aaa;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  line-height: 1.5em;
+  padding: 0.25em 0.5em;
+  transition: color 0.1s ease-in-out;
+
+  &:hover {
+    color: #888;
+    cursor: pointer;
   }
 `
 
@@ -261,6 +282,15 @@ const Map = () => {
     libraries
   });
 
+  const getAllUniqueCategories = () => {
+    const allCategories = businesses.map(x => x.categories).flat().map(y => {return {alias: y.alias, title: y.title}});
+    const uniqueCategories = allCategories.filter((value, index) => allCategories.findIndex(obj => obj.alias === value.alias) === index);
+    const uniqueCategoriesSorted = uniqueCategories.sort((a, b) => (a.title > b.title) ? 1 : - 1);
+
+    console.log({uniqueCategoriesSorted});
+    return uniqueCategoriesSorted;
+  }
+
   const applyExtraBusinessInfo = (business) => {
     business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}; //easier position parsing 
     business.hours = business.hours[0]; //easier hours parsing
@@ -290,6 +320,7 @@ const Map = () => {
 
   useEffect(() => {
     setMarkers(businesses);
+    getAllUniqueCategories();
   }, [businesses]);
 
   const [selected, setSelected] = useState(null);
@@ -331,15 +362,23 @@ const Map = () => {
      mapRef.current = map;
   }, [])
 
+  const CloseButton = () => {
+    return (
+      <StyledCloseButton onClick={() => setSearchTerm('')}>
+        <FontAwesomeIcon icon={faTimesCircle} />
+      </StyledCloseButton>
+    )
+  }
+  
   const [[searchTerm, debouncedSearchTerm], setSearchTerm] = useDebouncedState('');
   const [showOpen, setShowOpen] = useState(0);
   const [showVisited, setShowVisited] = useState(0);
 
   const filterBusinesses = (business) => {
     const textFilteredResult = 
-      (business.name.toLowerCase().includes(debouncedSearchTerm)
-      || business.categories.map(category => category.title).some(title => removeSpaces(title).toLowerCase().includes(removeSpaces(debouncedSearchTerm)))
-      || business.note.toLowerCase().includes(debouncedSearchTerm))
+      (business.name.toLowerCase().includes(debouncedSearchTerm) // name
+      || business.categories.map(category => category.title).some(title => removeSpaces(title).toLowerCase().includes(removeSpaces(debouncedSearchTerm))) // categories
+      || business.note.toLowerCase().includes(debouncedSearchTerm)) // note
     
     const visitedFilteredResult = 
     showVisited === 1 
@@ -420,8 +459,6 @@ const Map = () => {
   }
 
   useEffect(() => {
-    console.log('useEffect debounced', debouncedSearchTerm);
-    console.log({showVisited});
     setMarkers(businesses.filter(filterBusinesses));
   }, [debouncedSearchTerm, showVisited, showOpen])
 
@@ -434,7 +471,7 @@ const Map = () => {
   <div>
     <h1>Yelp Combinator</h1>
     <ComboboxContainer>
-      <Combobox>
+      <StyledCombobox>
         <StyledComboboxInput 
           disabled={businesses.length === 0}
           value={searchTerm}
@@ -443,12 +480,13 @@ const Map = () => {
           placeholder='Filter businesses'
           spellCheck='false'
         />
+        <CloseButton />
         {/* <ComboboxPopover>
           {businesses.filter(filterBusinesses).map(business => (
             <ComboboxOption key={business.alias} value={business.name} />
           ))}
         </ComboboxPopover> */}
-      </Combobox>
+      </StyledCombobox>
       <OpenFilterButton />
       <VisitedFilterButton />
     </ComboboxContainer>

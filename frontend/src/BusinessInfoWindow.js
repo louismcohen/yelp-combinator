@@ -275,7 +275,6 @@ const BusinessInfoWindow = (props) => {
   
   const [visited, setVisited] = useState(props.business.visited);
   useEffect(() => {
-    console.log('visited useEffect:', props.business.visited);
     setVisited(props.business.visited);
   }, [props.business.visited]);
   
@@ -310,7 +309,6 @@ const BusinessInfoWindow = (props) => {
   const originEncoded = encodeURI(currentPositionString);
   const destinationEncoded = encodeURI(destinationAddress);
 
-  console.log('visited', visited);
   return (
     <OverlayView 
       mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET} 
