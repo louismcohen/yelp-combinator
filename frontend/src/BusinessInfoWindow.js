@@ -16,6 +16,8 @@ const visitedColorHover = '#56de11'; //brighter green
 const visitedColorActiveHover = '#41a90c'; //darker green
 const actionColorDefault = '#666';
 
+const infoWindowTextSize = '1.3em';
+
 const yelpBizUrl = 'https://www.yelp.com/biz/';
 const googleMapsDirectionsUrl = 'https://www.google.com/maps/dir/?api=1';
 
@@ -32,7 +34,7 @@ const InfoWindow = styled.div`
   margin-bottom: 0.5em;
   width: 350px;
   background: #fff;
-  border-radius: 0.5em;
+  border-radius: 0.75em;
   overflow: hidden;
   filter: drop-shadow(rgba(0, 0, 0, 0.33) 0 0.25em 0.8em);
   cursor: grab;
@@ -83,8 +85,8 @@ const Name = styled.h2`
 `
 
 const Categories = styled.div`
-  font-size: 1.2em;
-  line-height: 1.2em;
+  font-size: ${infoWindowTextSize};
+  line-height: ${infoWindowTextSize};
   margin: 0.5em 0;
   padding: 0 15px;
   font-weight: 300;
@@ -92,7 +94,8 @@ const Categories = styled.div`
 `
 
 const Note = styled.div`
-  font-size: 1.2em;
+  font-size: ${infoWindowTextSize};
+  line-height: ${infoWindowTextSize};
   font-weight: 300;
   font-style: italic;
   margin: 0;
@@ -101,10 +104,52 @@ const Note = styled.div`
 `
 
 const TravelTime = styled.div`
-  font-size: 1.2em;
+  font-size: ${infoWindowTextSize};
   margin: 0.5em 0;
   padding: 0 15px;
 `
+
+const StyledOpeningInfo = styled.div`
+  font-size: ${infoWindowTextSize};
+  margin: 0.5em 0;
+  padding: 0 15px;
+`
+
+const OpeningInfo = ({hours}) => {
+  if (!hours) {
+    return null
+  } else if (hours.is_open_now) {
+    return (
+      <StyledOpeningInfo>
+        <strong style={{color: visitedColor}}>Open</strong> until {hours.open_info.time}
+      </StyledOpeningInfo>
+    )
+  } else if (!!hours.open_info.day) {
+    return (
+      <StyledOpeningInfo>
+        Opens {hours.open_info.day} at <strong>{hours.open_info.time}</strong> 
+      </StyledOpeningInfo>
+    )
+  } else {
+    return (
+      <StyledOpeningInfo>
+        Opens at <strong>{hours.open_info.time}</strong>
+      </StyledOpeningInfo>
+    )
+  }
+}
+
+// {(!hours ? null : 
+//   <StyledOpeningInfo>
+//     {hours.is_open_now 
+//       ? `Open until ${hours.open_info.time}` 
+//       : hours.open_info.day 
+//         ? `Opens ${hours.open_info.day} at ${hours.open_info.time}`
+//         : `Opens at ${hours.open_info.time}`
+//     }
+//   </StyledOpeningInfo>
+
+
 
 const StyledCloseButton = styled.div`
   position: absolute;
@@ -216,7 +261,6 @@ const getTravelTime = async (currentPosition, destination) => {
 }
 
 const getPixelPositionOffset = (width, height) => {
-  console.log({height});
   return {
     x: -(width / 2),
     y: -(height + 40),
@@ -227,6 +271,7 @@ const BusinessInfoWindow = (props) => {
   const name = props.business.name;
   const categories = formatCategories(props.business.categories)
   const note = props.business.note;
+  const hours = props.business.hours;
   
   const [visited, setVisited] = useState(props.business.visited);
   useEffect(() => {
@@ -283,6 +328,7 @@ const BusinessInfoWindow = (props) => {
                 <div><strong>{travelTime.duration}</strong> | {travelTime.distance} away</div> 
                 : 'Calculating travel time...'}
             </TravelTime>
+            <OpeningInfo hours={hours} />
             {(note ? <Note>{props.business.note}</Note> : null)}
             <StyledActionRow>
               <a href={`${yelpBizUrl}${props.business.alias}`} target='_blank' rel='noopener noreferrer'>
