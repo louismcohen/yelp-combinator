@@ -1,19 +1,43 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Dimmer, Loader, Segment, Transition } from 'semantic-ui-react'
+import 'semantic-ui-css/semantic.min.css'
 
-const SplashScreen = styled.div`
+const StyledSegment = styled(Segment)`
+  position: absolute !important;
   width: 100%;
   height: 100%;
-  background: #ccc;
-  color: #000;
-  text-align: center;
-  vertical-align: middle;
-  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 `
 
-const MapLoading = () => {
+const StyledLoader = styled(Loader)`
+  ${'' /* font: inherit; */}
+`
+
+const MapLoading = ({loadError, isLoaded, businesses}) => {
+  const businessesLoaded = businesses && businesses.length > 0;
+  const isActive = !(isLoaded && businessesLoaded) || !!loadError;
+
+  let loadingLabel;
+  if (loadError) {
+    loadingLabel = `error: ${loadError}`;
+  } else if (!isLoaded) {
+    loadingLabel = 'map';
+  } else {
+    loadingLabel = 'businesses';
+  }
+
   return (
-    <SplashScreen>Loading Map...</SplashScreen>
+    <StyledSegment>
+      <Transition visible={isActive} duration={200}>
+        <Dimmer active={isActive}>
+          <StyledLoader size='large' indeterminate={!businesses}>{`Loading ${loadingLabel}`}</StyledLoader>
+        </Dimmer>
+      </Transition>
+    </StyledSegment>
+    
   )
 }
 

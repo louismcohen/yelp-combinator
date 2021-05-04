@@ -16,12 +16,31 @@ import {
   ComboboxOptionText,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
+import {
+  Menu,
+  MenuList,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  MenuPopover,
+  MenuLink,
+} from "@reach/menu-button";
+import "@reach/menu-button/styles.css";
+import {
+  Listbox,
+  ListboxInput,
+  ListboxButton,
+  ListboxPopover,
+  ListboxList,
+  ListboxOption,
+} from "@reach/listbox";
+import "@reach/listbox/styles.css";
 import styled from 'styled-components';
 import mapStyles from './mapStyles';
 import BusinessInfoWindow from './BusinessInfoWindow';
 import MapLoading from './MapLoading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle } from '@fortawesome/free-solid-svg-icons/';
+import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV } from '@fortawesome/free-solid-svg-icons/';
 import { faCheckSquare as faCheckSquareRegular } from '@fortawesome/free-regular-svg-icons';
 
 // const GetBookmarks = () => {
@@ -194,6 +213,7 @@ const StyledComboboxInput = styled(ComboboxInput)`
   height: 2.5em;
   padding: 0.75em;
   ${'' /* font: inherit; */}
+  font-family: inherit;
   font-size: 1.2em;
   width: 350px;
   background: rgba(255, 255, 255, 0.95);
@@ -235,10 +255,13 @@ const StyledCloseButton = styled.div`
 `
 
 const FilterButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 2.5em;
-  width: 2.5em;
+  min-width: 2.5em;
   margin-left: 0.5em;
-  padding: 0.5em;
+  padding: 0.5em calc((2.5em - 1.2em) / 2);
   font-size: 1.2em;
   text-align: center;
   cursor: pointer;
@@ -248,15 +271,28 @@ const FilterButton = styled.div`
   border-radius: 8px;
   box-sizing: border-box;
   filter: drop-shadow(rgba(0, 0, 0, 0.33) 0 0.25em 0.25em);
-  transition: border-color 0.1s ease-in-out, filter 0.1s ease-in-out, background 0.1s ease-in-out;
+  transition: border-color 0.1s ease-in-out, filter 0.1s ease-in-out, background 0.1s ease-in-out, width 0.1s ease-in-out;
 
   &:hover {
     background: rgba(255, 255, 255, 1);
     border: 2px solid ${props => props.borderColor};
     outline: none;
-    padding: calc(0.5em - 1px);
+    padding: calc(0.5em - 1px) calc(0.65em - 1px);
     filter: drop-shadow(rgba(0, 0, 0, 0.5) 0 0.25em 0.25em);
   }
+`
+
+const FilterButtonText = styled.div`
+  font-size: 1em;
+  color: #000;
+  margin-left: calc((2.5em - 1.2em) / 2);
+`
+
+const FilterButtonInput = styled(ComboboxInput)`
+  margin-left: calc((2.5em - 1.2em) / 2);
+  font-size: 0.8em;
+  font-family: inherit;
+  padding: 0.25em;
 `
 
 FilterButton.defaultProps = {
@@ -369,7 +405,7 @@ const Map = () => {
       </StyledCloseButton>
     )
   }
-  
+
   const [[searchTerm, debouncedSearchTerm], setSearchTerm] = useDebouncedState('');
   const [showOpen, setShowOpen] = useState(0);
   const [showVisited, setShowVisited] = useState(0);
@@ -424,9 +460,22 @@ const Map = () => {
         break;
     }
 
+    const [openFilterValue, setOpenFilterValue] = useState('');
+
     return (
       <FilterButton borderColor={'#7a0ebd'} iconColor={iconColor} onClick={() => nextFilterButtonState(showOpen, setShowOpen)}>
         <FontAwesomeIcon icon={icon} />
+        {/* {showOpen === 0 ?
+            null
+          : showOpen === 1 ?
+          <FilterButtonText>Open now</FilterButtonText>
+          : <FilterButtonText>Open at</FilterButtonText>
+            
+        }
+        <Combobox>
+              <FilterButtonInput onClick={(e) => e.stopPropagation()}></FilterButtonInput>
+            </Combobox> */}
+        
       </FilterButton>
     )
   }
@@ -462,13 +511,13 @@ const Map = () => {
     setMarkers(businesses.filter(filterBusinesses));
   }, [debouncedSearchTerm, showVisited, showOpen])
 
-  if (loadError) return 'Error loading maps';
-  if (!isLoaded) return (
-    <MapLoading />
+  if (!isLoaded || loadError) return (
+    <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
   );
     
   return (
   <div>
+    <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
     <h1>Yelp Combinator</h1>
     <ComboboxContainer>
       <StyledCombobox>
@@ -487,8 +536,8 @@ const Map = () => {
           ))}
         </ComboboxPopover> */}
       </StyledCombobox>
-      <OpenFilterButton />
       <VisitedFilterButton />
+      <OpenFilterButton />
     </ComboboxContainer>
     <GoogleMap mapContainerClassName={'map-container'} mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={center} options={options} onLoad={onMapLoad} clickableIcons={false}>
       {markers.map(business => {
