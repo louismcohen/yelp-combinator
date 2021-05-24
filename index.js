@@ -3,6 +3,7 @@ const cors = require('cors');
 require('dotenv').config();
 const mongoose = require('mongoose');
 const app = express();
+const path = require('path');
 
 const yelpParsedCollectionsRouter = require('./routes/yelp-parsed-collections');
 const yelpCollectionRouter = require('./routes/yelp-collection');
@@ -20,19 +21,19 @@ app.use('/api/', yelpBusinessRouter);
 app.use('/api/', yelpRouter);
 app.use('/api/', googleRouter);
 
-if (process.env.NODE_ENV == 'production') {
-  app.use(express.static('frontend/build'));
-  app.get('*', (request, response) => {
-    response.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-  })
-}
-
 const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, {useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false});
 const connection = mongoose.connection;
 connection.once('open', () => {
   console.log('MongoDB database connection established successfully');
 });
+
+if (process.env.NODE_ENV == 'production') {
+  app.use(express.static(path.join(__dirname, 'frontend', 'build')));
+  app.get('*', (request, response) => {
+    response.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
+  })
+}
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
