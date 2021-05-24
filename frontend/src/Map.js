@@ -598,7 +598,7 @@ const Map = () => {
   <div autoFocus onKeyDown={handleKeyPress} onClick={onMapClick}>
     <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
     <h1>Yelp Combinator</h1>
-    <StyledMaterialIcon icon='search' />
+    {/* <StyledMaterialIcon icon='search' /> */}
     <ComboboxContainer>
       <StyledCombobox>
         <StyledComboboxInput 
