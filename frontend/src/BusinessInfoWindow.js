@@ -262,7 +262,7 @@ const getTravelTime = async (currentPosition, destination) => {
     lat: 34.01747899558564,
     lng: -118.40530146733245,
   }
-  const distanceMatrixUri = `${process.env.REACT_APP_BACKEND_URL}distancematrix`;
+  const distanceMatrixUri = `/api/distancematrix`;
   const params = {
     origin: `${currentPosition.lat},${currentPosition.lng}`,
     destination: `${destination.lat},${destination.lng}`,
