@@ -382,7 +382,7 @@ const Map = () => {
   const [markers, setMarkers] = useState([]);
   useEffect(() => {
     const getAllBusinesses = async () => {
-      console.log('api', process.env.REACT_APP_BACKEND_URL);
+      console.log('api', 'process.env.REACT_APP_BACKEND_URL');
       let response = await axios.get('/api');
       // const businessesJson = await axios.get('./businesses.json');
       // console.log({businessesJson});

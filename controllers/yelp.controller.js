@@ -12,7 +12,8 @@ const initialLoad = async (request, response) => {
     console.log(`updatedCollections: ${updatedCollections.length}`);
     
     if (updatedCollections.length > 0) {
-      const updatedBusinesses = await YelpBusiness.checkAndUpdateIncompleteBusinesses(updatedCollections);
+      console.log('updatedCollections.length > 0');
+      const updatedBusinesses = await YelpBusinessService.checkAndUpdateIncompleteBusinesses(updatedCollections);
       console.log(`updatedBusinesses: ${updatedBusinesses.length}`);
     } else {
       console.log('no businesses to update');
