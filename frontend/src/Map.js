@@ -35,13 +35,21 @@ import {
   ListboxOption,
 } from "@reach/listbox";
 import "@reach/listbox/styles.css";
+import { Transition } from 'semantic-ui-react'
+
 import styled from 'styled-components';
 import mapStyles from './mapStyles';
 import BusinessInfoWindow from './BusinessInfoWindow';
 import MapLoading from './MapLoading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV } from '@fortawesome/free-solid-svg-icons/';
+import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV, faCircle } from '@fortawesome/free-solid-svg-icons/';
 import { faCheckSquare as faCheckSquareRegular } from '@fortawesome/free-regular-svg-icons';
+
+import 'semantic-ui-css/semantic.min.css'
+import './Map.css'
+import MaterialIcon from '@material/react-material-icon';
+import RamenDiningSvg from './icons/ramen_dining.svg';
+import { map } from 'lodash';
 
 // const GetBookmarks = () => {
 //   const [bookmarks, setBookmarks] = React.useState([]);
@@ -109,7 +117,7 @@ const options = {
 }
 
 const parseHours = (business) => {
-  const daysOfTheWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   const nextDayToCheck = (dayOfWeek) => {
     return dayOfWeek < 6 ? dayOfWeek + 1 : 0;
   }
@@ -119,13 +127,13 @@ const parseHours = (business) => {
   const nowTimeFormatted = `${now.format('HHmm')}`
   let openingMessage = '';
 
+
   const openingHours = business.hours.open;  
   const findOpeningBlock = (dayOfWeek) => {
     const openHoursThisDay = openingHours.filter(x => x.day === dayOfWeek);
     if (openHoursThisDay.length > 0) {
       if (openHoursThisDay.filter(open => open.day === now.day() && open.start < nowTimeFormatted && open.end > nowTimeFormatted).length > 0) { // open right now
         
-
         // console.log(`${business.name} is open right now`);
         const currentOpeningBlock = openHoursThisDay
           .filter(open => open.day === now.day() && open.start < nowTimeFormatted && open.end > nowTimeFormatted)[0];
@@ -152,13 +160,13 @@ const parseHours = (business) => {
         }
   
         // openHoursThisDay.map(open => console.log({start: open.start, end: open.end}));
-      } else if (openHoursThisDay.filter(open => open.day === now.day() && open.end < nowTimeFormatted).length > 0) { // was open today, now closed
+      } else if (openHoursThisDay.filter(open => open.day === now.day() && open.end < nowTimeFormatted).length > 0 && !(openingHours.length === 1)) { // was open today, now closed
         
         // console.log(`${business.name} was open today but is now closed, will look on ${daysOfTheWeek[nextDayToCheck(dayOfWeek)]}`);
 
         // openHoursThisDay.map(open => console.log({start: open.start, end: open.end}));
         findOpeningBlock(nextDayToCheck(dayOfWeek));
-      } else if (openHoursThisDay.filter(open => open.day === dayOfWeek)) { // open on another day
+      } else if (openHoursThisDay.filter(open => open.day === dayOfWeek) || openingHours.length === 1) { // open on another day
         
         // console.log(`${business.name} is not open today, but next open on ${daysOfTheWeek[dayOfWeek]}`);
 
@@ -195,6 +203,11 @@ const yelpRed = '#da2007';
 const removeSpaces = (str) => {
   return str.replace(/\s+/g, '');
 }
+
+const StyledMaterialIcon = styled(MaterialIcon)`
+  position: absolute;
+  z-index: 100;
+`
 
 const ComboboxContainer = styled.div`
   width: 100%;
@@ -236,6 +249,7 @@ const StyledComboboxInput = styled(ComboboxInput)`
     outline: none;
   }
 `
+
 
 const StyledCloseButton = styled.div`
   font-size: 1.5em;
@@ -302,15 +316,44 @@ FilterButton.defaultProps = {
 }
 
 const currentPositionIcon = {
-  path: faUserCircle.icon[4],
-  scale: 0.08,
+  path: faCircle.icon[4],
+  scale: 0.05,
+  fillColor: '#007aff',
+  fillOpacity: 0.95,
+  strokeWeight: 5,
+  strokeColor: '#fff',
   // origin: window.google.maps.Point(500, 0),
-  fillColor: '#ddd',
-  fillOpacity: 0.9,
-  strokeWeight: 2,
-  strokeColor: 'blue',
   // url: './assets/user-circle-solid.svg'
+
+  // path: window.google.maps.SymbolPath.CIRCLE,
+  // scale: 0.08,
+  // fillColor: 'blue',
+  // fillOpacity: 0.95,
+  // strokeWeight: 5,
+  // strokeColor: '#fff',
 }
+
+console.log({RamenDiningSvg});
+const RamenDiningIcon = {
+  path: RamenDiningSvg.path,
+  fillColor: '#000',
+  fillOpacity: 1.0,
+  strokeWeight: 0,
+  rotation: 0,
+  scale: 1,
+}
+
+const StyledGoogleMap = styled(GoogleMap)`
+  &:hover {
+    cursor: default;
+  }
+`
+
+const StyledMarker = styled(Marker)`
+  &:hover {
+    cursor: pointer;
+  }
+`
 
 const Map = () => {
   const {isLoaded, loadError} = useLoadScript({
@@ -339,7 +382,12 @@ const Map = () => {
   const [markers, setMarkers] = useState([]);
   useEffect(() => {
     const getAllBusinesses = async () => {
-      let response = await axios.get('http://localhost:3001');
+      console.log('api', process.env.REACT_APP_BACKEND_URL);
+      let response = await axios.get(process.env.REACT_APP_BACKEND_URL);
+      // const businessesJson = await axios.get('./businesses.json');
+      // console.log({businessesJson});
+      // let response = {};
+      // response.data = businessesJson;
       response.data = response.data.filter(business => !!business.name && !!business.coordinates);
       // response.data.map(business => (
       //   business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, //easier position parsing 
@@ -361,6 +409,8 @@ const Map = () => {
 
   const [selected, setSelected] = useState(null);
   const onSelect = item => {
+    // console.log(mapRef.current);
+    // mapRef.current.panTo(item.position)
     console.log('selected', item);
     setSelected(item);
   }
@@ -511,14 +561,44 @@ const Map = () => {
     setMarkers(businesses.filter(filterBusinesses));
   }, [debouncedSearchTerm, showVisited, showOpen])
 
-  if (!isLoaded || loadError) return (
+  const inputFilter = useRef(null);
+  const businessInfoWindowMounted = useRef(null);
+  useEffect(() => {
+    console.log({businessInfoWindowMounted});
+  }, [businessInfoWindowMounted])
+
+  const onMapClick = (event) => {
+    if (businessInfoWindowMounted.current && !businessInfoWindowMounted.current.contains(event.target)) {
+      // setSelected(null);
+    }
+  }
+
+  const markerRef = useRef();
+
+  if (!isLoaded || !!loadError) {
+    return (
     <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
-  );
+    )
+  };
+
+  const handleKeyPress = (event) => {
+    console.log({event});
+    if (event.keyCode === 27) { // 'esc' pressed
+      inputFilter.current.blur();
+    } else if (event.keyCode === 191) { // '/' pressed
+      inputFilter.current.focus(); 
+      event.preventDefault();
+    } else if (event.keyCode === 79) { // 'o' pressed
+      
+    }
+  } 
+
     
   return (
-  <div>
+  <div autoFocus onKeyDown={handleKeyPress} onClick={onMapClick}>
     <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
     <h1>Yelp Combinator</h1>
+    <StyledMaterialIcon icon='search' />
     <ComboboxContainer>
       <StyledCombobox>
         <StyledComboboxInput 
@@ -528,6 +608,7 @@ const Map = () => {
           onSelect={(event) => setSearchTerm(event.target.value.toLowerCase())}
           placeholder='Filter businesses'
           spellCheck='false'
+          ref={inputFilter}
         />
         <CloseButton />
         {/* <ComboboxPopover>
@@ -539,28 +620,30 @@ const Map = () => {
       <VisitedFilterButton />
       <OpenFilterButton />
     </ComboboxContainer>
-    <GoogleMap mapContainerClassName={'map-container'} mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={center} options={options} onLoad={onMapLoad} clickableIcons={false}>
+    <StyledGoogleMap mapContainerClassName={'map-container'} mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={center} options={options} onLoad={onMapLoad} clickableIcons={false}>
       {markers.map(business => {
         return (
           <Marker 
+            ref={markerRef}
             key={business.alias} 
             position={business.position} 
             // animation={window.google.maps.Animation.DROP} 
             onClick={() => onSelect(business)}  
             onMouseOver={() => console.log(`mouseover ${business.name}`)}
+            // icon={RamenDiningIcon}
           />
         )
       })}
       {selected ? 
-        <BusinessInfoWindow business={selected} currentPosition={currentPosition} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
+        <BusinessInfoWindow ref={businessInfoWindowMounted} business={selected} currentPosition={currentPosition} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
         : null
       }
       {
         currentPosition.lat && (
-          <Marker key={'currentPosition'} position={currentPosition} icon={currentPositionIcon}/>
+          <StyledMarker key={'currentPosition'} position={currentPosition} icon={currentPositionIcon} />
         )
       }
-    </GoogleMap>
+    </StyledGoogleMap>
   </div>
   )
 }

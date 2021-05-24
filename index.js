@@ -14,11 +14,11 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
-app.use('/', yelpParsedCollectionsRouter);
-app.use('/', yelpCollectionRouter);
-app.use('/', yelpBusinessRouter);
-app.use('/', yelpRouter);
-app.use('/', googleRouter);
+app.use('/api/', yelpParsedCollectionsRouter);
+app.use('/api/', yelpCollectionRouter);
+app.use('/api/', yelpBusinessRouter);
+app.use('/api/', yelpRouter);
+app.use('/api/', googleRouter);
 
 if (process.env.NODE_ENV == 'production') {
   app.use(express.static('frontend/build'));
@@ -37,6 +37,8 @@ connection.once('open', () => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
+
 
 // app.get('/yelp-parsed-collections/scrape/g6DLKiR2ReMs-N5hN6zDwg', (request, response) => {
 //   console.log('app response: ', response);

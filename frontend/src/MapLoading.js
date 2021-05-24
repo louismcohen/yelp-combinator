@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Dimmer, Loader, Segment, Transition } from 'semantic-ui-react'
-import 'semantic-ui-css/semantic.min.css'
 
 const StyledSegment = styled(Segment)`
   position: absolute !important;
@@ -22,7 +21,7 @@ const MapLoading = ({loadError, isLoaded, businesses}) => {
 
   let loadingLabel;
   if (loadError) {
-    loadingLabel = `error: ${loadError}`;
+    loadingLabel = `error. Check Google API key or network connection.`;
   } else if (!isLoaded) {
     loadingLabel = 'map';
   } else {
@@ -33,7 +32,7 @@ const MapLoading = ({loadError, isLoaded, businesses}) => {
     <StyledSegment>
       <Transition visible={isActive} duration={200}>
         <Dimmer active={isActive}>
-          <StyledLoader size='large' indeterminate={!businesses}>{`Loading ${loadingLabel}`}</StyledLoader>
+          <StyledLoader size='large' indeterminate={!businesses || !!loadError}>{`Loading ${loadingLabel}`}</StyledLoader>
         </Dimmer>
       </Transition>
     </StyledSegment>

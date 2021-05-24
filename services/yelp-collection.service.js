@@ -56,7 +56,7 @@ const loadCollectionPage = async (yelpCollectionId) => {
     collection.lastUpdated = new Date(collection.doc.getElementsByTagName("time")[0].dateTime);
     collection.title = collection.doc.querySelector('meta[property="og:title"]').content;
     
-    console.log(`collection ${collection.title}: ${collection.itemCount} items, last updated on Yelp ${collection.lastUpdated}`);
+    console.log(`loadCollectionPage ${collection.title} ${collection.yelpCollectionId}: ${collection.itemCount} items, last updated on Yelp ${collection.lastUpdated}`);
 
     return collection;
   } catch (error) {
@@ -153,7 +153,15 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
     savedCollections.map(async savedCollection => {
       try {
         const loadedCollection = await loadCollectionPage(savedCollection.yelpCollectionId);
-        if (Date(savedCollection.lastUpdated) !== Date(loadedCollection.lastUpdated) || !savedCollection.lastUpdated) {
+        console.log({
+          savedCollection,
+          loadedCollection,
+        });
+        console.log({
+          savedDate: Date.parse(savedCollection.lastUpdated),
+          loadedDate: Date.parse(loadedCollection.lastUpdated),
+        });
+        if (Date.parse(savedCollection.lastUpdated) !== Date.parse(loadedCollection.lastUpdated) || !savedCollection.lastUpdated) {
           return loadedCollection;
         }
       } catch (error) {

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useCallback, forwardRef } from 'react';
 import {
   OverlayView
 } from "@react-google-maps/api";
@@ -8,13 +8,16 @@ import { faTimes, faDirections, faCheckSquare as faCheckSquareSolid } from '@for
 import { faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 import { faYelp } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
+import moment from 'moment';
 
 const arrowSize = '1em';
 const boxShadow = '0 0.25em 0.8em 0 rgba(0, 0, 0, 0.15)';
 const visitedColor = '#49bd0e'; //idle
+const cautionColor = '#bd780e'; //orange
 const visitedColorHover = '#56de11'; //brighter green
 const visitedColorActiveHover = '#41a90c'; //darker green
 const actionColorDefault = '#666';
+const yelpRed = '#da2007';
 
 const infoWindowTextSize = '1.3em';
 
@@ -32,7 +35,7 @@ const InfoWindow = styled.div`
   z-index: 100;
   display: block;
   margin-bottom: 0.5em;
-  width: 350px;
+  width: 420px;
   background: #fff;
   border-radius: 0.75em;
   overflow: hidden;
@@ -115,25 +118,40 @@ const StyledOpeningInfo = styled.div`
   padding: 0 15px;
 `
 
-const OpeningInfo = ({hours}) => {
+const OpeningInfo = ({hours, travelTime}) => {
+  const now = moment();
+
+  const [arrivalTime, setArrivalTime] = useState();
+  useEffect(() => {
+    if (!!travelTime) {
+      setArrivalTime(now.add(travelTime.duration.value, 's'))
+      console.log({arrivalTime: arrivalTime, hours: hours});
+    };
+  }, [travelTime])
+
   if (!hours) {
     return null
   } else if (hours.is_open_now) {
+    const arrivingLate = arrivalTime > hours.open_info.time;
+    const color = !arrivingLate ? visitedColor : cautionColor;
+
     return (
       <StyledOpeningInfo>
-        <strong style={{color: visitedColor}}>Open</strong> until {hours.open_info.time}
+        <strong style={{color}}>Open</strong> until {hours.open_info.time}
       </StyledOpeningInfo>
     )
   } else if (!!hours.open_info.day) {
+    const color = yelpRed;
     return (
       <StyledOpeningInfo>
-        Opens {hours.open_info.day} at <strong>{hours.open_info.time}</strong> 
+        <strong style={{color}}>Closed</strong> | Opens {hours.open_info.day} at <strong>{hours.open_info.time}</strong> 
       </StyledOpeningInfo>
     )
   } else {
+    const color = yelpRed;
     return (
       <StyledOpeningInfo>
-        Opens at <strong>{hours.open_info.time}</strong>
+        <strong style={{color}}>Closed</strong> | Opens at <strong>{hours.open_info.time}</strong>
       </StyledOpeningInfo>
     )
   }
@@ -244,7 +262,7 @@ const getTravelTime = async (currentPosition, destination) => {
     lat: 34.01747899558564,
     lng: -118.40530146733245,
   }
-  const distanceMatrixUri = 'http://localhost:3001/distancematrix';
+  const distanceMatrixUri = `${process.env.REACT_APP_BACKEND_URL}distancematrix`;
   const params = {
     origin: `${currentPosition.lat},${currentPosition.lng}`,
     destination: `${destination.lat},${destination.lng}`,
@@ -267,7 +285,7 @@ const getPixelPositionOffset = (width, height) => {
   }
 }
 
-const BusinessInfoWindow = (props) => {
+const BusinessInfoWindow = forwardRef((props, ref) => {
   const name = props.business.name;
   const categories = formatCategories(props.business.categories)
   const note = props.business.note;
@@ -311,11 +329,11 @@ const BusinessInfoWindow = (props) => {
 
   return (
     <OverlayView 
-      mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET} 
+      mapPaneName={OverlayView.FLOAT_PANE} 
       position={props.business.position}
       getPixelPositionOffset={getPixelPositionOffset}
       >
-      <InfoWindow onClick={onInfoWindowClick}>
+      <InfoWindow onClick={onInfoWindowClick} ref={ref}>
         <InfoWindowContainer>
           <Image url={props.business.image_url}></Image>
           <Content>
@@ -326,7 +344,7 @@ const BusinessInfoWindow = (props) => {
                 <div><strong>{travelTime.duration}</strong> | {travelTime.distance} away</div> 
                 : 'Calculating travel time...'}
             </TravelTime>
-            <OpeningInfo hours={hours} />
+            <OpeningInfo hours={hours} travelTime={travelTime} />
             {(note ? <Note>{props.business.note}</Note> : null)}
             <StyledActionRow>
               <a href={`${yelpBizUrl}${props.business.alias}`} target='_blank' rel='noopener noreferrer'>
@@ -350,6 +368,6 @@ const BusinessInfoWindow = (props) => {
       </InfoWindow>
     </OverlayView>
   )
-}
+})
 
 export default BusinessInfoWindow;
