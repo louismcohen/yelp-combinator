@@ -461,6 +461,8 @@ const Map = () => {
   const [showVisited, setShowVisited] = useState(0);
 
   const filterBusinesses = (business) => {
+    console.log({debouncedSearchTerm});
+    console.log('filterBusinesses', {business});
     const textFilteredResult = 
       (business.name.toLowerCase().includes(debouncedSearchTerm) // name
       || business.categories.map(category => category.title).some(title => removeSpaces(title).toLowerCase().includes(removeSpaces(debouncedSearchTerm))) // categories
