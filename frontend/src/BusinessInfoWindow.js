@@ -18,6 +18,7 @@ const visitedColorHover = '#56de11'; //brighter green
 const visitedColorActiveHover = '#41a90c'; //darker green
 const actionColorDefault = '#666';
 const yelpRed = '#da2007';
+const googleMapsYellow = '#fbbc04';
 
 const infoWindowTextSize = '1.3em';
 
@@ -348,10 +349,10 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
             {(note ? <Note>{props.business.note}</Note> : null)}
             <StyledActionRow>
               <a href={`${yelpBizUrl}${props.business.alias}`} target='_blank' rel='noopener noreferrer'>
-                <Icon icon={faYelp} hovercolor={'#da200b'} />
+                <Icon icon={faYelp} hovercolor={yelpRed} />
               </a>
               <a href={`${googleMapsDirectionsUrl}&origin=${originEncoded}&destination=${destinationEncoded}`} target='_blank' rel='noopener noreferrer'>
-                <Icon icon={faDirections} hovercolor={'#c79d00'} />
+                <Icon icon={faDirections} hovercolor={googleMapsYellow} />
               </a>
               <Icon 
                 icon={faCheckSquareSolid} 
