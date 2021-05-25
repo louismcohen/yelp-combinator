@@ -382,7 +382,7 @@ const Map = () => {
   const [markers, setMarkers] = useState([]);
   useEffect(() => {
     const getAllBusinesses = async () => {
-      console.log('api', 'process.env.REACT_APP_BACKEND_URL');
+      // console.log('api', 'process.env.REACT_APP_BACKEND_URL');
       let response = await axios.get('/api');
       // const businessesJson = await axios.get('./businesses.json');
       // console.log({businessesJson});
@@ -397,6 +397,7 @@ const Map = () => {
       // const businessesData = applyExtraBusinessInfo(response.data);
       setBusinesses(response.data);
       console.log('useEffect getAllBusinesses', response.data);
+      console.log({businesses});
     }
     
     getAllBusinesses();
@@ -461,12 +462,11 @@ const Map = () => {
   const [showVisited, setShowVisited] = useState(0);
 
   const filterBusinesses = (business) => {
-    console.log({debouncedSearchTerm});
-    console.log('filterBusinesses', {business});
-    const textFilteredResult = 
-      (business.name.toLowerCase().includes(debouncedSearchTerm) // name
+    const textFilteredResult = (
+      business.name.toLowerCase().includes(debouncedSearchTerm) // name
       || business.categories.map(category => category.title).some(title => removeSpaces(title).toLowerCase().includes(removeSpaces(debouncedSearchTerm))) // categories
-      || business.note.toLowerCase().includes(debouncedSearchTerm)) // note
+      || (!!business.note && business.note.toLowerCase().includes(debouncedSearchTerm)) // note
+    )
     
     const visitedFilteredResult = 
     showVisited === 1 

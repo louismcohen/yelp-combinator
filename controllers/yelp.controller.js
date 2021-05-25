@@ -1,6 +1,5 @@
 const YelpCollectionService = require('../services/yelp-collection.service');
 const YelpBusinessService = require('../services/yelp-business.service');
-const YelpBusiness = require('../models/yelp-business.model');
 
 const initialLoad = async (request, response) => {
   try {

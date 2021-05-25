@@ -109,7 +109,6 @@ const checkAndUpdateIncompleteBusinesses = async (collections) => {
   const updatedBusinesses = await Promise.all(
     incompleteBusinesses.map(async business => {
       const updatedBusiness = await updateBusinessByAlias(business.alias);
-      console.log(`updated business: ${business.alias}`);
       return updatedBusiness;
     })
   )

@@ -153,15 +153,17 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
     savedCollections.map(async savedCollection => {
       try {
         const loadedCollection = await loadCollectionPage(savedCollection.yelpCollectionId);
-        console.log({
-          savedCollection,
-          loadedCollection,
-        });
+        // console.log({
+        //   savedCollection,
+        //   loadedCollection,
+        // });
         console.log({
           savedDate: Date.parse(savedCollection.lastUpdated),
           loadedDate: Date.parse(loadedCollection.lastUpdated),
+          upToDate: !(Date.parse(savedCollection.lastUpdated) !== Date.parse(loadedCollection.lastUpdated) || !savedCollection.lastUpdated),
         });
         if (Date.parse(savedCollection.lastUpdated) !== Date.parse(loadedCollection.lastUpdated) || !savedCollection.lastUpdated) {
+          console.log('savedCollection.lastUpdated !== loadedCollection.lastUpdated');
           return loadedCollection;
         }
       } catch (error) {
