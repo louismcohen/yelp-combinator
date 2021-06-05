@@ -1,55 +1,24 @@
-import React, { useEffect, useState, useRef, useMemo, useCallback } from 'react';
-import debounce from 'lodash.debounce';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import * as U from './utils/utils'
 import axios from 'axios';
 import {
-  GoogleMap,
   useLoadScript,
   Marker,
 } from "@react-google-maps/api";
 import moment from 'moment';
-import {
-  Combobox,
-  ComboboxInput,
-  ComboboxPopover,
-  ComboboxList,
-  ComboboxOption,
-  ComboboxOptionText,
-} from "@reach/combobox";
-import "@reach/combobox/styles.css";
-import {
-  Menu,
-  MenuList,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  MenuPopover,
-  MenuLink,
-} from "@reach/menu-button";
-import "@reach/menu-button/styles.css";
-import {
-  Listbox,
-  ListboxInput,
-  ListboxButton,
-  ListboxPopover,
-  ListboxList,
-  ListboxOption,
-} from "@reach/listbox";
-import "@reach/listbox/styles.css";
-import { Transition } from 'semantic-ui-react'
 
-import styled from 'styled-components';
-import mapStyles from './mapStyles';
 import BusinessInfoWindow from './BusinessInfoWindow';
 import MapLoading from './MapLoading';
+
+import 'semantic-ui-css/semantic.min.css'
+import './styles/Map.css'
+import * as S from './styles/MapStyles';
+import GoogleMapStyles from './styles/GoogleMapStyles';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV, faCircle } from '@fortawesome/free-solid-svg-icons/';
 import { faCheckSquare as faCheckSquareRegular } from '@fortawesome/free-regular-svg-icons';
 
-import 'semantic-ui-css/semantic.min.css'
-import './Map.css'
-import MaterialIcon from '@material/react-material-icon';
-import RamenDiningSvg from './icons/ramen_dining.svg';
-import { map } from 'lodash';
 
 // const GetBookmarks = () => {
 //   const [bookmarks, setBookmarks] = React.useState([]);
@@ -73,33 +42,6 @@ import { map } from 'lodash';
 
 // businesses.filter(business => business.categories.map(category => category.alias).some(alias => alias == 'noodles'))
 
-/**
- * The same thing as useState, except it will return an instantly
- * updated value and a value that is debounced by a delay.
- */
-export function useDebouncedState(initialState, delay = 200) {
-  const [actualState, setActualState] = useState(initialState);
-  const [debouncedState, setDebouncedState] = useState(initialState);
-
-  const debounceCommitState = useMemo(
-    () =>
-      debounce((value) => {
-        setDebouncedState(value);
-      }, delay),
-    [delay],
-  );
-
-  const handleChangeState = useCallback(
-    (value) => {
-      setActualState(value);
-      debounceCommitState(value);
-    },
-    [debounceCommitState],
-  );
-
-  return [[actualState, debouncedState], handleChangeState];
-}
-
 const libraries = ['places'];
 const mapContainerStyle = {
   width: '100vw',
@@ -111,7 +53,7 @@ const center = {
   lng: -118.40530146733245,
 }
 const options = {
-  styles: mapStyles.appleMapsEsquePlus,
+  styles: GoogleMapStyles.appleMapsEsquePlus,
   disableDefaultUI: true,
   zoomControl: true
 }
@@ -197,163 +139,6 @@ const parseHours = (business) => {
   // console.log({openingMessage});
   return openingMessage;
 }
-
-const yelpRed = '#da2007';
-
-const removeSpaces = (str) => {
-  return str.replace(/\s+/g, '');
-}
-
-const StyledMaterialIcon = styled(MaterialIcon)`
-  position: absolute;
-  z-index: 100;
-`
-
-const ComboboxContainer = styled.div`
-  width: 100%;
-  top: 1rem;
-  display: flex;
-  justify-content: center;
-  position: absolute;
-  z-index: 100;
-`
-
-const StyledCombobox = styled(Combobox)`
-  position: relative;
-`
-
-const StyledComboboxInput = styled(ComboboxInput)`
-  height: 2.5em;
-  padding: 0.75em;
-  ${'' /* font: inherit; */}
-  font-family: inherit;
-  font-size: 1.2em;
-  width: 350px;
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #aaa;
-  border-radius: 8px;
-  box-sizing: border-box;
-  filter: drop-shadow(rgba(0, 0, 0, 0.33) 0 0.25em 0.25em);
-  transition: border-color 0.1s ease-in-out, filter 0.1s ease-in-out, background 0.1s ease-in-out;
-   
-  &:hover {
-    border: 2px solid ${yelpRed};
-    padding: calc(0.75em - 1px);
-    
-  }
-  &:focus {
-    background: rgba(255, 255, 255, 1);
-    padding: calc(0.75em - 1px);
-    border: 2px solid ${yelpRed};
-    filter: drop-shadow(rgba(0, 0, 0, 0.5) 0 0.25em 0.25em);
-    outline: none;
-  }
-`
-
-
-const StyledCloseButton = styled.div`
-  font-size: 1.5em;
-  color: #aaa;
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 100;
-  line-height: 1.5em;
-  padding: 0.25em 0.5em;
-  transition: color 0.1s ease-in-out;
-
-  &:hover {
-    color: #888;
-    cursor: pointer;
-  }
-`
-
-const FilterButton = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 2.5em;
-  min-width: 2.5em;
-  margin-left: 0.5em;
-  padding: 0.5em calc((2.5em - 1.2em) / 2);
-  font-size: 1.2em;
-  text-align: center;
-  cursor: pointer;
-  color: ${props => props.iconColor};
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #aaa;
-  border-radius: 8px;
-  box-sizing: border-box;
-  filter: drop-shadow(rgba(0, 0, 0, 0.33) 0 0.25em 0.25em);
-  transition: border-color 0.1s ease-in-out, filter 0.1s ease-in-out, background 0.1s ease-in-out, width 0.1s ease-in-out;
-
-  &:hover {
-    background: rgba(255, 255, 255, 1);
-    border: 2px solid ${props => props.borderColor};
-    outline: none;
-    padding: calc(0.5em - 1px) calc(0.65em - 1px);
-    filter: drop-shadow(rgba(0, 0, 0, 0.5) 0 0.25em 0.25em);
-  }
-`
-
-const FilterButtonText = styled.div`
-  font-size: 1em;
-  color: #000;
-  margin-left: calc((2.5em - 1.2em) / 2);
-`
-
-const FilterButtonInput = styled(ComboboxInput)`
-  margin-left: calc((2.5em - 1.2em) / 2);
-  font-size: 0.8em;
-  font-family: inherit;
-  padding: 0.25em;
-`
-
-FilterButton.defaultProps = {
-  backgroundColor: 'rgba(255, 255, 255, 0.95)',
-  iconColor: '#aaa',
-  accentColor: '#666',
-}
-
-const currentPositionIcon = {
-  path: faCircle.icon[4],
-  scale: 0.05,
-  fillColor: '#007aff',
-  fillOpacity: 0.95,
-  strokeWeight: 5,
-  strokeColor: '#fff',
-  // origin: window.google.maps.Point(500, 0),
-  // url: './assets/user-circle-solid.svg'
-
-  // path: window.google.maps.SymbolPath.CIRCLE,
-  // scale: 0.08,
-  // fillColor: 'blue',
-  // fillOpacity: 0.95,
-  // strokeWeight: 5,
-  // strokeColor: '#fff',
-}
-
-console.log({RamenDiningSvg});
-const RamenDiningIcon = {
-  path: RamenDiningSvg.path,
-  fillColor: '#000',
-  fillOpacity: 1.0,
-  strokeWeight: 0,
-  rotation: 0,
-  scale: 1,
-}
-
-const StyledGoogleMap = styled(GoogleMap)`
-  &:hover {
-    cursor: default;
-  }
-`
-
-const StyledMarker = styled(Marker)`
-  &:hover {
-    cursor: pointer;
-  }
-`
 
 const Map = () => {
   const {isLoaded, loadError} = useLoadScript({
@@ -451,20 +236,20 @@ const Map = () => {
 
   const CloseButton = () => {
     return (
-      <StyledCloseButton onClick={() => setSearchTerm('')}>
+      <S.StyledCloseButton onClick={() => setSearchTerm('')}>
         <FontAwesomeIcon icon={faTimesCircle} />
-      </StyledCloseButton>
+      </S.StyledCloseButton>
     )
   }
 
-  const [[searchTerm, debouncedSearchTerm], setSearchTerm] = useDebouncedState('');
+  const [[searchTerm, debouncedSearchTerm], setSearchTerm] = U.useDebouncedState('');
   const [showOpen, setShowOpen] = useState(0);
   const [showVisited, setShowVisited] = useState(0);
 
   const filterBusinesses = (business) => {
     const textFilteredResult = (
       business.name.toLowerCase().includes(debouncedSearchTerm) // name
-      || business.categories.map(category => category.title).some(title => removeSpaces(title).toLowerCase().includes(removeSpaces(debouncedSearchTerm))) // categories
+      || business.categories.map(category => category.title).some(title => U.removeSpaces(title).toLowerCase().includes(U.removeSpaces(debouncedSearchTerm))) // categories
       || (!!business.note && business.note.toLowerCase().includes(debouncedSearchTerm)) // note
     )
     
@@ -515,20 +300,20 @@ const Map = () => {
     const [openFilterValue, setOpenFilterValue] = useState('');
 
     return (
-      <FilterButton borderColor={'#7a0ebd'} iconColor={iconColor} onClick={() => nextFilterButtonState(showOpen, setShowOpen)}>
+      <S.FilterButton borderColor={'#7a0ebd'} iconColor={iconColor} onClick={() => nextFilterButtonState(showOpen, setShowOpen)}>
         <FontAwesomeIcon icon={icon} />
         {/* {showOpen === 0 ?
             null
           : showOpen === 1 ?
-          <FilterButtonText>Open now</FilterButtonText>
-          : <FilterButtonText>Open at</FilterButtonText>
+          <S.FilterButtonText>Open now</S.FilterButtonText>
+          : <S.FilterButtonText>Open at</S.FilterButtonText>
             
         }
         <Combobox>
-              <FilterButtonInput onClick={(e) => e.stopPropagation()}></FilterButtonInput>
+              <S.FilterButtonInput onClick={(e) => e.stopPropagation()}></S.FilterButtonInput>
             </Combobox> */}
         
-      </FilterButton>
+      </S.FilterButton>
     )
   }
   
@@ -536,26 +321,26 @@ const Map = () => {
     let borderColor, iconColor, icon;
     switch (showVisited) {
       case 1:
-        borderColor = '#49bd0e';
-        iconColor = '#49bd0e';
+        borderColor = S.visitedGreen;
+        iconColor = S.visitedGreen;
         icon = faCheckSquare;
         break;
       case 2:
         borderColor = '#aaa';
-        iconColor = '#49bd0e';
+        iconColor = S.visitedGreen;
         icon = faCheckSquareRegular;
         break;
       case 0:
       default:
-        borderColor = '#49bd0e';
+        borderColor = S.visitedGreen;
         icon = faCheckSquare;
         break;
     }
     
     return (
-      <FilterButton borderColor={'#49bd0e'} iconColor={iconColor} onClick={() => nextFilterButtonState(showVisited, setShowVisited)}>
+      <S.FilterButton borderColor={S.visitedGreen} iconColor={iconColor} onClick={() => nextFilterButtonState(showVisited, setShowVisited)}>
         <FontAwesomeIcon icon={icon} />
-      </FilterButton>
+      </S.FilterButton>
     )
   }
 
@@ -570,8 +355,9 @@ const Map = () => {
   }, [businessInfoWindowMounted])
 
   const onMapClick = (event) => {
+    console.log(event.target);
     if (businessInfoWindowMounted.current && !businessInfoWindowMounted.current.contains(event.target)) {
-      // setSelected(null);
+      setSelected(null);
     }
   }
 
@@ -587,6 +373,7 @@ const Map = () => {
     console.log({event});
     if (event.keyCode === 27) { // 'esc' pressed
       inputFilter.current.blur();
+      setSelected(null);
     } else if (event.keyCode === 191) { // '/' pressed
       inputFilter.current.focus(); 
       event.preventDefault();
@@ -601,9 +388,9 @@ const Map = () => {
     <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
     <h1>Yelp Combinator</h1>
     {/* <StyledMaterialIcon icon='search' /> */}
-    <ComboboxContainer>
-      <StyledCombobox>
-        <StyledComboboxInput 
+    <S.ComboboxContainer>
+      <S.StyledCombobox>
+        <S.StyledComboboxInput 
           disabled={businesses.length === 0}
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value.toLowerCase())}
@@ -618,11 +405,11 @@ const Map = () => {
             <ComboboxOption key={business.alias} value={business.name} />
           ))}
         </ComboboxPopover> */}
-      </StyledCombobox>
+      </S.StyledCombobox>
       <VisitedFilterButton />
       <OpenFilterButton />
-    </ComboboxContainer>
-    <StyledGoogleMap mapContainerClassName={'map-container'} mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={center} options={options} onLoad={onMapLoad} clickableIcons={false}>
+    </S.ComboboxContainer>
+    <S.StyledGoogleMap mapContainerClassName={'map-container'} mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={center} options={options} onLoad={onMapLoad} clickableIcons={false}>
       {markers.map(business => {
         return (
           <Marker 
@@ -642,10 +429,10 @@ const Map = () => {
       }
       {
         currentPosition.lat && (
-          <StyledMarker key={'currentPosition'} position={currentPosition} icon={currentPositionIcon} />
+          <S.StyledMarker key={'currentPosition'} position={currentPosition} icon={S.currentPositionIcon} />
         )
       }
-    </StyledGoogleMap>
+    </S.StyledGoogleMap>
   </div>
   )
 }

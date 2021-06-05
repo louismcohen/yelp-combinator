@@ -153,6 +153,13 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
     savedCollections.map(async savedCollection => {
       try {
         const loadedCollection = await loadCollectionPage(savedCollection.yelpCollectionId);
+        const loadedDate = new Date(loadedCollection.lastUpdated);
+        console.log({loadedDate});
+        // console.log({
+        //   loadedDate,
+        //   timeOffset: loadedDate.getTimezoneOffset(),
+        //   utc: loadedDate.UTC(),
+        // });
         // console.log({
         //   savedCollection,
         //   loadedCollection,

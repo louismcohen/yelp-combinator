@@ -1,19 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-import { Dimmer, Loader, Segment, Transition } from 'semantic-ui-react'
-
-const StyledSegment = styled(Segment)`
-  position: absolute !important;
-  width: 100%;
-  height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-`
-
-const StyledLoader = styled(Loader)`
-  ${'' /* font: inherit; */}
-`
+import * as S from './styles/MapLoadingStyles'
+import { Dimmer, Transition } from 'semantic-ui-react'
 
 const MapLoading = ({loadError, isLoaded, businesses}) => {
   const businessesLoaded = businesses && businesses.length > 0;
@@ -29,13 +16,13 @@ const MapLoading = ({loadError, isLoaded, businesses}) => {
   }
 
   return (
-    <StyledSegment>
+    <S.StyledSegment>
       <Transition visible={isActive} duration={200}>
         <Dimmer active={isActive}>
-          <StyledLoader size='large' indeterminate={!businesses || !!loadError}>{`Loading ${loadingLabel}`}</StyledLoader>
+          <S.StyledLoader size='large' indeterminate={!businesses || !!loadError}>{`Loading ${loadingLabel}`}</S.StyledLoader>
         </Dimmer>
       </Transition>
-    </StyledSegment>
+    </S.StyledSegment>
     
   )
 }

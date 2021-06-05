@@ -259,9 +259,9 @@ const appleMapsEsquePlus = [
   }
 ];
 
-const mapStyles = {
+const MapStyles = {
   appleMapsEsquePlus,
   wy
 }
 
-export default mapStyles;
+export default MapStyles;
