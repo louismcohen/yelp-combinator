@@ -40,6 +40,7 @@ const InfoWindow = styled.div`
   background: #fff;
   border-radius: 0.75em;
   overflow: hidden;
+  -webkit-box-shadow: 0 0.25em 0.8em rgba(0, 0, 0, 0.33);
   filter: drop-shadow(rgba(0, 0, 0, 0.33) 0 0.25em 0.8em);
   cursor: grab;
 

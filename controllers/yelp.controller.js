@@ -14,13 +14,17 @@ const initialLoad = async (request, response) => {
       console.log('updatedCollections.length > 0');
       const updatedBusinesses = await YelpBusinessService.checkAndUpdateIncompleteBusinesses(updatedCollections);
       console.log(`updatedBusinesses: ${updatedBusinesses.length}`);
+      if (updatedBusinesses) {
+        const allBusinesses = await YelpBusinessService.getAllBusinesses();
+        console.log(`allBusinesses: ${allBusinesses.length}`);
+        response.json(allBusinesses);
+      }
     } else {
       console.log('no businesses to update');
+      const allBusinesses = await YelpBusinessService.getAllBusinesses();
+      console.log(`allBusinesses: ${allBusinesses.length}`);
+      response.json(allBusinesses);
     }
-    
-    const allBusinesses = await YelpBusinessService.getAllBusinesses();
-    console.log(`allBusinesses: ${allBusinesses.length}`);
-    response.json(allBusinesses);
 
   } catch (error) {
     response.status(400).json(error);

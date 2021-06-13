@@ -429,7 +429,7 @@ const Map = () => {
       }
       {
         currentPosition.lat && (
-          <S.StyledMarker key={'currentPosition'} position={currentPosition} icon={S.currentPositionIcon} />
+          <S.StyledCurrentLocationMarker key={'currentPosition'} position={currentPosition} icon={S.currentPositionIcon} />
         )
       }
     </S.StyledGoogleMap>

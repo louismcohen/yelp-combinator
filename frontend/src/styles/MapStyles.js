@@ -50,13 +50,29 @@ export const StyledComboboxInput = styled(ComboboxInput)`
   border: 1px solid #aaa;
   border-radius: 8px;
   box-sizing: border-box;
+  ${'' /* -webkit-box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.33); */}
   filter: drop-shadow(rgba(0, 0, 0, 0.33) 0 0.25em 0.25em);
   transition: border-color 0.1s ease-in-out, filter 0.1s ease-in-out, background 0.1s ease-in-out;
    
+  &::after {
+    content: "after";
+    border-radius: 8px;
+    position: absolute;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    -webkit-transition: opacity 0.1s ease-in-out;
+    transition: opacity 0.1s ease-in-out;
+  }
+
   &:hover {
     border: 2px solid ${yelpRed};
     padding: calc(0.75em - 1px);
-    
+
   }
   &:focus {
     background: rgba(255, 255, 255, 1);
@@ -64,6 +80,10 @@ export const StyledComboboxInput = styled(ComboboxInput)`
     border: 2px solid ${yelpRed};
     filter: drop-shadow(rgba(0, 0, 0, 0.5) 0 0.25em 0.25em);
     outline: none;
+
+    &::after {
+      opacity: 1;
+    }
   }
 `
 
@@ -170,4 +190,7 @@ export const StyledMarker = styled(Marker)`
   &:hover {
     cursor: pointer;
   }
+`
+export const StyledCurrentLocationMarker = styled(StyledMarker)`
+  box-shadow: 0 0.25em 0.25em rgba(0, 0, 0, 0.7);
 `

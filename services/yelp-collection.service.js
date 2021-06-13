@@ -8,6 +8,7 @@ const jsdom = require('jsdom');
 const axios = require('axios');
 const {yelpAxiosOptions, YELP_RENDERED_ITEMS_URI, YELP_COLLECTION_URI} = require('../config/yelp-connection.config');
 const { response } = require('express');
+const { collection } = require('../models/yelp-collection.model');
 
 const initializeCollection = () => {
   return {items: [], businesses: []}; 
@@ -165,8 +166,8 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
         //   loadedCollection,
         // });
         console.log({
-          savedDate: savedCollection.lastUpdated,
-          loadedDate: loadedCollection.lastUpdated,
+          mongoSavedDate: savedCollection.lastUpdated,
+          yelpLoadedDate: loadedCollection.lastUpdated,
           upToDate: !(Date.parse(savedCollection.lastUpdated) !== Date.parse(loadedCollection.lastUpdated) || !savedCollection.lastUpdated),
         });
         if (Date.parse(savedCollection.lastUpdated) !== Date.parse(loadedCollection.lastUpdated) || !savedCollection.lastUpdated) {
@@ -182,6 +183,10 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
 
   return collectionsToUpdate.filter(collection => !!collection);
 }
+
+// const findNewBusinessesInCollection = (savedCollections, collectionsToUpdate) => {
+//   const newBusinesses = collectionToUpdate.filter(collection => collection.businesses.filter(biz => ))
+// }
 
 const updateManyLoadedCollections = async (loadedCollections) => {
   // DEV
