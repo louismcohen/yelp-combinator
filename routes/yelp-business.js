@@ -1,6 +1,6 @@
 const router = require('express').Router();
 // const {YelpCollectionController} = require('../controllers/yelp-collection-parser.controller');
-const YelpBusiness = require('../models/yelp-business.model');
+// const YelpBusiness = require('../models/yelp-business.model');
 const YelpBusinessController = require('../controllers/yelp-business-controller');
 
 // router.route('/yelp-business/').get((request, response) => {

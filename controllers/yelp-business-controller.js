@@ -1,17 +1,6 @@
 const YelpBusiness = require('../models/yelp-business.model');
 const axios = require('axios');
-const {
-  getYelpBusinessInfo, 
-  updateBusinessByAlias,
-  updateAllBusinesses,
-  updateIncompleteBusinesses,
-  updateAllBusinessesBasicInfo,
-  populateBasicBusinessInfo,
-  getAllBusinesses,
-  getBusinessByAlias,
-  deleteAllBusinesses,
-  updatedSavedBusiness,
-} = require('../services/yelp-business.service');
+const YelpBusinessService = require('../services/yelp-business.service');
 const Bottleneck = require('bottleneck');
 const { request } = require('express');
 
@@ -27,7 +16,7 @@ const updateAllIncompleteBusinesses = async (request, response, next) => {
   businesses.filter(x => !x.name).map(async business => {
     console.log(business);
     try {
-      const data = await limiter.schedule(() => getYelpBusinessInfo(business.alias));
+      const data = await limiter.schedule(() => YelpBusinessService.getYelpBusinessInfo(business.alias));
       YelpBusiness.findOneAndUpdate(
         {alias: business.alias},
         data,
@@ -50,25 +39,25 @@ const updateAllIncompleteBusinesses = async (request, response, next) => {
 
 const addOrUpdateBusinessByAlias = async (request, response) => {
   const alias = request.query.alias;
-  const updated = await updateBusinessByAlias(alias);
+  const updated = await YelpBusinessService.updateBusinessByAlias(alias);
   response.json(updated);
 }
 
 const updatedSaved = async (request, response) => {
   const data = request.body;
-  const updated = await updatedSavedBusiness(data);
+  const updated = await YelpBusinessService.updatedSavedBusiness(data);
   response.json(updated);
 }
 
 const getAll = async (request, response) => {
-  const businesses = await getAllBusinesses();
+  const businesses = await YelpBusinessService.getAllBusinesses();
   businesses ?
     response.json(businesses) :
     response.status(400).json(`Error getting all businesses`);          
 }
 
 const getByAlias = async (request, response) => {
-  const business = await getBusinessByAlias(request.query.alias);
+  const business = await YelpBusinessService.getBusinessByAlias(request.query.alias);
   business ?
     response.json(business) :
     response.status(400).json(`Error getting business with alias ${request.query.alias}`);
@@ -76,7 +65,7 @@ const getByAlias = async (request, response) => {
 
 const updateAll = async (request, response) => {
   try {
-    const allBusinesses = await updateAllBusinesses();
+    const allBusinesses = await YelpBusinessService.updateAllBusinesses();
     response.json(allBusinesses);
   } catch (error) {
     response.status(400).json(`Error updating all businesses\n${error}`);
@@ -84,7 +73,7 @@ const updateAll = async (request, response) => {
 }
 
 const updateIncomplete = async (request, response) => {
-  const updated = await updateIncompleteBusinesses();
+  const updated = await YelpBusinessService.updateIncompleteBusinesses();
   updated ?
     response.json(updated) :
     response.status(400).json(`Error updated incomplete businesses`);
@@ -92,7 +81,7 @@ const updateIncomplete = async (request, response) => {
 
 const updateAllBasicInfo = async (request, response) => {
   try {
-    const updatedBusinesses = await updateAllBusinessesBasicInfo();
+    const updatedBusinesses = await YelpBusinessService.updateAllBusinessesBasicInfo();
     response.json(updatedBusinesses);
   } catch (error) {
     response.status(400).json(`Error updating all basic info ${error}`);
@@ -101,7 +90,7 @@ const updateAllBasicInfo = async (request, response) => {
 
 const deleteAll = async (request, response) => {
   try {
-    const result = await deleteAllBusinesses();
+    const result = await YelpBusinessService.deleteAllBusinesses();
     response.json(result);
   } catch (error) {
     response.status(400).json(`Error deleting all businesses ${error}`);
@@ -116,7 +105,7 @@ const YelpBusinessController = async (request, response) => {
     case 'GET':
       switch (action) {
         case 'getAll':
-          getAll(request, response);
+          sgetAll(request, response);
           break;
         case 'getByAlias':
           getByAlias(request, response);

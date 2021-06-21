@@ -194,11 +194,15 @@ const Map = () => {
   }, [businesses]);
 
   const [selected, setSelected] = useState(null);
-  const onSelect = item => {
+  const onSelect = (item) => {
     // console.log(mapRef.current);
     // mapRef.current.panTo(item.position)
     console.log('selected', item);
     setSelected(item);
+  }
+
+  const onMarkerMouseover = (business) => {
+    // console.log(markerRefs.current.filter(marker => marker._reactInternals.key === business.alias)[0])
   }
 
   const [currentPosition, setCurrentPosition] = useState({center});
@@ -213,21 +217,38 @@ const Map = () => {
     });
   }, [])
 
-  const setVisited = async (business) => {
+  const setVisited = (business) => {
     business.visited = !business.visited;
+    saveBusinessInfo(business);
+    // const params = {
+    //   action: 'updateSaved',
+    // }
+    // try {
+    //   console.log('selected before setVisited:', selected);
+    //   const updatedResponse = await axios.put('http://localhost:3001/yelp-business', business, {params});
+    //   console.log('updatedResponse.data:', updatedResponse.data);
+    //   const businessData = applyExtraBusinessInfo(updatedResponse.data);
+    //   setSelected(businessData);
+    // } catch (error) {
+    //   console.log({error});
+    // }
+  } 
+
+  const saveBusinessInfo = async (business) => {
+    const yelpBusinessUri = `/api/yelp-business`;
     const params = {
       action: 'updateSaved',
     }
     try {
-      console.log('selected before setVisited:', selected);
-      const updatedResponse = await axios.put('http://localhost:3001/yelp-business', business, {params});
-      console.log('updatedResponse.data:', updatedResponse.data);
-      const businessData = applyExtraBusinessInfo(updatedResponse.data);
-      setSelected(businessData);
+      const updatedResponse = await axios.put(yelpBusinessUri, business, {params});
+      const updatedBusinessData = applyExtraBusinessInfo(updatedResponse.data);
+      const updatedBusinesses = businesses.map(biz => biz.alias === business.alias ? updatedBusinessData : biz);
+      setBusinesses(updatedBusinesses);
+      // setSelected(updatedBusinessData);
     } catch (error) {
       console.log({error});
     }
-  } 
+  }
 
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
@@ -361,7 +382,16 @@ const Map = () => {
     }
   }
 
-  const markerRef = useRef();
+  const markerRefs = useRef([]);
+
+
+  const MarkerTooltip = (business) => {
+    return (
+      <S.StyledMarkerTooltip>
+        {business.name}
+      </S.StyledMarkerTooltip>
+    )
+  }
 
   if (!isLoaded || !!loadError) {
     return (
@@ -413,18 +443,20 @@ const Map = () => {
       {markers.map(business => {
         return (
           <Marker 
-            ref={markerRef}
+            ref={(marker) => markerRefs.current.push(marker)}
             key={business.alias} 
+            cursor={'pointer'}
             position={business.position} 
             // animation={window.google.maps.Animation.DROP} 
             onClick={() => onSelect(business)}  
-            onMouseOver={() => console.log(`mouseover ${business.name}`)}
+            onMouseOver={() => onMarkerMouseover(business)}
             // icon={RamenDiningIcon}
+            title={business.name}
           />
         )
       })}
       {selected ? 
-        <BusinessInfoWindow ref={businessInfoWindowMounted} business={selected} currentPosition={currentPosition} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
+        <BusinessInfoWindow ref={businessInfoWindowMounted} business={selected} currentPosition={currentPosition} onGetWebsite={() => null} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
         : null
       }
       {

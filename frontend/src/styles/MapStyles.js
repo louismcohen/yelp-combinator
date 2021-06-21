@@ -152,6 +152,11 @@ FilterButton.defaultProps = {
   accentColor: '#666',
 }
 
+export const StyledMarkerTooltip = styled.div`
+  position: relative;
+  background: rgba(0, 0, 0, 0.33);
+`
+
 export const currentPositionIcon = {
   path: faCircle.icon[4],
   scale: 0.05,

@@ -4,7 +4,7 @@ import {
 } from "@react-google-maps/api";
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faDirections, faCheckSquare as faCheckSquareSolid } from '@fortawesome/free-solid-svg-icons'; 
+import { faTimes, faDirections, faCheckSquare as faCheckSquareSolid, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'; 
 import { faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 import { faYelp } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
@@ -19,6 +19,7 @@ const visitedColorActiveHover = '#41a90c'; //darker green
 const actionColorDefault = '#666';
 const yelpRed = '#da2007';
 const googleMapsYellow = '#fbbc04';
+const purpleComplement = '#7b04fb';
 
 const infoWindowTextSize = '1.3em';
 
@@ -108,7 +109,7 @@ const Note = styled.div`
   background-color: #eee;
 `
 
-const TravelTime = styled.div`
+const StyledTravelTime = styled.div`
   font-size: ${infoWindowTextSize};
   margin: 0.5em 0;
   padding: 0 15px;
@@ -237,17 +238,17 @@ const StyledIcon = styled.div`
 
   &:hover {
     cursor: pointer;
-    color: ${props => props.visited ? visitedColorActiveHover : props.hovercolor};
+    color: ${props => props.visited ? visitedColorActiveHover : props.hoverColor};
   }
 
   &:active {
-    color: ${props => props.visited ? visitedColorActiveHover : props.hovercolor};
+    color: ${props => props.visited ? visitedColorActiveHover : props.hoverColor};
   }
 `
 
-const Icon = ({icon, color, onClick, hovercolor, visited}) => {
+const Icon = ({icon, color, onClick, hoverColor, visited, title}) => {
   return (
-    <StyledIcon hovercolor={hovercolor} color={color} visited={visited} onClick={onClick}><FontAwesomeIcon icon={icon} /></StyledIcon>
+    <StyledIcon hoverColor={hoverColor} color={color} visited={visited} onClick={onClick} title={title} ><FontAwesomeIcon icon={icon} /></StyledIcon>
   )
 }
 
@@ -260,6 +261,9 @@ const formatCategories = (categories) => {
 }
 
 const getTravelTime = async (currentPosition, destination) => {
+  if (!currentPosition.lat) {
+    return null;
+  }
   const center = {
     lat: 34.01747899558564,
     lng: -118.40530146733245,
@@ -287,7 +291,24 @@ const getPixelPositionOffset = (width, height) => {
   }
 }
 
+const getBusinessWebsite = async (business) => {
+  const placeWebsiteUri = `/api/places`
+  const params = {
+    type: 'placeWebsite',
+    placeSearchQuery: `${business.name} ${business.location.zip_code}`,
+  }
+
+  try {
+    const response = await axios.get(placeWebsiteUri, {params});
+    return response.data;
+  } catch (error) {
+    console.log({error});
+    return {error}
+  }
+}
+
 const BusinessInfoWindow = forwardRef((props, ref) => {
+  console.log(`props.currentPosition: ${props.currentPosition.lat}`);
   const name = props.business.name;
   const categories = formatCategories(props.business.categories)
   const note = props.business.note;
@@ -313,6 +334,31 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
     
     fetchData();
   }, [props.currentPosition, props.business.position]);
+
+  const [businessWebsiteUrl, setBusinessWebsiteUrl] = useState('');
+  useEffect(() => {
+    const fetchWebsite = async () => {
+      const website = await getBusinessWebsite(props.business);
+      if (website) setBusinessWebsiteUrl(website);
+    }
+
+    fetchWebsite();
+  }, [props.business])
+
+  const TravelTime = () => {
+    // {travelTime && props.currentPosition.lat ? 
+    //   <div><strong>{travelTime.duration}</strong> | {travelTime.distance} away</div> 
+    //   : 'Calculating travel time...'}
+    if (!props.currentPosition.lat) {
+      return null;
+    } else if (travelTime) {
+      return (
+        <StyledTravelTime><strong>{travelTime.duration}</strong> | {travelTime.distance} away</StyledTravelTime> 
+      )
+    } else {
+      return <StyledTravelTime>Calculating travel time...</StyledTravelTime>;
+    }
+  }
 
   const determineVisitedIcon = () => {
     const icon = props.business.visited ? faCheckSquareSolid : faCheckSquare;
@@ -341,26 +387,26 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
           <Content>
             <Name>{name}</Name>
             <Categories>{categories}</Categories>
-            <TravelTime>
-              {travelTime ? 
-                <div><strong>{travelTime.duration}</strong> | {travelTime.distance} away</div> 
-                : 'Calculating travel time...'}
-            </TravelTime>
+            <TravelTime />
             <OpeningInfo hours={hours} travelTime={travelTime} />
             {(note ? <Note>{props.business.note}</Note> : null)}
             <StyledActionRow>
-              <a href={`${yelpBizUrl}${props.business.alias}`} target='_blank' rel='noopener noreferrer'>
-                <Icon icon={faYelp} hovercolor={yelpRed} />
+              <a href={`${yelpBizUrl}${props.business.alias}`} target='_blank' rel='noopener noreferrer' title={`Go to Yelp page`}>
+                <Icon icon={faYelp} hoverColor={yelpRed} />
               </a>
-              <a href={`${googleMapsDirectionsUrl}&origin=${originEncoded}&destination=${destinationEncoded}`} target='_blank' rel='noopener noreferrer'>
-                <Icon icon={faDirections} hovercolor={googleMapsYellow} />
+              {businessWebsiteUrl ? <a href={businessWebsiteUrl} target='_blank' rel='noopener noreferrer' title={`Go to business website`}>
+                <Icon icon={faExternalLinkAlt} hoverColor={purpleComplement} />
+              </a> : null}
+              <a href={`${googleMapsDirectionsUrl}&origin=${originEncoded}&destination=${destinationEncoded}`} target='_blank' rel='noopener noreferrer' title={`Get Google Maps directions from current location`}>
+                <Icon icon={faDirections} hoverColor={googleMapsYellow} />
               </a>
               <Icon 
                 icon={faCheckSquareSolid} 
                 color={determineVisitedColor()}
                 onClick={props.onVisited}
-                hovercolor={visitedColor} 
+                hoverColor={visitedColor} 
                 visited={visited}
+                title={visited ? `Mark not visited` : `Mark visited`}
                 />
             </StyledActionRow>
           </Content>

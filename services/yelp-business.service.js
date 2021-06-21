@@ -226,7 +226,7 @@ const deleteAllBusinesses = async () => {
   }
 }
 
-module.exports = {
+const YelpBusinessService =  {
   getAllBusinesses,
   getBusinessByAlias,
   getYelpBusinessInfo,
@@ -242,3 +242,5 @@ module.exports = {
   populateBasicBusinessInfo,
   deleteAllBusinesses,
 }
+
+module.exports = YelpBusinessService;
