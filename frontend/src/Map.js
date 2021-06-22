@@ -235,6 +235,7 @@ const Map = () => {
   } 
 
   const saveBusinessInfo = async (business) => {
+    console.log(`in saveBusinessInfo for ${business.alias}`);
     const yelpBusinessUri = `/api/yelp-business`;
     const params = {
       action: 'updateSaved',
@@ -244,6 +245,8 @@ const Map = () => {
       const updatedBusinessData = applyExtraBusinessInfo(updatedResponse.data);
       const updatedBusinesses = businesses.map(biz => biz.alias === business.alias ? updatedBusinessData : biz);
       setBusinesses(updatedBusinesses);
+      console.log(`updatedBusiness:`);
+      console.log(businesses.filter(biz => biz.alias === business.alias)[0]);
       // setSelected(updatedBusinessData);
     } catch (error) {
       console.log({error});
@@ -456,7 +459,7 @@ const Map = () => {
         )
       })}
       {selected ? 
-        <BusinessInfoWindow ref={businessInfoWindowMounted} business={selected} currentPosition={currentPosition} onGetWebsite={() => null} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
+        <BusinessInfoWindow ref={businessInfoWindowMounted} business={selected} currentPosition={currentPosition} onGetWebsite={() => saveBusinessInfo(selected)} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
         : null
       }
       {

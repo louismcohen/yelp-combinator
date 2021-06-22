@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const YelpBusiness = require('./yelp-business.model');
 
 const yelpCollectionSchema = new mongoose.Schema({
   yelpCollectionId: {

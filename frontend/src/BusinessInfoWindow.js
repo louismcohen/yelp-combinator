@@ -308,6 +308,7 @@ const getBusinessWebsite = async (business) => {
 }
 
 const BusinessInfoWindow = forwardRef((props, ref) => {
+  console.log({props});
   console.log(`props.currentPosition: ${props.currentPosition.lat}`);
   const name = props.business.name;
   const categories = formatCategories(props.business.categories)
@@ -321,7 +322,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
   
   const [travelTime, setTravelTime] = useState(null);
   useEffect(() => { 
-    const fetchData = async () => {
+    const fetchTravelTime = async () => {
       setTravelTime(null);
       const result = await getTravelTime(props.currentPosition, props.business.position);
       if (result) {
@@ -332,17 +333,25 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
       }
     }
     
-    fetchData();
+    fetchTravelTime();
   }, [props.currentPosition, props.business.position]);
 
-  const [businessWebsiteUrl, setBusinessWebsiteUrl] = useState('');
   useEffect(() => {
     const fetchWebsite = async () => {
-      const website = await getBusinessWebsite(props.business);
-      if (website) setBusinessWebsiteUrl(website);
+      const websiteResult = await getBusinessWebsite(props.business);
+      if (websiteResult) {
+        props.business.website = websiteResult;
+      } else {
+        props.business.website = '';
+      }
+      props.onGetWebsite();
     }
 
-    fetchWebsite();
+    if (!props.business.website) {
+      console.log(`no props.business.website for ${props.business.alias}:`);
+      console.log(props.business.website);
+      fetchWebsite();
+    } 
   }, [props.business])
 
   const TravelTime = () => {
@@ -394,7 +403,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
               <a href={`${yelpBizUrl}${props.business.alias}`} target='_blank' rel='noopener noreferrer' title={`Go to Yelp page`}>
                 <Icon icon={faYelp} hoverColor={yelpRed} />
               </a>
-              {businessWebsiteUrl ? <a href={businessWebsiteUrl} target='_blank' rel='noopener noreferrer' title={`Go to business website`}>
+              {props.business.website ? <a href={props.business.website} target='_blank' rel='noopener noreferrer' title={`Go to business website`}>
                 <Icon icon={faExternalLinkAlt} hoverColor={purpleComplement} />
               </a> : null}
               <a href={`${googleMapsDirectionsUrl}&origin=${originEncoded}&destination=${destinationEncoded}`} target='_blank' rel='noopener noreferrer' title={`Get Google Maps directions from current location`}>
