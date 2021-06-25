@@ -1,2 +1,4 @@
 .env
 /frontend/build
+.gcloudignore
+app.yaml
