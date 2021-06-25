@@ -309,6 +309,7 @@ const getBusinessWebsite = async (business) => {
 
 const BusinessInfoWindow = forwardRef((props, ref) => {
   console.log({props});
+  // console.log(ref.current.onGetWebsite);
   console.log(`props.currentPosition: ${props.currentPosition.lat}`);
   const name = props.business.name;
   const categories = formatCategories(props.business.categories)

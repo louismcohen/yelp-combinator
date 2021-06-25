@@ -7,6 +7,8 @@ import {
 } from "@react-google-maps/api";
 import moment from 'moment';
 
+import YelpBusinessService from './api/yelp-business.service';
+
 import BusinessInfoWindow from './BusinessInfoWindow';
 import MapLoading from './MapLoading';
 
@@ -158,7 +160,7 @@ const Map = () => {
   const applyExtraBusinessInfo = (business) => {
     business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}; //easier position parsing 
     business.hours = business.hours[0]; //easier hours parsing
-    if (business.hours) parseHours(business);
+    if (business.hours) YelpBusinessService.parseHours(business);
 
     return business;
   }
@@ -178,7 +180,7 @@ const Map = () => {
       //   business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, //easier position parsing 
       //   business.hours = business.hours[0] //easier hours parsing
       // ));
-      response.data.map(applyExtraBusinessInfo);
+      response.data.map(YelpBusinessService.applyExtraBusinessInfo);
       // const businessesData = applyExtraBusinessInfo(response.data);
       setBusinesses(response.data);
       console.log('useEffect getAllBusinesses', response.data);
@@ -217,7 +219,7 @@ const Map = () => {
     });
   }, [])
 
-  const setVisited = (business) => {
+  const setVisited = async (business) => {
     business.visited = !business.visited;
     saveBusinessInfo(business);
     // const params = {
@@ -235,22 +237,26 @@ const Map = () => {
   } 
 
   const saveBusinessInfo = async (business) => {
-    console.log(`in saveBusinessInfo for ${business.alias}`);
-    const yelpBusinessUri = `/api/yelp-business`;
-    const params = {
-      action: 'updateSaved',
-    }
-    try {
-      const updatedResponse = await axios.put(yelpBusinessUri, business, {params});
-      const updatedBusinessData = applyExtraBusinessInfo(updatedResponse.data);
-      const updatedBusinesses = businesses.map(biz => biz.alias === business.alias ? updatedBusinessData : biz);
-      setBusinesses(updatedBusinesses);
-      console.log(`updatedBusiness:`);
-      console.log(businesses.filter(biz => biz.alias === business.alias)[0]);
-      // setSelected(updatedBusinessData);
-    } catch (error) {
-      console.log({error});
-    }
+    const updatedBusinesses = await YelpBusinessService.saveBusinessInfo(business, businesses);
+    setBusinesses(updatedBusinesses);
+    // // console.log(`in Map.saveBusinessInfo for ${business.alias}`);
+    // // console.log({business});
+    // // console.log(`in saveBusinessInfo for ${business.alias}`);
+    // const yelpBusinessUri = `/api/yelp-business`;
+    // const params = {
+    //   action: 'updateSaved',
+    // }
+    // try {
+    //   const updatedResponse = await axios.put(yelpBusinessUri, business, {params});
+    //   const updatedBusinessData = YelpBusinessService.applyExtraBusinessInfo(updatedResponse.data);
+    //   const updatedBusinesses = businesses.map(biz => biz.alias === business.alias ? updatedBusinessData : biz);
+    //   setBusinesses(updatedBusinesses);
+    //   console.log(`updatedBusiness:`);
+    //   console.log(businesses.filter(biz => biz.alias === business.alias)[0]);
+    //   // setSelected(updatedBusinessData);
+    // } catch (error) {
+    //   console.log({error});
+    // }
   }
 
   const mapRef = useRef();

@@ -54,6 +54,7 @@ const yelpBusinessSchema = new mongoose.Schema({
     is_overnight: Boolean
   }],
   visited: Boolean,
+  website: String,
 }, {
   timestamps: true
 });
