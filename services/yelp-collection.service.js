@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const YelpCollection = require('../models/yelp-collection.model');
 const {
   populateBasicBusinessInfo,
@@ -7,7 +8,7 @@ const {
 const jsdom = require('jsdom');
 const axios = require('axios');
 const {yelpAxiosOptions, YELP_RENDERED_ITEMS_URI, YELP_COLLECTION_URI} = require('../config/yelp-connection.config');
-const { response } = require('express');
+const moment = require('moment-timezone');
 const { collection } = require('../models/yelp-collection.model');
 
 const initializeCollection = () => {
@@ -45,6 +46,7 @@ const findCollection = async (yelpCollectionId) => {
 }
 
 const loadCollectionPage = async (yelpCollectionId) => {
+  const yelpTimeZone = 'America/Los_Angeles';
   let collection = initializeCollection();
   collection.yelpCollectionId = yelpCollectionId;
 
@@ -54,10 +56,10 @@ const loadCollectionPage = async (yelpCollectionId) => {
 
     collection.doc = dom.window.document;
     collection.itemCount = Number(collection.doc.querySelector(".ylist").getAttribute("data-item-count"));
-    collection.lastUpdated = new Date(collection.doc.getElementsByTagName("time")[0].dateTime).toISOString();
+    collection.lastUpdated = moment.tz(collection.doc.getElementsByTagName("time")[0].dateTime, yelpTimeZone);
     collection.title = collection.doc.querySelector('meta[property="og:title"]').content;
     
-    console.log(`loadCollectionPage ${collection.title} ${collection.yelpCollectionId}: ${collection.itemCount} items, last updated on Yelp ${collection.lastUpdated}`);
+    console.log(`loadCollectionPage ${collection.title} ${collection.yelpCollectionId}: ${collection.itemCount} items, last updated on Yelp ${collection.lastUpdated.utc()}`);
 
     return collection;
   } catch (error) {
@@ -90,7 +92,7 @@ const scrapeCollection = async (yelpCollectionId) => {
   const loadedResult = await loadCollectionPage(yelpCollectionId);
   const populatedItemsResult = await populateRenderedItems(loadedResult);
   const populatedBusinessesResult = populateBasicBusinessInfo(populatedItemsResult);
-  // console.log(JSON.stringify(populatedBusinessesResult));
+  console.log(JSON.stringify(populatedBusinessesResult));
   const updatedBasicBusinessInfo = Promise.all(
     populatedBusinessesResult.businesses.map(async business => await updateBusinessBasicInfo(business))
   )
@@ -117,6 +119,8 @@ const scrapeAllCollections = async () => {
 const getAllCollections = async () => {
   try {
     const collections = await YelpCollection.find();
+    // console.log(collections.filter(collection => collection.yelpCollectionId == 'JUO2dgzoATA2UEBEWP1Mjw'));
+    // collections.map(collection => collection.lastUpdated = moment(collection.lastUpdated)); // convert from epoch to Moment object
     return collections;
   } catch (error) {
     return {error: error};
@@ -131,7 +135,7 @@ const addOrUpdateCollection = async (collection) => {
       yelpCollectionId: collection.yelpCollectionId, 
       title: collection.title, 
       itemCount: collection.itemCount,
-      lastUpdated: collection.lastUpdated,
+      lastUpdated: collection.lastUpdated.valueOf(),
       businesses: collection.businesses,
     },
     {new: true, upsert: true},  
@@ -154,24 +158,16 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
     savedCollections.map(async savedCollection => {
       try {
         const loadedCollection = await loadCollectionPage(savedCollection.yelpCollectionId);
-        const loadedDate = new Date(loadedCollection.lastUpdated);
-        console.log({loadedDate});
-        // console.log({
-        //   loadedDate,
-        //   timeOffset: loadedDate.getTimezoneOffset(),
-        //   utc: loadedDate.UTC(),
-        // });
-        // console.log({
-        //   savedCollection,
-        //   loadedCollection,
-        // });
+        const mongoSavedDate = moment(savedCollection.lastUpdated);
+        const yelpLoadedDate = loadedCollection.lastUpdated;
+        const upToDate = !(!yelpLoadedDate.isSame(mongoSavedDate) || !savedCollection.lastUpdated);
         console.log({
-          mongoSavedDate: savedCollection.lastUpdated,
-          yelpLoadedDate: loadedCollection.lastUpdated,
-          upToDate: !(Date.parse(savedCollection.lastUpdated) !== Date.parse(loadedCollection.lastUpdated) || !savedCollection.lastUpdated),
+          mongoSavedDate: mongoSavedDate.format(),
+          yelpLoadedDate: yelpLoadedDate.format(),
+          upToDate,
         });
-        if (Date.parse(savedCollection.lastUpdated) !== Date.parse(loadedCollection.lastUpdated) || !savedCollection.lastUpdated) {
-          console.log('savedCollection.lastUpdated !== loadedCollection.lastUpdated');
+        if (!upToDate) {
+          console.log('mongoSavedDate !== yelpLoadedDate');
           return loadedCollection;
         }
       } catch (error) {
@@ -184,24 +180,42 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
   return collectionsToUpdate.filter(collection => !!collection);
 }
 
-// const findNewBusinessesInCollection = (savedCollections, collectionsToUpdate) => {
-//   const newBusinesses = collectionToUpdate.filter(collection => collection.businesses.filter(biz => ))
-// }
+const findNewBusinessesInCollection = (collectionToUpdate, savedCollections) => {
+  const savedCollection = savedCollections.find(collection => collection.yelpCollectionId === collectionToUpdate.yelpCollectionId).toObject();
+  const newBusinesses = savedCollection.businesses.filter(saved => !collectionToUpdate.businesses.some(update => saved.alias === update.alias));
+  const comparison = _.isEqual(collectionToUpdate.businesses, savedCollections.businesses);
+  return newBusinesses;
+}
 
-const updateManyLoadedCollections = async (loadedCollections) => {
+const findModifiedInfoInCollection = (collectionToUpdate, savedCollections) => {
+  const savedCollection = savedCollections.find(collection => collection.yelpCollectionId === collectionToUpdate.yelpCollectionId).toObject();
+  const updatedInfo = collectionToUpdate.businesses.filter(
+    saved => !savedCollection.businesses.some(
+      update => saved.alias === update.alias && saved.note === update.note
+    )
+  );
+  return updatedInfo;
+}
+
+const updateManyLoadedCollections = async (loadedCollections, savedCollections) => {
   // DEV
   // loadedCollections = [loadedCollections[0]];
   // DEV
   const updatedCollections = await Promise.all(
     loadedCollections.map(async loadedCollection => {
       const populatedItemsResult = await populateRenderedItems(loadedCollection);
-      const populatedBusinessesResult = populateBasicBusinessInfo(populatedItemsResult);
-      const updatedResult = await addOrUpdateCollection(populatedBusinessesResult);
+      const populatedBusinessesResult = populateBasicBusinessInfo(populatedItemsResult);    
+      const updatedInfo = findModifiedInfoInCollection(populatedBusinessesResult, savedCollections);
+      console.log({updatedInfo});
+      const updatedResult = updatedInfo.length > 0
+        ? await addOrUpdateCollection(populatedBusinessesResult)
+        : null;
+      updatedResult.businesses = updatedResult.businesses.filter(saved => updatedInfo.some(update => update.alias === saved.alias));
       return updatedResult;
     })
   )
   
-  return updatedCollections;
+  return updatedCollections.filter(x => !!x);
 }
 
 const deleteAllCollections = async () => {

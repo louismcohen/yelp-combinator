@@ -7,7 +7,7 @@ const initialLoad = async (request, response) => {
     console.log(`savedCollections: ${savedCollections.length}`);
     const collectionsToUpdate = await YelpCollectionService.compareSavedToLoadedCollections(savedCollections);
     console.log(`collectionsToUpdate: ${collectionsToUpdate.length}`);
-    const updatedCollections = await YelpCollectionService.updateManyLoadedCollections(collectionsToUpdate);
+    const updatedCollections = await YelpCollectionService.updateManyLoadedCollections(collectionsToUpdate, savedCollections);
     console.log(`updatedCollections: ${updatedCollections.length}`);
     
     if (updatedCollections.length > 0) {

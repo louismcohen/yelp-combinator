@@ -7,7 +7,7 @@ const yelpCollectionSchema = new mongoose.Schema({
     unique: false,
     trim: true
   },
-  lastUpdated: Date,
+  lastUpdated: Number,
   title: String,
   itemCount: Number, 
   items: [String],
