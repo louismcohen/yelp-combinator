@@ -3,6 +3,8 @@ const axios = require('axios');
 const {yelpAxiosOptions, YELP_BIZ_API_URI} = require('../config/yelp-connection.config');
 const Bottleneck = require('bottleneck');
 const YelpCollection = require('../models/yelp-collection.model');
+const GoogleTimeZoneController = require('../controllers/google-timezone.controller');
+const GeolocationService = require('../services/geolocation.service');
 
 const limiter = new Bottleneck({
   maxConcurrent: 5,
@@ -43,6 +45,9 @@ const populateBasicBusinessInfo = (collection) => {
 
 const updateBusinessById = async (id) => {
   const data = await limiter.schedule(() => getYelpBusinessInfo(id));
+  const timeZoneInfo = GeolocationService.getTimeZoneByCoordinates(data.coordinates.latitude, data.coordinates.longitude);
+  console.log({timeZoneInfo});
+  data.location.timezone = timeZoneInfo.timezone;
 
   const updatedBusiness = await YelpBusiness.findOneAndUpdate(
     {id: id},
@@ -81,6 +86,8 @@ const updatedSavedBusiness = async (data) => {
 
 const updateBusinessByAlias = async (alias) => {
   const data = await limiter.schedule(() => getYelpBusinessInfo(alias));
+  const timeZoneInfo = await GeolocationService.getTimeZoneByCoordinates(data.coordinates.latitude, data.coordinates.longitude);
+  data.location.timezone = timeZoneInfo.timezone;
 
   if (!data.error) {
     const updatedBusiness = await YelpBusiness.findOneAndUpdate(

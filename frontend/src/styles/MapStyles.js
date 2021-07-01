@@ -30,6 +30,7 @@ export const ComboboxContainer = styled.div`
   width: 100%;
   top: 1rem;
   display: flex;
+  align-items: center;
   justify-content: center;
   position: absolute;
   z-index: 100;

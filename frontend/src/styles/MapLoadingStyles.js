@@ -8,6 +8,8 @@ export const StyledSegment = styled(Segment)`
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+  border: none !important;
+  border-radius: 0 !important;
 `
 
 export const StyledLoader = styled(Loader)`

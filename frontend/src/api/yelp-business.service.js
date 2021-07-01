@@ -1,5 +1,5 @@
 import axios from 'axios';
-import moment from 'moment';
+import moment from 'moment-timezone';
 
 const applyExtraBusinessInfo = (business) => {
   business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}; //easier position parsing 
@@ -7,6 +7,15 @@ const applyExtraBusinessInfo = (business) => {
   if (business.hours) parseHours(business);
 
   return business;
+}
+
+const getAllUniqueCategories = (businesses) => {
+  const allCategories = businesses.map(x => x.categories).flat().map(y => {return {alias: y.alias, title: y.title}});
+  const uniqueCategories = allCategories.filter((value, index) => allCategories.findIndex(obj => obj.alias === value.alias) === index);
+  const uniqueCategoriesSorted = uniqueCategories.sort((a, b) => (a.title > b.title) ? 1 : - 1);
+
+  console.log({uniqueCategoriesSorted});
+  return uniqueCategoriesSorted;
 }
 
 const parseHours = (business) => {
@@ -115,6 +124,7 @@ const YelpBusinessService = {
   saveBusinessInfo,
   applyExtraBusinessInfo,
   parseHours,
+  getAllUniqueCategories,
 }
 
 export default YelpBusinessService;

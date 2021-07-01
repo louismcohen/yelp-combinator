@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback, forwardRef } from 'react';
 import {
   OverlayView
-} from "@react-google-maps/api";
+} from '@react-google-maps/api';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faDirections, faCheckSquare as faCheckSquareSolid, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'; 
@@ -326,7 +326,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
     const fetchTravelTime = async () => {
       setTravelTime(null);
       const result = await getTravelTime(props.currentPosition, props.business.position);
-      if (result) {
+      if (result && result.data.rows[0].elements[0].status === 'OK') {
         setTravelTime({
           distance: result.data.rows[0].elements[0].distance.text,
           duration: result.data.rows[0].elements[0].duration.text,

@@ -5,12 +5,13 @@ import {
   useLoadScript,
   Marker,
 } from "@react-google-maps/api";
-import moment from 'moment';
 
 import YelpBusinessService from './api/yelp-business.service';
 
 import BusinessInfoWindow from './BusinessInfoWindow';
 import MapLoading from './MapLoading';
+import IconMarker from './IconMarker';
+
 
 import 'semantic-ui-css/semantic.min.css'
 import './styles/Map.css'
@@ -20,29 +21,9 @@ import GoogleMapStyles from './styles/GoogleMapStyles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV, faCircle } from '@fortawesome/free-solid-svg-icons/';
 import { faCheckSquare as faCheckSquareRegular } from '@fortawesome/free-regular-svg-icons';
+import GeolocationService from './api/geolocation.service';
 
-
-// const GetBookmarks = () => {
-//   const [bookmarks, setBookmarks] = React.useState([]);
-
-//   React.useEffect(() => {
-//     async function fetchCollections() {
-
-//     }
-//   })
-// }
-
-// const getAllBusinesses = async () => {
-//   try {
-//     const response = await axios.get('http://localhost:3001');
-//     console.log({response: response}, {data: response.data});
-//     return response.data;
-//   } catch (error) {
-//     return {error: error};
-//   }
-// }
-
-// businesses.filter(business => business.categories.map(category => category.alias).some(alias => alias == 'noodles'))
+console.log({IconMarker});
 
 const libraries = ['places'];
 const mapContainerStyle = {
@@ -50,7 +31,7 @@ const mapContainerStyle = {
   height: '100vh'
 };
 const defaultZoom = 12;
-const center = {
+const defaultCenter = {
   lat: 34.01747899558564,
   lng: -118.40530146733245,
 }
@@ -60,110 +41,11 @@ const options = {
   zoomControl: true
 }
 
-const parseHours = (business) => {
-  const daysOfTheWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  const nextDayToCheck = (dayOfWeek) => {
-    return dayOfWeek < 6 ? dayOfWeek + 1 : 0;
-  }
-
-  // console.log({parseHours: business});
-  const now = moment();
-  const nowTimeFormatted = `${now.format('HHmm')}`
-  let openingMessage = '';
-
-
-  const openingHours = business.hours.open;  
-  const findOpeningBlock = (dayOfWeek) => {
-    const openHoursThisDay = openingHours.filter(x => x.day === dayOfWeek);
-    if (openHoursThisDay.length > 0) {
-      if (openHoursThisDay.filter(open => open.day === now.day() && open.start < nowTimeFormatted && open.end > nowTimeFormatted).length > 0) { // open right now
-        
-        // console.log(`${business.name} is open right now`);
-        const currentOpeningBlock = openHoursThisDay
-          .filter(open => open.day === now.day() && open.start < nowTimeFormatted && open.end > nowTimeFormatted)[0];
-
-        openingMessage = `Open until ${moment(currentOpeningBlock.end, 'HHmm').format('h:mm A')}`;
-        business.hours.is_open_now = true;
-        business.hours.open_info = {
-          time: moment(currentOpeningBlock.end, 'HHmm').format('h:mm A'),
-        }
-  
-        // openHoursThisDay.map(open => console.log({start: open.start, end: open.end}));
-      } else if (openHoursThisDay.filter(open => open.day === now.day() && open.start > nowTimeFormatted).length > 0) { // open later today
-        
-        // console.log(`${business.name} is open later today`);
-        
-        const currentOpeningBlock = openHoursThisDay
-          .filter(open => open.day === now.day() && open.start > nowTimeFormatted)
-          .sort((a, b) => a.start - b.start)[0];
-
-        openingMessage = `Opens at ${moment(currentOpeningBlock.start, 'HHmm').format('h:mm A')}`;
-        business.hours.is_open_now = false;
-        business.hours.open_info = {
-          time: moment(currentOpeningBlock.start, 'HHmm').format('h:mm A'),
-        }
-  
-        // openHoursThisDay.map(open => console.log({start: open.start, end: open.end}));
-      } else if (openHoursThisDay.filter(open => open.day === now.day() && open.end < nowTimeFormatted).length > 0 && !(openingHours.length === 1)) { // was open today, now closed
-        
-        // console.log(`${business.name} was open today but is now closed, will look on ${daysOfTheWeek[nextDayToCheck(dayOfWeek)]}`);
-
-        // openHoursThisDay.map(open => console.log({start: open.start, end: open.end}));
-        findOpeningBlock(nextDayToCheck(dayOfWeek));
-      } else if (openHoursThisDay.filter(open => open.day === dayOfWeek) || openingHours.length === 1) { // open on another day
-        
-        // console.log(`${business.name} is not open today, but next open on ${daysOfTheWeek[dayOfWeek]}`);
-
-        const currentOpeningBlock = openHoursThisDay
-          .filter(open => open.day === dayOfWeek)
-          .sort((a, b) => a.start - b.start)[0];
-        
-        const tomorrow = dayOfWeek === nextDayToCheck(now.day());
-        openingMessage = `Opens ${tomorrow ? 'tomorrow' : daysOfTheWeek[dayOfWeek]} at ${moment(currentOpeningBlock.start, 'HHmm').format('h:mm A')}`;
-        business.hours.is_open_now = false;
-        business.hours.open_info = {
-          day: tomorrow ? 'tomorrow' : daysOfTheWeek[dayOfWeek],
-          time: moment(currentOpeningBlock.start, 'HHmm').format('h:mm A'),
-        }
-
-        // openHoursThisDay.map(open => console.log({start: open.start, end: open.end}));
-      } else { // not open on this day, look for next day
-        // console.log(`${business.name} is not open on ${daysOfTheWeek[dayOfWeek]}, will continue looking`);
-        findOpeningBlock(nextDayToCheck(dayOfWeek));
-      }
-    } else { // not open on this day, look for next day
-      // console.log(`${business.name} is not open on ${daysOfTheWeek[dayOfWeek]}, will continue looking`);
-      findOpeningBlock(nextDayToCheck(dayOfWeek));
-    }
-  }
-  
-  findOpeningBlock(now.day());  
-  // console.log({openingMessage});
-  return openingMessage;
-}
-
 const Map = () => {
   const {isLoaded, loadError} = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
     libraries
   });
-
-  const getAllUniqueCategories = () => {
-    const allCategories = businesses.map(x => x.categories).flat().map(y => {return {alias: y.alias, title: y.title}});
-    const uniqueCategories = allCategories.filter((value, index) => allCategories.findIndex(obj => obj.alias === value.alias) === index);
-    const uniqueCategoriesSorted = uniqueCategories.sort((a, b) => (a.title > b.title) ? 1 : - 1);
-
-    console.log({uniqueCategoriesSorted});
-    return uniqueCategoriesSorted;
-  }
-
-  const applyExtraBusinessInfo = (business) => {
-    business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}; //easier position parsing 
-    business.hours = business.hours[0]; //easier hours parsing
-    if (business.hours) YelpBusinessService.parseHours(business);
-
-    return business;
-  }
 
   const [businesses, setBusinesses] = useState([]);
   const [markers, setMarkers] = useState([]);
@@ -192,7 +74,7 @@ const Map = () => {
 
   useEffect(() => {
     setMarkers(businesses);
-    getAllUniqueCategories();
+    YelpBusinessService.getAllUniqueCategories(businesses);
   }, [businesses]);
 
   const [selected, setSelected] = useState(null);
@@ -207,56 +89,72 @@ const Map = () => {
     // console.log(markerRefs.current.filter(marker => marker._reactInternals.key === business.alias)[0])
   }
 
-  const [currentPosition, setCurrentPosition] = useState({center});
+  const [currentPosition, setCurrentPosition] = useState({defaultCenter});
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position, error) => {
-      if (error) console.warn(error);
-      setCurrentPosition({
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
+    const getCurrentPosition = (options = {}) => {
+      return new Promise((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject, options);
       })
-      console.log({position});
-    });
+    }
+  
+    const loadLocation = async () => {
+      try {
+        const position = await getCurrentPosition();
+        setCurrentPosition({
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            })
+      } catch (error) {
+        console.log({error});
+        const approximatePositionInfo = await GeolocationService.getTimeZoneByCoordinates();
+        console.log({approximatePositionInfo});
+        setCurrentPosition({
+          lat: parseFloat(approximatePositionInfo.geo.latitude),
+          lng: parseFloat(approximatePositionInfo.geo.longitude),
+        })
+      }
+
+    }
+
+    loadLocation();
+    console.log({currentPosition});
+
+    // const position = (position) => {
+    //   console.log({position});
+    // }
+    // const error = (error) => {
+    //   console.warn({error});
+    // }
+    
+    // const navigatorResult = navigator.geolocation.getCurrentPosition(position, error);
+    // console.log({navigatorResult});
+    // navigator.geolocation.getCurrentPosition((position, error) => {
+      
+    //   console.log(`getCurrentPosition:`, position, error);
+    //   if (error) console.warn(error);
+    //   setCurrentPosition({
+    //     lat: position.coords.latitude,
+    //     lng: position.coords.longitude
+    //   })
+    //   console.log({position});
+    // });
+
+    // const getGeolocationPermissions = async () => {
+    //   const permissions = await navigator.permissions.query({name: 'geolocation'});
+    //   console.log({permissions});
+    // }
+
+    // getGeolocationPermissions();
   }, [])
 
   const setVisited = async (business) => {
     business.visited = !business.visited;
     saveBusinessInfo(business);
-    // const params = {
-    //   action: 'updateSaved',
-    // }
-    // try {
-    //   console.log('selected before setVisited:', selected);
-    //   const updatedResponse = await axios.put('http://localhost:3001/yelp-business', business, {params});
-    //   console.log('updatedResponse.data:', updatedResponse.data);
-    //   const businessData = applyExtraBusinessInfo(updatedResponse.data);
-    //   setSelected(businessData);
-    // } catch (error) {
-    //   console.log({error});
-    // }
   } 
 
   const saveBusinessInfo = async (business) => {
     const updatedBusinesses = await YelpBusinessService.saveBusinessInfo(business, businesses);
     setBusinesses(updatedBusinesses);
-    // // console.log(`in Map.saveBusinessInfo for ${business.alias}`);
-    // // console.log({business});
-    // // console.log(`in saveBusinessInfo for ${business.alias}`);
-    // const yelpBusinessUri = `/api/yelp-business`;
-    // const params = {
-    //   action: 'updateSaved',
-    // }
-    // try {
-    //   const updatedResponse = await axios.put(yelpBusinessUri, business, {params});
-    //   const updatedBusinessData = YelpBusinessService.applyExtraBusinessInfo(updatedResponse.data);
-    //   const updatedBusinesses = businesses.map(biz => biz.alias === business.alias ? updatedBusinessData : biz);
-    //   setBusinesses(updatedBusinesses);
-    //   console.log(`updatedBusiness:`);
-    //   console.log(businesses.filter(biz => biz.alias === business.alias)[0]);
-    //   // setSelected(updatedBusinessData);
-    // } catch (error) {
-    //   console.log({error});
-    // }
   }
 
   const mapRef = useRef();
@@ -393,6 +291,7 @@ const Map = () => {
 
   const markerRefs = useRef([]);
 
+  const iconMarkerRef = useRef(null);
 
   const MarkerTooltip = (business) => {
     return (
@@ -418,16 +317,20 @@ const Map = () => {
       event.preventDefault();
     } else if (event.keyCode === 79) { // 'o' pressed
       
+    } else if (event.keyCode === 13) { //'enter' pressed}
+      event.preventDefault();
     }
   } 
 
     
+  console.log(businesses.find(biz => biz.alias === 'homestate-los-angeles-8'));
   return (
   <div autoFocus onKeyDown={handleKeyPress} onClick={onMapClick}>
     <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
-    <h1>Yelp Combinator</h1>
+    
     {/* <StyledMaterialIcon icon='search' /> */}
     <S.ComboboxContainer>
+    <h1>Yelp Combinator</h1>
       <S.StyledCombobox>
         <S.StyledComboboxInput 
           disabled={businesses.length === 0}
@@ -448,7 +351,7 @@ const Map = () => {
       <VisitedFilterButton />
       <OpenFilterButton />
     </S.ComboboxContainer>
-    <S.StyledGoogleMap mapContainerClassName={'map-container'} mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={center} options={options} onLoad={onMapLoad} clickableIcons={false}>
+    <S.StyledGoogleMap mapContainerClassName={'map-container'} mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={defaultCenter} options={options} onLoad={onMapLoad} clickableIcons={false}>
       {markers.map(business => {
         return (
           <Marker 
@@ -464,6 +367,9 @@ const Map = () => {
           />
         )
       })}
+      {businesses.length > 0 && process.env.NODE_ENV !== 'production' ? 
+        <IconMarker onClick={() => console.log('IconMarker clicked')} business={businesses.find(biz => biz.alias === 'homestate-los-angeles-8')} />
+        : null}
       {selected ? 
         <BusinessInfoWindow ref={businessInfoWindowMounted} business={selected} currentPosition={currentPosition} onGetWebsite={() => saveBusinessInfo(selected)} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
         : null

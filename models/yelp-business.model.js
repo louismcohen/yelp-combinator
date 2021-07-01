@@ -23,7 +23,8 @@ const yelpBusinessSchema = new mongoose.Schema({
     zip_code: String,
     country: String,
     state: String,
-    display_address: [String]
+    display_address: [String],
+    timezone: String
   },
   coordinates: {
     latitude: Number,

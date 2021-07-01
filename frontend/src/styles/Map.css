@@ -14,7 +14,7 @@ code {
 
 h1 {
   position: absolute;
-  top: 1rem;
+  top: 0;
   left: 1rem;
   z-index: 10;
   margin: 0;
