@@ -49,24 +49,18 @@ const IconMarker = (props) => {
   const getPixelPositionOffset = (width, height) => {
     return {
       x: -15,
-      y: -15
+      y: -20
     }
   }
 
-  console.log('IconMarker render');
-  
   return (
-    // <IconMarkerContainer>
-    //   <StyledMarker position={props.business.position} icon={IconRamenSvg} />
-    // </IconMarkerContainer>
-
     <OverlayView 
       mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
       position={props.business.position}
       getPixelPositionOffset={getPixelPositionOffset}
       >
       <IconMarkerContainer className='ramen'>
-        <IconRamenDining style={{margin: '5px', display: 'block'}} />
+        <IconRamenDining />
       </IconMarkerContainer>
     </OverlayView>
   )

@@ -367,7 +367,7 @@ const Map = () => {
           />
         )
       })}
-      {businesses.length > 0 && process.env.NODE_ENV !== 'production' ? 
+      {businesses.length > 0 ? 
         <IconMarker onClick={() => console.log('IconMarker clicked')} business={businesses.find(biz => biz.alias === 'homestate-los-angeles-8')} />
         : null}
       {selected ? 

@@ -1,4 +1,4 @@
-const IconRamenDining = ({size = '24px', style = {}}) => {
+const IconRamenDining = ({size = '20px', style = {margin: '5px', display: 'block'}}) => {
   return (
     <svg
       style={style}
