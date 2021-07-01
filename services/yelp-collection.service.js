@@ -207,11 +207,14 @@ const updateManyLoadedCollections = async (loadedCollections, savedCollections) 
       const populatedBusinessesResult = populateBasicBusinessInfo(populatedItemsResult);    
       const updatedInfo = findModifiedInfoInCollection(populatedBusinessesResult, savedCollections);
       console.log({updatedInfo});
-      const updatedResult = updatedInfo.length > 0
-        ? await addOrUpdateCollection(populatedBusinessesResult)
-        : null;
-      updatedResult.businesses = updatedResult.businesses.filter(saved => updatedInfo.some(update => update.alias === saved.alias));
-      return updatedResult;
+      if (updatedInfo.length > 0) {
+        const updatedResult = await addOrUpdateCollection(populatedBusinessesResult)
+        updatedResult.businesses = updatedResult.businesses.filter(saved => updatedInfo.some(update => update.alias === saved.alias));
+        return updatedResult;
+      } else {
+        return null;
+      }
+
     })
   )
   
