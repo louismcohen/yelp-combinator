@@ -19,6 +19,16 @@ const initialLoad = async (request, response) => {
         console.log(`allBusinesses: ${allBusinesses.length}`);
         response.json(allBusinesses);
       }
+    } else if (collectionsToUpdate.length > 0 && updatedCollections.length === 0) {
+      const updatedCollections = await Promise.all(collectionsToUpdate.map(async collection => {
+        const updatedCollection = await YelpCollectionService.addOrUpdateCollection(collection);
+        return updatedCollection;
+      }))
+      if (updatedCollections) {
+        const allBusinesses = await YelpBusinessService.getAllBusinesses();
+        console.log(`allBusinesses: ${allBusinesses.length}`);
+        response.json(allBusinesses);
+      }
     } else {
       console.log('no businesses to update');
       const allBusinesses = await YelpBusinessService.getAllBusinesses();
