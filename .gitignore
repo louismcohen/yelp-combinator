@@ -2,3 +2,5 @@
 /frontend/build
 .gcloudignore
 app.yaml
+node_modules/
+/frontend/node_modules
