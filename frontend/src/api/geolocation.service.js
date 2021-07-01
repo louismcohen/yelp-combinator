@@ -22,4 +22,4 @@ const GeolocationService = {
   getTimeZoneByCoordinates,
 }
 
-module.exports = GeolocationService;
+export default GeolocationService;
