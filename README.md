@@ -24,6 +24,4 @@ No customization of pin icons
 - [ ] Fully responsive UI for mobile devices
 
 ### Known issues
-* Initial loading of businesses may get stuck
-  * Refreshing the browser will make them load properly
 * WebKit styling support is incomplete compared to Chromium
