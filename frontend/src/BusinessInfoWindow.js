@@ -10,6 +10,8 @@ import { faYelp } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
 import moment from 'moment';
 
+import ColorPalette from './styles/ColorPalette';
+
 const arrowSize = '1em';
 const boxShadow = '0 0.25em 0.8em 0 rgba(0, 0, 0, 0.15)';
 const visitedColor = '#49bd0e'; //idle
@@ -17,9 +19,9 @@ const cautionColor = '#bd780e'; //orange
 const visitedColorHover = '#56de11'; //brighter green
 const visitedColorActiveHover = '#41a90c'; //darker green
 const actionColorDefault = '#666';
-const yelpRed = '#da2007';
-const googleMapsYellow = '#fbbc04';
-const purpleComplement = '#7b04fb';
+const yelpRed = ColorPalette.getHexColorByName('yelpRed');
+const googleMapsYellow = ColorPalette.getHexColorByName('mango');
+const purpleComplement = ColorPalette.getHexColorByName('violetColorWheel');
 
 const infoWindowTextSize = '1.3em';
 

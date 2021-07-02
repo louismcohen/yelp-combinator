@@ -322,8 +322,6 @@ const Map = () => {
     }
   } 
 
-    
-  console.log(businesses.find(biz => biz.alias === 'homestate-los-angeles-8'));
   return (
   <div autoFocus onKeyDown={handleKeyPress} onClick={onMapClick}>
     <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
@@ -352,7 +350,7 @@ const Map = () => {
       <OpenFilterButton />
     </S.ComboboxContainer>
     <S.StyledGoogleMap mapContainerClassName={'map-container'} mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={defaultCenter} options={options} onLoad={onMapLoad} clickableIcons={false}>
-      {markers.map(business => {
+      {/* {markers.map(business => {
         return (
           <Marker 
             ref={(marker) => markerRefs.current.push(marker)}
@@ -366,10 +364,23 @@ const Map = () => {
             title={business.name}
           />
         )
+      })} */}
+      {markers.map(business => {
+        return (
+          <IconMarker 
+            key={business.alias} 
+            business={business} 
+            // animation={window.google.maps.Animation.DROP} 
+            onIconMarkerClick={() => onSelect(business)}  
+            onMouseOver={() => onMarkerMouseover(business)}
+            // icon={RamenDiningIcon}
+            title={business.name}
+          />
+        )
       })}
-      {businesses.length > 0 && process.env.NODE_ENV !== 'production' ? 
-        <IconMarker onClick={() => console.log('IconMarker clicked')} business={businesses.find(biz => biz.alias === 'homestate-los-angeles-8')} />
-        : null}
+      {/* {businesses.length > 0 && process.env.NODE_ENV !== 'production' ? 
+        <IconMarker onIconMarkerClick={() => setSelected(businesses.find(biz => biz.alias === 'homestate-los-angeles-8'))} business={businesses.find(biz => biz.alias === 'homestate-los-angeles-8')} />
+        : null} */}
       {selected ? 
         <BusinessInfoWindow ref={businessInfoWindowMounted} business={selected} currentPosition={currentPosition} onGetWebsite={() => saveBusinessInfo(selected)} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
         : null

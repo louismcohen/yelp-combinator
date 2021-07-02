@@ -16,10 +16,11 @@ import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, f
 import { faCheckSquare as faCheckSquareRegular } from '@fortawesome/free-regular-svg-icons';
 
 import MaterialIcon from '@material/react-material-icon';
-import RamenDiningSvg from '../icons/ramen_dining.svg';
 
-export const yelpRed = '#da2007';
-export const visitedGreen = '#49bd0e';
+import ColorPalette from './ColorPalette';
+
+export const yelpRed = ColorPalette.getHexColorByName('yelpRed');
+export const visitedGreen = ColorPalette.getHexColorByName('kellyGreen');
 
 export const StyledMaterialIcon = styled(MaterialIcon)`
   position: absolute;
@@ -174,16 +175,6 @@ export const currentPositionIcon = {
   // fillOpacity: 0.95,
   // strokeWeight: 5,
   // strokeColor: '#fff',
-}
-
-console.log({RamenDiningSvg});
-export const RamenDiningIcon = {
-  path: RamenDiningSvg.path,
-  fillColor: '#000',
-  fillOpacity: 1.0,
-  strokeWeight: 0,
-  rotation: 0,
-  scale: 1,
 }
 
 export const StyledGoogleMap = styled(GoogleMap)`

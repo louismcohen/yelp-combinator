@@ -13,6 +13,7 @@
     "@reach/listbox": "^0.15.0",
     "@reach/menu-button": "^0.15.1",
     "@react-google-maps/api": "^2.2.0",
+    "@svgr/cli": "^5.5.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -38,7 +39,8 @@
     "start": "export HTTPS=true&&SSL_CRT_FILE=cert.pem&&SSL_KEY_FILE=key.pem react-scripts start",
     "build": "react-scripts build",
     "test": "export HTTPS=true&&SSL_CRT_FILE=cert.pem&&SSL_KEY_FILE=key.pem react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:svg": "svgr -d src/icons/svg src/icons/svg"
   },
   "eslintConfig": {
     "extends": [
@@ -58,5 +60,8 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3001"
+  "proxy": "http://localhost:3001",
+  "devDependencies": {
+    "@babel/plugin-transform-arrow-functions": "^7.14.5"
+  }
 }
