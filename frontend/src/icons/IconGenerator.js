@@ -7,6 +7,8 @@ const defaultSize = 16;
 const defaultMargin = defaultTotalSize - defaultSize;
 const defaultColor =  'yelpRed';
 
+console.log({IconSvgs});
+
 const defaultProps = {
   style: {
     margin: `${defaultMargin}px`, 
@@ -18,16 +20,35 @@ const defaultProps = {
   // viewBox: `0 0 ${defaultSize} ${defaultSize}`,
 };
 
-const defaultIcon = IconSvgs.Restaurant;
+const defaultViewBox = '0 0 512 512';
+const defaultIcon = 'Restaurant';
+
+const getIconSvg = (iconName) => {
+  const iconSvg = IconSvgs[iconName];
+  console.log({iconSvg});
+}
+
+getIconSvg(defaultIcon);
 
 const generateIconFromCategoryAlias = (categoryAlias, props = defaultProps) => {
-  const Icon = IconSvgs[iconMapping.find(category => category.alias === categoryAlias).icon] || defaultIcon;
-  return Icon(props);
+  const category = iconMapping.find(category => category.alias === categoryAlias);
+  const Icon = category
+    ? IconSvgs[category.icon || defaultIcon]
+    : IconSvgs[defaultIcon];
+  const IconWithProps = Icon(props);
+  // if (!IconWithProps.props.viewBox) {
+  //   IconWithProps.props.viewBox = defaultViewBox;
+  // }
+  return IconWithProps;
 }
 
 const generateHexColorFromCategoryAlias = (categoryAlias) => {
-  const colorName = iconMapping.find(category => category.alias === categoryAlias).color;
-  const colorHex = ColorPalette.getHexColorByName(colorName || defaultColor);
+  const category = iconMapping.find(category => category.alias === categoryAlias);
+  const colorHex = ColorPalette.getHexColorByName(
+    category 
+      ? (category.color || defaultColor) 
+      : defaultColor
+    );
   return colorHex;
 }
 

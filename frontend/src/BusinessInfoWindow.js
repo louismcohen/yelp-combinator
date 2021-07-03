@@ -11,6 +11,7 @@ import axios from 'axios';
 import moment from 'moment';
 
 import ColorPalette from './styles/ColorPalette';
+import * as IconGenerator from './icons/IconGenerator';
 
 const arrowSize = '1em';
 const boxShadow = '0 0.25em 0.8em 0 rgba(0, 0, 0, 0.15)';
@@ -63,6 +64,7 @@ const InfoWindowContainer = styled.div`
   position: relative;
   grid-column-gap: 0;
   grid-template-columns: 30% 70%;
+  background: linear-gradient(0deg, ${props => props.iconColor || `#fff`}18, #fff 10%)
 `
 
 const Image = styled.div`
@@ -289,7 +291,7 @@ const getTravelTime = async (currentPosition, destination) => {
 const getPixelPositionOffset = (width, height) => {
   return {
     x: -(width / 2),
-    y: -(height + 40),
+    y: -(height + 16),
   }
 }
 
@@ -317,6 +319,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
   const categories = formatCategories(props.business.categories)
   const note = props.business.note;
   const hours = props.business.hours;
+  const primaryCategory = props.business.categories[0].alias;
   
   const [visited, setVisited] = useState(props.business.visited);
   useEffect(() => {
@@ -382,6 +385,11 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
     return color;
   }
 
+  const determineIconColor = () => {
+    const color = IconGenerator.generateHexColorFromCategoryAlias(primaryCategory);
+    return color;
+  }
+
   const currentPositionString = `${props.currentPosition.lat}, ${props.currentPosition.lng}`;
   const destinationAddress = props.business.location.display_address.join(', ');
   const originEncoded = encodeURI(currentPositionString);
@@ -394,7 +402,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
       getPixelPositionOffset={getPixelPositionOffset}
       >
       <InfoWindow onClick={onInfoWindowClick} ref={ref}>
-        <InfoWindowContainer>
+        <InfoWindowContainer iconColor={determineIconColor}>
           <Image url={props.business.image_url}></Image>
           <Content>
             <Name>{name}</Name>

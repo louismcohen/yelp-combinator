@@ -2,7 +2,13 @@ import * as React from "react";
 
 const SvgBubbleTea = (props) => {
   return (
-    <svg height={512} width={512} xmlns="http://www.w3.org/2000/svg" {...props}>
+    <svg
+      height={512}
+      width={512}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+      {...props}
+    >
       <circle cx={320} cy={440} r={8} />
       <circle cx={296} cy={384} r={8} />
       <circle cx={216} cy={384} r={8} />

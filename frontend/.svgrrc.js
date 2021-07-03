@@ -1,3 +1,3 @@
 module.exports = {
-  template: require('./src/icons/svg/template')
+  template: require('./src/icons/svg/template'),
 }
