@@ -22,6 +22,7 @@ function arrowTemplate(
       }
     })
   }
+  
   const typeScriptTpl = template.smart({ plugins })
   return typeScriptTpl.ast`
     ${imports}

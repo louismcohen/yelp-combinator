@@ -73,7 +73,7 @@ const Map = () => {
   }, []);
 
   useEffect(() => {
-    setMarkers(businesses);
+    setMarkers(businesses.filter(filterBusinesses));
     YelpBusinessService.getAllUniqueCategories(businesses);
   }, [businesses]);
 
@@ -175,6 +175,10 @@ const Map = () => {
   const [showVisited, setShowVisited] = useState(0);
 
   const filterBusinesses = (business) => {
+    if (!debouncedSearchTerm) {
+      return business;
+    }
+
     const textFilteredResult = (
       business.name.toLowerCase().includes(debouncedSearchTerm) // name
       || business.categories.map(category => category.title).some(title => U.removeSpaces(title).toLowerCase().includes(U.removeSpaces(debouncedSearchTerm))) // categories

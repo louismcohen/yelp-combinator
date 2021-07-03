@@ -60,6 +60,10 @@ const colorPalette = [
     name: 'greenRyb',
     hex: '#5eb319'
   },
+  {
+    name: 'pineGreen',
+    hex: '#136f63'
+  }
 ];
 
 const getHexColorByName = (nameInput) => {
