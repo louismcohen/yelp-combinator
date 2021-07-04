@@ -176,7 +176,8 @@ const Map = () => {
 
   const filterBusinesses = (business) => {
     if (!debouncedSearchTerm) {
-      return business;
+      // console.log('no debouncedSearchTerm');
+      // return business;
     }
 
     const textFilteredResult = (
@@ -287,8 +288,7 @@ const Map = () => {
   }, [businessInfoWindowMounted])
 
   const onMapClick = (event) => {
-    console.log(event.target);
-    if (businessInfoWindowMounted.current && !businessInfoWindowMounted.current.contains(event.target)) {
+    if (businessInfoWindowMounted.current) {
       setSelected(null);
     }
   }
@@ -303,6 +303,25 @@ const Map = () => {
         {business.name}
       </S.StyledMarkerTooltip>
     )
+  }
+
+  const [mouseState, setMouseState] = useState({position: {x: 0, y: 0}});
+  const parseMouseState = (event) => {
+    console.log({mouseState})
+    const positionPrev = !!mouseState.position;
+    const position = {
+      x: event.clientX, 
+      y: event.clientY
+    };
+    console.log({position});
+
+    if (event.type === 'mousedown') {
+      setMouseState({state: event.type, position, click: null});
+    } else if (event.type === 'mouseup') {
+      const click = positionPrev === position;
+      console.log({click});
+      setMouseState({state: event.type, position, click});
+    }
   }
 
   if (!isLoaded || !!loadError) {
@@ -327,7 +346,7 @@ const Map = () => {
   } 
 
   return (
-  <div autoFocus onKeyDown={handleKeyPress} onClick={onMapClick}>
+  <div autoFocus onKeyDown={handleKeyPress}>
     <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
     
     {/* <StyledMaterialIcon icon='search' /> */}
@@ -353,7 +372,16 @@ const Map = () => {
       <VisitedFilterButton />
       <OpenFilterButton />
     </S.ComboboxContainer>
-    <S.StyledGoogleMap mapContainerClassName={'map-container'} mapContainerStyle={mapContainerStyle} zoom={defaultZoom} center={defaultCenter} options={options} onLoad={onMapLoad} clickableIcons={false}>
+    <S.StyledGoogleMap 
+      mapContainerClassName={'map-container'} 
+      mapContainerStyle={mapContainerStyle} 
+      zoom={defaultZoom} 
+      center={defaultCenter} 
+      options={options} 
+      clickableIcons={false}
+      onLoad={onMapLoad} 
+      onClick={onMapClick} 
+      >
       {/* {markers.map(business => {
         return (
           <Marker 

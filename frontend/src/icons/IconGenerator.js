@@ -7,8 +7,6 @@ const defaultSize = 16;
 const defaultMargin = defaultTotalSize - defaultSize;
 const defaultColor =  'yelpRed';
 
-console.log({IconSvgs});
-
 const defaultProps = {
   style: {
     margin: `${defaultMargin}px`, 
@@ -21,23 +19,12 @@ const defaultProps = {
 
 const defaultIcon = 'Restaurant';
 
-const getIconSvg = (iconName) => {
-  const iconSvg = IconSvgs[iconName];
-  console.log({iconSvg});
-}
-
-getIconSvg(defaultIcon);
-
 const generateIconFromCategoryAlias = (categoryAlias, props = defaultProps) => {
-  console.log({props});
   const category = iconMapping.find(category => category.alias === categoryAlias);
   const Icon = category
     ? IconSvgs[category.icon || defaultIcon]
     : IconSvgs[defaultIcon];
   const IconWithProps = Icon(props);
-  // if (!IconWithProps.props.viewBox) {
-  //   IconWithProps.props.viewBox = defaultViewBox;
-  // }
   return IconWithProps;
 }
 

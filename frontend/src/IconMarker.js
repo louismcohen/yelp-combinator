@@ -1,8 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback, forwardRef } from 'react';
-import {
-  OverlayView,
-  Marker
-} from '@react-google-maps/api';
+import { OverlayView } from '@react-google-maps/api';
 import styled from 'styled-components';
 import ColorPalette from './styles/ColorPalette';
 
@@ -33,7 +30,7 @@ const defaultIconProps = {
 };
 
 const IconMarker = (props) => {
-  const primaryCategory = props.business.categories[0].alias;
+  const primaryCategoryAlias = props.business.categories[0].alias;
 
   const getPixelPositionOffset = (width, height) => {
     return {
@@ -42,19 +39,18 @@ const IconMarker = (props) => {
     }
   }
 
-  const iconHexColor = IconGenerator.generateHexColorFromCategoryAlias(primaryCategory);
+  const iconHexColor = IconGenerator.generateHexColorFromCategoryAlias(primaryCategoryAlias);
 
   const iconFillColor = props.business.visited 
     ? {fill: iconFillVisited}
     : {fill: iconHexColor}
 
   const IconGenerated = () => {
-    const Icon = IconGenerator.generateIconFromCategoryAlias(primaryCategory, {...defaultIconProps, ...iconFillColor});
+    const Icon = IconGenerator.generateIconFromCategoryAlias(primaryCategoryAlias, {...defaultIconProps, ...iconFillColor});
     return Icon;
   }
 
   const onIconMarkerClick = (event) => {
-    console.log(`${props.business.alias} IconMarker clicked`);
     props.onIconMarkerClick();
   }
 
@@ -71,4 +67,4 @@ const IconMarker = (props) => {
   )
 }
 
-export default IconMarker;
+export default React.memo(IconMarker);
