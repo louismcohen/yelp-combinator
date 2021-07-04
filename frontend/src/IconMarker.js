@@ -10,17 +10,27 @@ import * as IconGenerator from './icons/IconGenerator';
 
 const IconMarkerContainer = styled.div`
   position: absolute;
-  background: ${props => props.baseColor || ColorPalette.getHexColorByName('yelpRed')};
+  background: ${props => props.visited ? props.baseColor || ColorPalette.getHexColorByName('yelpRed') : `#fff`};
   opacity: 0.97;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.33), inset 0px 0px 0px 1px rgba(0, 0, 0, 0.33);
+  box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.33), inset 0px 0px 0px ${props => props.visited ? `1px rgba(0, 0, 0, 0.33)` : `2px ${props.baseColor || ColorPalette.getHexColorByName('yelpRed')}`};
 `
 
-const StyledMarker = styled(Marker)`
-  background: rgba(0, 0, 0, 0.98);
-  border-radius: 50%;
-`
+const defaultTotalSize = 23;
+const defaultSize = 16;
+const defaultMargin = defaultTotalSize - defaultSize;
+const iconFillVisited = `#fff`;
+const iconFillNotVisited = `#333`;
+
+const defaultIconProps = {
+  style: {
+    margin: `${defaultMargin}px`, 
+    display: 'block'
+  }, 
+  height: `${defaultSize}px`,
+  width: `${defaultSize}px`,
+};
 
 const IconMarker = (props) => {
   const primaryCategory = props.business.categories[0].alias;
@@ -32,12 +42,16 @@ const IconMarker = (props) => {
     }
   }
 
+  const iconHexColor = IconGenerator.generateHexColorFromCategoryAlias(primaryCategory);
+
+  const iconFillColor = props.business.visited 
+    ? {fill: iconFillVisited}
+    : {fill: iconHexColor}
+
   const IconGenerated = () => {
-    const Icon = IconGenerator.generateIconFromCategoryAlias(primaryCategory);
+    const Icon = IconGenerator.generateIconFromCategoryAlias(primaryCategory, {...defaultIconProps, ...iconFillColor});
     return Icon;
   }
-
-  const iconHexColor = IconGenerator.generateHexColorFromCategoryAlias(primaryCategory);
 
   const onIconMarkerClick = (event) => {
     console.log(`${props.business.alias} IconMarker clicked`);
@@ -50,7 +64,7 @@ const IconMarker = (props) => {
       position={props.business.position}
       getPixelPositionOffset={getPixelPositionOffset}
       >
-      <IconMarkerContainer onClick={onIconMarkerClick} baseColor={iconHexColor}>
+      <IconMarkerContainer onClick={onIconMarkerClick} baseColor={iconHexColor} visited={props.business.visited}>
         <IconGenerated />
       </IconMarkerContainer>
     </OverlayView>

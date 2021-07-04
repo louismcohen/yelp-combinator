@@ -17,10 +17,8 @@ const defaultProps = {
   fill: '#ffffff',
   height: `${defaultSize}px`,
   width: `${defaultSize}px`,
-  // viewBox: `0 0 ${defaultSize} ${defaultSize}`,
 };
 
-const defaultViewBox = '0 0 512 512';
 const defaultIcon = 'Restaurant';
 
 const getIconSvg = (iconName) => {
@@ -31,6 +29,7 @@ const getIconSvg = (iconName) => {
 getIconSvg(defaultIcon);
 
 const generateIconFromCategoryAlias = (categoryAlias, props = defaultProps) => {
+  console.log({props});
   const category = iconMapping.find(category => category.alias === categoryAlias);
   const Icon = category
     ? IconSvgs[category.icon || defaultIcon]
