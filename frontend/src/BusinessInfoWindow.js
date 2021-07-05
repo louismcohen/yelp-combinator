@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback, forwardRef } from 'react';
+import React, { useEffect, useMemo, useState, useRef, useCallback, forwardRef } from 'react';
 import {
   OverlayView
 } from '@react-google-maps/api';
@@ -279,7 +279,7 @@ const getTravelTime = async (currentPosition, destination) => {
   }
   try {
     const response = await axios.get(distanceMatrixUri, {params});
-    console.log(response);
+    console.log({distanceMatrix: response});
     return response;
   } catch(error) {
     console.log({error});
@@ -312,9 +312,7 @@ const getBusinessWebsite = async (business) => {
 }
 
 const BusinessInfoWindow = forwardRef((props, ref) => {
-  console.log({props});
-  // console.log(ref.current.onGetWebsite);
-  console.log(`props.currentPosition: ${props.currentPosition.lat}`);
+  console.log({renderBusinessInfoWindow: props});
   const name = props.business.name;
   const categories = formatCategories(props.business.categories)
   const note = props.business.note;
@@ -325,22 +323,22 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
   useEffect(() => {
     setVisited(props.business.visited);
   }, [props.business.visited]);
-  
+
   const [travelTime, setTravelTime] = useState(null);
-  useEffect(() => { 
-    const fetchTravelTime = async () => {
-      setTravelTime(null);
-      const result = await getTravelTime(props.currentPosition, props.business.position);
-      if (result && result.data.rows[0].elements[0].status === 'OK') {
-        setTravelTime({
-          distance: result.data.rows[0].elements[0].distance.text,
-          duration: result.data.rows[0].elements[0].duration.text,
-        });
-      }
+  const fetchTravelTime = useCallback(async () => {
+    setTravelTime(null);
+    const result = await getTravelTime(props.currentPosition, props.business.position);
+    if (result && result.data.rows[0].elements[0].status === 'OK') {
+      setTravelTime({
+        distance: result.data.rows[0].elements[0].distance.text,
+        duration: result.data.rows[0].elements[0].duration.text,
+      });
     }
-    
-    fetchTravelTime();
-  }, [props.currentPosition, props.business.position]);
+  }, [props.currentPosition, props.business.position])
+  
+  // useEffect(() => {     
+  //   fetchTravelTime();
+  // }, [props.currentPosition, props.business.position]);
 
   useEffect(() => {
     const fetchWebsite = async () => {
@@ -360,7 +358,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
     } 
   }, [props.business])
 
-  const TravelTime = () => {
+  const TravelTime = React.memo(() => {
     // {travelTime && props.currentPosition.lat ? 
     //   <div><strong>{travelTime.duration}</strong> | {travelTime.distance} away</div> 
     //   : 'Calculating travel time...'}
@@ -373,7 +371,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
     } else {
       return <StyledTravelTime>Calculating travel time...</StyledTravelTime>;
     }
-  }
+  })
 
   const determineVisitedIcon = () => {
     const icon = props.business.visited ? faCheckSquareSolid : faCheckSquare;
@@ -438,4 +436,4 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
   )
 })
 
-export default BusinessInfoWindow;
+export default React.memo(BusinessInfoWindow);
