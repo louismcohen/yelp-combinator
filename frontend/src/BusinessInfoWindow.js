@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState, useRef, useCallback, forwardRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback, forwardRef } from 'react';
 import {
   OverlayView
 } from '@react-google-maps/api';
@@ -323,22 +323,22 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
   useEffect(() => {
     setVisited(props.business.visited);
   }, [props.business.visited]);
-
-  const [travelTime, setTravelTime] = useState(null);
-  const fetchTravelTime = useCallback(async () => {
-    setTravelTime(null);
-    const result = await getTravelTime(props.currentPosition, props.business.position);
-    if (result && result.data.rows[0].elements[0].status === 'OK') {
-      setTravelTime({
-        distance: result.data.rows[0].elements[0].distance.text,
-        duration: result.data.rows[0].elements[0].duration.text,
-      });
-    }
-  }, [props.currentPosition, props.business.position])
   
-  // useEffect(() => {     
-  //   fetchTravelTime();
-  // }, [props.currentPosition, props.business.position]);
+  const [travelTime, setTravelTime] = useState(null);
+  useEffect(() => { 
+    const fetchTravelTime = async () => {
+      setTravelTime(null);
+      const result = await getTravelTime(props.currentPosition, props.business.position);
+      if (result && result.data.rows[0].elements[0].status === 'OK') {
+        setTravelTime({
+          distance: result.data.rows[0].elements[0].distance.text,
+          duration: result.data.rows[0].elements[0].duration.text,
+        });
+      }
+    }
+    
+    fetchTravelTime();
+  }, [props.currentPosition, props.business.position]);
 
   useEffect(() => {
     const fetchWebsite = async () => {
@@ -358,7 +358,8 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
     } 
   }, [props.business])
 
-  const TravelTime = React.memo(() => {
+  const TravelTime = React.useCallback(() => {
+    console.log('in TravelTime component');
     // {travelTime && props.currentPosition.lat ? 
     //   <div><strong>{travelTime.duration}</strong> | {travelTime.distance} away</div> 
     //   : 'Calculating travel time...'}
@@ -371,7 +372,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
     } else {
       return <StyledTravelTime>Calculating travel time...</StyledTravelTime>;
     }
-  })
+  }, [props.currentPosition.lat, travelTime])
 
   const determineVisitedIcon = () => {
     const icon = props.business.visited ? faCheckSquareSolid : faCheckSquare;

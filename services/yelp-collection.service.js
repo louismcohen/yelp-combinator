@@ -190,8 +190,8 @@ const findNewBusinessesInCollection = (collectionToUpdate, savedCollections) => 
 const findModifiedInfoInCollection = (collectionToUpdate, savedCollections) => {
   const savedCollection = savedCollections.find(collection => collection.yelpCollectionId === collectionToUpdate.yelpCollectionId).toObject();
   const updatedInfo = collectionToUpdate.businesses.filter(
-    saved => !savedCollection.businesses.some(
-      update => saved.alias === update.alias && saved.note === update.note
+    update => !savedCollection.businesses.some(
+      saved => saved.alias === update.alias && saved.note === update.note
     )
   );
   return updatedInfo;

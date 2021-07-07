@@ -96,7 +96,7 @@ const Map = () => {
         navigator.geolocation.getCurrentPosition(resolve, reject, options);
       })
     }
-  
+
     const loadLocation = async () => {
       try {
         const position = await getCurrentPosition();

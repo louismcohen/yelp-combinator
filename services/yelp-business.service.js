@@ -5,6 +5,7 @@ const Bottleneck = require('bottleneck');
 const YelpCollection = require('../models/yelp-collection.model');
 const GoogleTimeZoneController = require('../controllers/google-timezone.controller');
 const GeolocationService = require('../services/geolocation.service');
+const _ = require('lodash');
 
 const limiter = new Bottleneck({
   maxConcurrent: 5,
@@ -110,16 +111,55 @@ const updateBusinessByAlias = async (alias) => {
   }
 }
 
+const updateBusiness = async (business) => {
+  console.log({business});
+  business = business.toObject();
+  if (business._id) {
+    delete business._id;
+  }
+  
+  const data = await limiter.schedule(() => getYelpBusinessInfo(business.alias));
+  console.log({data});
+  const timeZoneInfo = await GeolocationService.getTimeZoneByCoordinates(data.coordinates.latitude, data.coordinates.longitude);
+  data.location.timezone = timeZoneInfo.timezone;
+
+  if (!data.error) {
+    const updatedBusiness = await YelpBusiness.findOneAndUpdate(
+      {alias: business.alias},
+      {...data, ...business},
+      {new: true, upsert: true},
+      (error, result) => {
+        if (error) {
+          console.log('Error: ', error);
+        } else {
+          console.log(`Successfully updated ${result.addedIndex}: ${data.name} (${data.alias})`);
+          return result;
+        }
+      }
+    )
+  
+    return updatedBusiness;
+  } else {
+    return null;
+  }  
+}
+
 const checkAndUpdateIncompleteBusinesses = async (collections) => {
+  console.log('checkAndUpdateIncompleteBusinesses');
   const allBusinesses = collections.map(collection => collection.businesses).reduce((a, b) => a.concat(b));
   const incompleteBusinesses = allBusinesses.filter(biz => !biz.name);
+  console.log({updatedCollections: collections});
+  console.log({allBusinesses});
+  console.log({incompleteBusinesses});
   const updatedBusinesses = await Promise.all(
     incompleteBusinesses.map(async business => {
-      const updatedBusiness = await updateBusinessByAlias(business.alias);
+      const updatedBusiness = await updateBusiness(business);
+      console.log({updatedBusiness});
       return updatedBusiness;
     })
   )
-
+  
+  console.log({updatedBusinesses});
   return updatedBusinesses;
 }
 
