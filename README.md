@@ -17,11 +17,12 @@ No customization of pin icons
 - [x] Filter businesses by visited/not yet visited
 - [x] Mark business as visited/not yet visited
 - [x] Get travel distance and time estimate from current location to selected business
+- [X] Unique map marker icons, rendered to reflect the business' category
 - [ ] Filter businesses open at a certain time / day
 - [ ] User account support
 - [ ] Ability to add/remove Yelp collections
-- [ ] Unique map marker icons, rendered to reflect the business' category
 - [ ] Fully responsive UI for mobile devices
 
 ### Known issues
 * WebKit styling support is incomplete compared to Chromium
+* Performance needs optimization, especially on mobile
