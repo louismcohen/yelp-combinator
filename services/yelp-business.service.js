@@ -44,6 +44,14 @@ const populateBasicBusinessInfo = (collection) => {
   return collection;
 }
 
+const applyAddedIndexToCollections = (collections) => {
+  return collections.map(
+    collection => ({...collection, businesses: collection.businesses.map(
+      (biz, idx) => ({...biz, addedIndex: collection.businesses.length - idx - 1})
+    )})
+  )
+}
+
 const updateBusinessById = async (id) => {
   const data = await limiter.schedule(() => getYelpBusinessInfo(id));
   const timeZoneInfo = GeolocationService.getTimeZoneByCoordinates(data.coordinates.latitude, data.coordinates.longitude);
@@ -212,7 +220,9 @@ const updateBusinessBasicInfo = async (business) => {
 const updateAllBusinessesBasicInfo = async () => {
   try {
     const collections = await YelpCollection.find();
-    const businesses = collections.map(collection => collection.businesses).reduce((a, b) => a.concat(b));
+    const collectionsObject = collections.map(collection => collection.toObject());
+    const updatedCollections = applyAddedIndexToCollections(collectionsObject);
+    const businesses = updatedCollections.map(collection => collection.businesses).reduce((a, b) => a.concat(b));
     const updatedBusinesses = Promise.all(
       businesses.map(async business => {
         const updatedBusiness = updateBusinessBasicInfo(business);
@@ -221,8 +231,8 @@ const updateAllBusinessesBasicInfo = async () => {
     )
 
     return updatedBusinesses;
-  } catch {
-    return {error: error};
+  } catch (error) {
+    return error;
   }
 }
 
