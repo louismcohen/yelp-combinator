@@ -3,12 +3,19 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import Map from './Map';
 import reportWebVitals from './reportWebVitals';
+import ReactGA from 'react-ga4';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Map />
-  </React.StrictMode>,
-  document.getElementById('root')
+const MEASUREMENT_ID = 'G-4674ER0DHD';
+ReactGA.initialize(MEASUREMENT_ID);
+ReactGA.send('pageview');
+
+ReactDOM.render( <
+    React.StrictMode >
+    <
+    Map / >
+    <
+    /React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

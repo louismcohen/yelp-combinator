@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef, useCallback, forwardRef } from 'react';
 import {
-  OverlayView
+    OverlayView
 } from '@react-google-maps/api';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faDirections, faCheckSquare as faCheckSquareSolid, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'; 
+import { faTimes, faDirections, faCheckSquare as faCheckSquareSolid, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import { faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 import { faYelp } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
@@ -29,7 +29,7 @@ const infoWindowTextSize = '1.3em';
 const yelpBizUrl = 'https://www.yelp.com/biz/';
 const googleMapsDirectionsUrl = 'https://www.google.com/maps/dir/?api=1';
 
-const InfoWindow = styled.div`
+const InfoWindow = styled.div `
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -59,7 +59,7 @@ const InfoWindow = styled.div`
   }
 `
 
-const InfoWindowContainer = styled.div`
+const InfoWindowContainer = styled.div `
   display: grid;
   position: relative;
   grid-column-gap: 0;
@@ -416,7 +416,8 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
               {props.business.website ? <a href={props.business.website} target='_blank' rel='noopener noreferrer' title={`Go to business website`}>
                 <Icon icon={faExternalLinkAlt} hoverColor={purpleComplement} />
               </a> : null}
-              <a href={`${googleMapsDirectionsUrl}&origin=${originEncoded}&destination=${destinationEncoded}`} target='_blank' rel='noopener noreferrer' title={`Get Google Maps directions from current location`}>
+              <a 
+                href={`${googleMapsDirectionsUrl}&origin=${originEncoded}&destination=${destinationEncoded}`} target='_blank' rel='noopener noreferrer' title={`Get Google Maps directions from current location`}>
                 <Icon icon={faDirections} hoverColor={googleMapsYellow} />
               </a>
               <Icon 
