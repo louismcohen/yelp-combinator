@@ -15,17 +15,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV, faCircle } from '@fortawesome/free-solid-svg-icons/';
 import { faCheckSquare as faCheckSquareRegular } from '@fortawesome/free-regular-svg-icons';
 
-import MaterialIcon from '@material/react-material-icon';
+// import MaterialIcon from '@material/react-material-icon';
 
 import ColorPalette from './ColorPalette';
 
 export const yelpRed = ColorPalette.getHexColorByName('yelpRed');
 export const visitedGreen = ColorPalette.getHexColorByName('kellyGreen');
 
-export const StyledMaterialIcon = styled(MaterialIcon)`
-  position: absolute;
-  z-index: 100;
-`
+// export const StyledMaterialIcon = styled(MaterialIcon)`
+//   position: absolute;
+//   z-index: 100;
+// `
 
 export const ComboboxContainer = styled.div`
   width: 100%;
