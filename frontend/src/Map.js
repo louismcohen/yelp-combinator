@@ -5,6 +5,7 @@ import {
   useLoadScript,
   Marker,
 } from "@react-google-maps/api";
+import {Helmet} from "react-helmet";
 
 import YelpBusinessService from './api/yelp-business.service';
 
@@ -156,6 +157,21 @@ const Map = () => {
     setBusinesses(updatedBusinesses);
   }
 
+  const messageListContainerRef = useRef(null);
+  if (messageListContainerRef.current) {
+    messageListContainerRef.current.addEventListener('touchmove', (e) => {
+       if (!e.currentTarget) {
+          return;
+       }
+       if (e.currentTarget.scrollTop === 0) {
+          e.currentTarget.scrollTop = 1;
+       } else if (e.currentTarget.scrollHeight === e.currentTarget.scrollTop +
+          e.currentTarget.offsetHeight) {
+          e.currentTarget.scrollTop -= 1;
+       }
+    });
+ }
+
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
      mapRef.current = map;
@@ -281,6 +297,12 @@ const Map = () => {
   }, [debouncedSearchTerm, showVisited, showOpen])
 
   const inputFilter = useRef(null);
+  if (inputFilter.current) {
+    inputFilter.current.addEventListener('touchmove', (e) => {
+       e.preventDefault();
+    });
+  }
+
   const businessInfoWindowMounted = useRef(null);
   useEffect(() => {
     console.log({businessInfoWindowMounted});
@@ -344,8 +366,13 @@ const Map = () => {
     }
   } 
 
+  
+
   return (
-  <div autoFocus onKeyDown={handleKeyPress}>
+  <div autoFocus onKeyDown={handleKeyPress} ref={messageListContainerRef}>
+    <Helmet>
+      {/* <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" /> */}
+    </Helmet>
     <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
     
     {/* <StyledMaterialIcon icon='search' /> */}
