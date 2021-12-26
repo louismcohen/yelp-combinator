@@ -13,7 +13,6 @@ import MapLoading from './MapLoading';
 import IconMarker from './IconMarker';
 
 
-import './fomantic/dist/semantic.min.css';
 import './styles/Map.css';
 import * as S from './styles/MapStyles';
 import GoogleMapStyles from './styles/GoogleMapStyles';
