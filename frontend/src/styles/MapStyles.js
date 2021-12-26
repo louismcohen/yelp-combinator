@@ -27,14 +27,22 @@ export const visitedGreen = ColorPalette.getHexColorByName('kellyGreen');
 //   z-index: 100;
 // `
 
+export const ControlsContainer = styled.div`
+  display: block;
+  width: 350px;
+  margin: 0 auto;
+`
+
 export const ComboboxContainer = styled.div`
   width: 100%;
   top: 1rem;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   position: absolute;
   z-index: 100;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
 `
 
 export const StyledCombobox = styled(Combobox)`
@@ -106,6 +114,12 @@ export const StyledCloseButton = styled.div`
     cursor: pointer;
   }
 `
+export const FilterButtonsContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 10px;
+`
 
 export const FilterButton = styled.div`
   display: flex;
@@ -113,7 +127,7 @@ export const FilterButton = styled.div`
   justify-content: center;
   height: 2.5em;
   min-width: 2.5em;
-  margin-left: 0.5em;
+  ${'' /* margin-left: 0.5em; */}
   padding: 0.5em calc((2.5em - 1.2em) / 2);
   font-size: 1.2em;
   text-align: center;

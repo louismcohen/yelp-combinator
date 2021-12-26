@@ -349,28 +349,32 @@ const Map = () => {
     <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
     
     {/* <StyledMaterialIcon icon='search' /> */}
-    <S.ComboboxContainer>
-    <h1>Yelp Combinator</h1>
-      <S.StyledCombobox>
-        <S.StyledComboboxInput 
-          disabled={businesses.length === 0}
-          value={searchTerm}
-          onChange={(event) => setSearchTerm(event.target.value.toLowerCase())}
-          onSelect={(event) => setSearchTerm(event.target.value.toLowerCase())}
-          placeholder='Filter businesses'
-          spellCheck='false'
-          ref={inputFilter}
-        />
-        <CloseButton />
-        {/* <ComboboxPopover>
-          {businesses.filter(filterBusinesses).map(business => (
-            <ComboboxOption key={business.alias} value={business.name} />
-          ))}
-        </ComboboxPopover> */}
-      </S.StyledCombobox>
-      <VisitedFilterButton />
-      <OpenFilterButton />
-    </S.ComboboxContainer>
+    <S.ControlsContainer>
+      <S.ComboboxContainer>
+      {/* <h1>Yelp Combinator</h1> */}
+        <S.StyledCombobox>
+          <S.StyledComboboxInput 
+            disabled={businesses.length === 0}
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value.toLowerCase())}
+            onSelect={(event) => setSearchTerm(event.target.value.toLowerCase())}
+            placeholder='Filter businesses'
+            spellCheck='false'
+            ref={inputFilter}
+          />
+          <CloseButton />
+          {/* <ComboboxPopover>
+            {businesses.filter(filterBusinesses).map(business => (
+              <ComboboxOption key={business.alias} value={business.name} />
+            ))}
+          </ComboboxPopover> */}
+        </S.StyledCombobox>
+        <S.FilterButtonsContainer>
+          <VisitedFilterButton />
+          <OpenFilterButton />
+        </S.FilterButtonsContainer>
+      </S.ComboboxContainer>
+    </S.ControlsContainer> 
     <S.StyledGoogleMap 
       mapContainerClassName={'map-container'} 
       mapContainerStyle={mapContainerStyle} 
