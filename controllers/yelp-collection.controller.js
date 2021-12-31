@@ -8,6 +8,7 @@ const {
   getAllCollections,
   scrapeAllCollections,
   deleteAllCollections,
+  scrapeEmbeddedCollection,
 } = require('../services/yelp-collection.service');
 
 const getAll = async (request, response) => {
@@ -56,6 +57,16 @@ const scrapeCollectionById = async (request, response) => {
   }
 };
 
+const scrapeEmbeddedCollectionById = async (request, response) => {
+  yelpCollectionId = request.params.yelp_collection_id;
+  try {
+    const output = await scrapeEmbeddedCollection(yelpCollectionId);
+    response.json(output);
+  } catch (error) {
+    return {error};
+  }
+}
+
 const scrapeAll = async (request, response) => {
   try {
     const scrapedCollections = await scrapeAllCollections();
@@ -76,6 +87,7 @@ const deleteAll = async (request, response) => {
 
 const YelpCollectionController = {
   scrapeCollectionById,
+  scrapeEmbeddedCollectionById,
   scrapeAll,
   getCollectionById,
   addOrUpdateCollectionById,

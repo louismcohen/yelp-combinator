@@ -116,6 +116,16 @@ const scrapeAllCollections = async () => {
   
 }
 
+const scrapeEmbeddedCollection = async (yelpCollectionId) => {
+  try {
+    const output = await axios.get(`${YELP_COLLECTION_URI}${yelpCollectionId}/embed?container=collection-container-77412aaf&sort_by=date&limit=500`);
+    console.log({output});
+    return output.data;
+  } catch (error) {
+    return {error};
+  }
+}
+
 const getAllCollections = async () => {
   try {
     const collections = await YelpCollection.find();
@@ -245,4 +255,5 @@ module.exports = {
   compareSavedToLoadedCollections,
   updateManyLoadedCollections,
   deleteAllCollections,
+  scrapeEmbeddedCollection,
 }

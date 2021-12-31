@@ -6,6 +6,7 @@ const YelpCollectionController = require('../controllers/yelp-collection.control
 
 router.route('/yelp-collections/all').get(YelpCollectionController.getAll);
 router.route('/yelp-collections/scrape').get(YelpCollectionController.scrapeCollectionById);
+router.route('/yelp-collections/embed/:yelp_collection_id').get(YelpCollectionController.scrapeEmbeddedCollectionById);
 router.route('/yelp-collections/id/:yelp_collection_id').get(YelpCollectionController.getCollectionById);
 
 router.route('/yelp-collections/').put(YelpCollectionController.addOrUpdateCollectionById);

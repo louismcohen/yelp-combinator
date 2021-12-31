@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Map from './Map';
+import {Helmet} from "react-helmet";
+
 // import reportWebVitals from './reportWebVitals';
 // import ReactGA from 'react-ga4';
 

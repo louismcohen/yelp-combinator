@@ -153,6 +153,8 @@ const Map = () => {
   } 
 
   const saveBusinessInfo = async (business) => {
+    console.log(`onGetWebsite: saving business info`);
+    console.log({business});
     const updatedBusinesses = await YelpBusinessService.saveBusinessInfo(business, businesses);
     setBusinesses(updatedBusinesses);
   }

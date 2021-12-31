@@ -88,7 +88,7 @@ const updatedSavedBusiness = async (data) => {
         return result;
       }
     }
-  )
+  ).clone();
 
   return updatedBusiness;
 }
