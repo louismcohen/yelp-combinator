@@ -12,6 +12,9 @@ const yelpRouter = require('./routes/yelp.router');
 const googleRouter = require('./routes/google.router');
 const geolocationRouter = require('./routes/geolocation.router');
 
+const Sentry = require("@sentry/node");
+const Tracing = require("@sentry/tracing");
+
 const PORT = process.env.PORT || 3001;
 
 app.use(cors());
@@ -41,6 +44,29 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+Sentry.init({
+  dsn: "https://b8b530bf641b4634a487354b1b824fb4@o1208538.ingest.sentry.io/6341791",
+
+  // Set tracesSampleRate to 1.0 to capture 100%
+  // of transactions for performance monitoring.
+  // We recommend adjusting this value in production
+  tracesSampleRate: 1.0,
+});
+
+const transaction = Sentry.startTransaction({
+  op: "test",
+  name: "My First Test Transaction",
+});
+
+setTimeout(() => {
+  try {
+    foo();
+  } catch (e) {
+    Sentry.captureException(e);
+  } finally {
+    transaction.finish();
+  }
+}, 99);
 
 
 // app.get('/yelp-parsed-collections/scrape/g6DLKiR2ReMs-N5hN6zDwg', (request, response) => {

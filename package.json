@@ -20,6 +20,8 @@
     },
     "homepage": "https://github.com/louismcohen/yelp-collections#readme",
     "dependencies": {
+        "@sentry/node": "^6.19.6",
+        "@sentry/tracing": "^6.19.6",
         "axios": "^0.24.0",
         "bottleneck": "^2.19.5",
         "cheerio": "^1.0.0-rc.10",
