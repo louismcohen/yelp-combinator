@@ -44,9 +44,14 @@ app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
+const revision = require('child_process')
+  .execSync('git rev-parse HEAD')
+  .toString().trim()
+
 Sentry.init({
   dsn: "https://b8b530bf641b4634a487354b1b824fb4@o1208538.ingest.sentry.io/6341791",
-
+  environment: 'production',
+  release: 'yelp-combinator@' + revision,
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
   // We recommend adjusting this value in production
@@ -57,16 +62,6 @@ const transaction = Sentry.startTransaction({
   op: "test",
   name: "My First Test Transaction",
 });
-
-setTimeout(() => {
-  try {
-    foo();
-  } catch (e) {
-    Sentry.captureException(e);
-  } finally {
-    transaction.finish();
-  }
-}, 99);
 
 
 // app.get('/yelp-parsed-collections/scrape/g6DLKiR2ReMs-N5hN6zDwg', (request, response) => {
