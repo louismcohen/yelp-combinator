@@ -7,6 +7,8 @@ const GoogleTimeZoneController = require('../controllers/google-timezone.control
 const GeolocationService = require('../services/geolocation.service');
 const _ = require('lodash');
 
+const Sentry = require("@sentry/node");
+
 const limiter = new Bottleneck({
   maxConcurrent: 5,
   minTime: 500,
@@ -17,6 +19,7 @@ const getYelpBusinessInfo = async (alias) => {
     const info = await axios(`${YELP_BIZ_API_URI}${encodeURI(alias)}`, yelpAxiosOptions);
     return info.data;
   } catch (error) {
+    Sentry.captureException(error);
     return error.response.data;
   }
 }
@@ -64,13 +67,14 @@ const updateBusinessById = async (id) => {
     {new: true, upsert: true},
     (error, result) => {
       if (error) {
+        Sentry.captureException(error);
         console.log('Error: ', error);
       } else {
         console.log(`Successfully updated ${result.addedIndex}: ${data.name} (${data.alias})`);
         return result;
       }
     }
-  )
+  ).clone();
 
   return updatedBusiness;  
 }
@@ -82,6 +86,7 @@ const updatedSavedBusiness = async (data) => {
     {new: true, upsert: true},
     (error, result) => {
       if (error) {
+        Sentry.captureException(error);
         console.log('Error: ', error);
       } else {
         console.log(`Successfully updated ${result.addedIndex}: ${data.name} (${data.alias})`);
@@ -105,13 +110,14 @@ const updateBusinessByAlias = async (alias) => {
       {new: true, upsert: true},
       (error, result) => {
         if (error) {
+          Sentry.captureException(error);
           console.log('Error: ', error);
         } else {
           console.log(`Successfully updated ${result.addedIndex}: ${data.name} (${data.alias})`);
           return result;
         }
       }
-    )
+    ).clone();
   
     return updatedBusiness;
   } else {
@@ -138,13 +144,14 @@ const updateBusiness = async (business) => {
       {new: true, upsert: true},
       (error, result) => {
         if (error) {
+          Sentry.captureException(error);
           console.log('Error: ', error);
         } else {
           console.log(`Successfully updated ${result.addedIndex}: ${data.name} (${data.alias})`);
           return result;
         }
       }
-    )
+    ).clone();
   
     return updatedBusiness;
   } else {
@@ -186,6 +193,7 @@ const updateAllBusinesses = async () => {
     )
     return updatedBusinesses;
   } catch {
+    Sentry.captureException(error);
     return {error: error};
   }
 }
@@ -203,16 +211,18 @@ const updateBusinessBasicInfo = async (business) => {
       {new: true, upsert: true},
       (error, result) => {
         if (error) {
+          Sentry.captureException(error);
           console.log(`Error updating basic business info for ${business.alias}: `, error);
         } else {
           console.log(`Updated basic info for ${business.alias}: addedIndex ${business.addedIndex}`);
           return result;
         }
       }
-    )
+    ).clone();
 
     return updatedBusiness;
   } catch (error) {
+    Sentry.captureException(error);
     return {error: error};
   }
 }
@@ -232,6 +242,7 @@ const updateAllBusinessesBasicInfo = async () => {
 
     return updatedBusinesses;
   } catch (error) {
+    Sentry.captureException(error);
     return error;
   }
 }
@@ -251,6 +262,7 @@ const updateIncompleteBusinesses = async () => {
     )
     return updatedBusinesses;
   } catch {
+    Sentry.captureException(error);
     return {error: error};
   }
 }
@@ -260,6 +272,7 @@ const getAllBusinesses = async () => {
     const businesses = await YelpBusiness.find();
     return businesses;
   } catch (error) {
+    Sentry.captureException(error);
     return {error: error};
   }
 }
@@ -269,6 +282,7 @@ const getBusinessByAlias = async (alias) => {
     const business = YelpBusiness.findOne({alias});
     return business;
   } catch {
+    Sentry.captureException(error);
     return {error: error};
   }
 }
@@ -279,6 +293,7 @@ const deleteAllBusinesses = async () => {
     console.log(`Deleted all businesses (${result.deletedCount})`);
     return result;
   } catch (error) {
+    Sentry.captureException(error);
     return {error: error};
   }
 }

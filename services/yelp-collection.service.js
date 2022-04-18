@@ -159,10 +159,11 @@ const addOrUpdateCollection = async (collection) => {
           return false;
         } else {
           console.log('addorupdate result', result);
+          // Sentry.captureEvent()
           return true;
         }
       }
-    )
+    ).clone();
 
     console.log({result});
     return result;
