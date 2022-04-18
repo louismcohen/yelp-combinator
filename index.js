@@ -51,7 +51,7 @@ app.listen(PORT, () => {
 Sentry.init({
   dsn: "https://b8b530bf641b4634a487354b1b824fb4@o1208538.ingest.sentry.io/6341791",
   environment: 'production',
-  release: 'yelp-combinator@' + process.env.SOURCE_VERSION,
+  release: 'yelp-combinator@' + process.env.HEROKU_SLUG_COMMIT,
   // Set tracesSampleRate to 1.0 to capture 100%
   // of transactions for performance monitoring.
   // We recommend adjusting this value in production
