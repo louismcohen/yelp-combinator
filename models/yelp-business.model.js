@@ -56,6 +56,8 @@ const yelpBusinessSchema = new mongoose.Schema({
   }],
   visited: Boolean,
   website: String,
+  is_claimed: Boolean,
+  is_closed: Boolean
 }, {
   timestamps: true
 });
