@@ -16,7 +16,7 @@
         "@reach/combobox": "^0.16.5",
         "@reach/listbox": "^0.16.2",
         "@reach/menu-button": "^0.16.2",
-        "@react-google-maps/api": "^2.7.0",
+        "@react-google-maps/api": "^2.11.8",
         "@svgr/cli": "^6.1.2",
         "@testing-library/jest-dom": "^5.16.1",
         "@testing-library/react": "^12.1.2",

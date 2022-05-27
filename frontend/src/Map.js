@@ -38,7 +38,8 @@ const defaultCenter = {
 const options = {
   styles: GoogleMapStyles.appleMapsEsquePlus,
   disableDefaultUI: true,
-  zoomControl: true
+  zoomControl: true,
+  mapId: '3613d307a42d54f5'
 }
 
 const Map = () => {
@@ -153,8 +154,6 @@ const Map = () => {
   } 
 
   const saveBusinessInfo = async (business) => {
-    console.log(`onGetWebsite: saving business info`);
-    console.log({business});
     const updatedBusinesses = await YelpBusinessService.saveBusinessInfo(business, businesses);
     setBusinesses(updatedBusinesses);
   }
