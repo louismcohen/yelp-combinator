@@ -1,3 +1,5 @@
+import * as Sentry from "@sentry/react";
+
 const axios = require('axios');
 const ipGeolocationTimeZoneUri = 'https://api.ipgeolocation.io/timezone'; 
 
@@ -14,6 +16,7 @@ const getTimeZoneByCoordinates = async (lat, long) => { // if no coordinates pro
     const result = await axios.get(ipGeolocationTimeZoneUri, {params});
     return result.data;
   } catch (error) {
+    Sentry.captureException(error);
     return {error};
   }
 }

@@ -6,6 +6,7 @@ import {
   Marker,
 } from "@react-google-maps/api";
 import {Helmet} from "react-helmet";
+import * as Sentry from "@sentry/react";
 
 import YelpBusinessService from './api/yelp-business.service';
 
@@ -106,6 +107,7 @@ const Map = () => {
               lng: position.coords.longitude
             })
       } catch (error) {
+        Sentry.captureException(error);
         console.log({error});
         const approximatePositionInfo = await GeolocationService.getTimeZoneByCoordinates();
         console.log({approximatePositionInfo});

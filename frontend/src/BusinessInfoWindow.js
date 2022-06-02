@@ -10,6 +10,8 @@ import { faYelp } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
 import moment from 'moment';
 
+import * as Sentry from "@sentry/react";
+
 import ColorPalette from './styles/ColorPalette';
 import * as IconGenerator from './icons/IconGenerator';
 
@@ -283,6 +285,7 @@ const getTravelTime = async (currentPosition, destination) => {
     return response;
   } catch(error) {
     console.log({error});
+    Sentry.captureException(error);
     return {error};
   }
   
