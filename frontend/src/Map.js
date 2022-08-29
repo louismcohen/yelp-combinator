@@ -103,14 +103,18 @@ const Map = () => {
       try {
         const position = await getCurrentPosition();
         setCurrentPosition({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
+              lat: position.coords?.latitude,
+              lng: position.coords?.longitude
             })
       } catch (error) {
-        Sentry.captureException(error);
         console.log({error});
         const approximatePositionInfo = await GeolocationService.getTimeZoneByCoordinates();
         console.log({approximatePositionInfo});
+        Sentry.captureException(error, {
+          tags: {
+            console: JSON.stringify(approximatePositionInfo)
+          }
+        });
         setCurrentPosition({
           lat: parseFloat(approximatePositionInfo.geo.latitude),
           lng: parseFloat(approximatePositionInfo.geo.longitude),
