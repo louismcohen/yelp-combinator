@@ -1,5 +1,6 @@
 import axios from 'axios';
 import moment from 'moment-timezone';
+import * as Sentry from "@sentry/react";
 
 const applyExtraBusinessInfo = (business) => {
   business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}; //easier position parsing 
@@ -117,6 +118,7 @@ const saveBusinessInfo = async (business, businesses) => {
     // setSelected(updatedBusinessData);
   } catch (error) {
     console.log({error});
+    Sentry.captureException(error);
   }
 }
 

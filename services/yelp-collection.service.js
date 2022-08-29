@@ -11,6 +11,8 @@ const {yelpAxiosOptions, YELP_RENDERED_ITEMS_URI, YELP_COLLECTION_URI} = require
 const moment = require('moment-timezone');
 const { collection } = require('../models/yelp-collection.model');
 
+const Sentry = require("@sentry/node");
+
 const initializeCollection = () => {
   return {items: [], businesses: []}; 
 }
@@ -139,28 +141,38 @@ const getAllCollections = async () => {
 
 const addOrUpdateCollection = async (collection) => {
   console.log('in addorupdate', collection.title);
-  const result = await YelpCollection.findOneAndUpdate(
-    {yelpCollectionId: collection.yelpCollectionId},
-    { 
-      yelpCollectionId: collection.yelpCollectionId, 
-      title: collection.title, 
-      itemCount: collection.itemCount,
-      lastUpdated: collection.lastUpdated.valueOf(),
-      businesses: collection.businesses,
-    },
-    {new: true, upsert: true},  
-    (error, result) => {
-      if (error) {
+  try {
+    const result = await YelpCollection.findOneAndUpdate(
+      {yelpCollectionId: collection.yelpCollectionId},
+      { 
+        yelpCollectionId: collection.yelpCollectionId, 
+        title: collection.title, 
+        itemCount: collection.itemCount,
+        lastUpdated: collection.lastUpdated.valueOf(),
+        businesses: collection.businesses,
+      },
+      {new: true, upsert: true},  
+      (error, result) => {
+        if (error) {
+          Sentry.captureException(error)
           console.log('addorupdate error', error);
           return false;
-      } else {
-          // console.log('addorupdate result', result);
-          return result;
+        } else {
+          console.log('addorupdate result', result);
+          // Sentry.captureEvent()
+          return true;
+        }
       }
-    }
-  )
+    ).clone();
 
-  return result;
+    console.log({result});
+    return result;
+  } catch(error) {
+    Sentry.captureException(error);
+  }
+  
+
+  
 }
 
 const compareSavedToLoadedCollections = async (savedCollections) => { 

@@ -6,6 +6,7 @@ import {
   Marker,
 } from "@react-google-maps/api";
 import {Helmet} from "react-helmet";
+import * as Sentry from "@sentry/react";
 
 import YelpBusinessService from './api/yelp-business.service';
 
@@ -38,7 +39,8 @@ const defaultCenter = {
 const options = {
   styles: GoogleMapStyles.appleMapsEsquePlus,
   disableDefaultUI: true,
-  zoomControl: true
+  zoomControl: true,
+  mapId: '3613d307a42d54f5'
 }
 
 const Map = () => {
@@ -101,13 +103,18 @@ const Map = () => {
       try {
         const position = await getCurrentPosition();
         setCurrentPosition({
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
+              lat: position.coords?.latitude,
+              lng: position.coords?.longitude
             })
       } catch (error) {
         console.log({error});
         const approximatePositionInfo = await GeolocationService.getTimeZoneByCoordinates();
         console.log({approximatePositionInfo});
+        Sentry.captureException(error, {
+          tags: {
+            console: JSON.stringify(approximatePositionInfo)
+          }
+        });
         setCurrentPosition({
           lat: parseFloat(approximatePositionInfo.geo.latitude),
           lng: parseFloat(approximatePositionInfo.geo.longitude),
@@ -153,8 +160,6 @@ const Map = () => {
   } 
 
   const saveBusinessInfo = async (business) => {
-    console.log(`onGetWebsite: saving business info`);
-    console.log({business});
     const updatedBusinesses = await YelpBusinessService.saveBusinessInfo(business, businesses);
     setBusinesses(updatedBusinesses);
   }
