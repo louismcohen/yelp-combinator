@@ -4,7 +4,7 @@ import './index.css';
 import Map from './Map';
 import {Helmet} from "react-helmet";
 
-import * as Sentry from "@sentry/react";
+import * as Sentry from "@sentry/browser";
 import { BrowserTracing } from "@sentry/tracing";
 
 // import reportWebVitals from './reportWebVitals';
@@ -16,11 +16,16 @@ import { BrowserTracing } from "@sentry/tracing";
 
 Sentry.init({
     dsn: "https://b8b530bf641b4634a487354b1b824fb4@o1208538.ingest.sentry.io/6341791",
-    integrations: [new BrowserTracing()],
+    integrations: [
+        new BrowserTracing(),
+        new Sentry.Replay()
+    ],
   
     // We recommend adjusting this value in production, or using tracesSampler
     // for finer control
     tracesSampleRate: 1.0,
+    replaysSessionSampleRate: 1.0,
+    replaysOnErrorSampleRate: 1.0
   });
 
 ReactDOM.render( 
