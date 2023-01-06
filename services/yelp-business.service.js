@@ -80,6 +80,7 @@ const updateBusinessById = async (id) => {
 }
 
 const updatedSavedBusiness = async (data) => {
+  console.log({updatedSavedBusiness: data});
   const updatedBusiness = await YelpBusiness.findOneAndUpdate(
     {alias: data.alias},
     data,
