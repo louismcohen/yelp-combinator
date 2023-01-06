@@ -4,8 +4,9 @@ import './index.css';
 import Map from './Map';
 import {Helmet} from "react-helmet";
 
-import * as Sentry from "@sentry/react";
+import * as Sentry from "@sentry/browser";
 import { BrowserTracing } from "@sentry/tracing";
+import { CaptureConsole as CaptureConsoleIntegration } from '@sentry/integrations';
 
 // import reportWebVitals from './reportWebVitals';
 // import ReactGA from 'react-ga4';
@@ -16,11 +17,17 @@ import { BrowserTracing } from "@sentry/tracing";
 
 Sentry.init({
     dsn: "https://b8b530bf641b4634a487354b1b824fb4@o1208538.ingest.sentry.io/6341791",
-    integrations: [new BrowserTracing()],
+    integrations: [
+        new BrowserTracing(),
+        new Sentry.Replay(),
+        new CaptureConsoleIntegration()
+    ],
   
     // We recommend adjusting this value in production, or using tracesSampler
     // for finer control
     tracesSampleRate: 1.0,
+    replaysSessionSampleRate: 1.0,
+    replaysOnErrorSampleRate: 1.0
   });
 
 ReactDOM.render( 
