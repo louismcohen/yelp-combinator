@@ -4,7 +4,7 @@ import './index.css';
 import Map from './Map';
 import {Helmet} from "react-helmet";
 
-import * as Sentry from "@sentry/browser";
+import * as Sentry from "@sentry/react";
 import { BrowserTracing } from "@sentry/tracing";
 import { CaptureConsole as CaptureConsoleIntegration } from '@sentry/integrations';
 
