@@ -9,7 +9,6 @@ import { faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 import { faYelp } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
 import moment from 'moment';
-import tzloopup from 'tz-lookup';
 
 import * as Sentry from "@sentry/react";
 
@@ -128,7 +127,7 @@ const StyledOpeningInfo = styled.div`
   padding: 0 15px;
 `
 
-const OpeningInfo = ({hours, travelTime, geo}) => {
+const OpeningInfo = ({hours, travelTime}) => {
   const now = moment();
 
   const [arrivalTime, setArrivalTime] = useState();
@@ -321,7 +320,6 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
   const categories = formatCategories(props.business.categories)
   const note = props.business.note;
   const hours = props.business.hours;
-  const geo = props.business.position;
   const primaryCategory = props.business.categories[0].alias;
   
   const [visited, setVisited] = useState(props.business.visited);
@@ -412,7 +410,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
             <Name>{name}</Name>
             <Categories>{categories}</Categories>
             <TravelTime />
-            <OpeningInfo hours={hours} travelTime={travelTime} geo={geo} />
+            <OpeningInfo hours={hours} travelTime={travelTime} />
             {(note ? <Note>{props.business.note}</Note> : null)}
             <StyledActionRow>
               <a href={`${yelpBizUrl}${props.business.alias}`} target='_blank' rel='noopener noreferrer' title={`Go to Yelp page`}>
