@@ -22,22 +22,22 @@
     "dependencies": {
         "@sentry/browser": "^7.29.0",
         "@sentry/integrations": "^7.29.0",
-        "@sentry/node": "^7.0.0",
-        "@sentry/tracing": "^7.0.0",
-        "axios": "^0.27.2",
+        "@sentry/node": "^7.29.0",
+        "@sentry/tracing": "^7.29.0",
+        "axios": "^1.2.2",
         "bottleneck": "^2.19.5",
-        "cheerio": "^1.0.0-rc.11",
+        "cheerio": "^1.0.0-rc.12",
         "cors": "^2.8.5",
-        "dotenv": "^16.0.1",
-        "express": "^4.18.1",
-        "jsdom": "^19.0.0",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "jsdom": "^21.0.0",
         "lodash": "^4.17.21",
-        "moment-timezone": "^0.5.34",
-        "mongodb": "^4.6.0",
-        "mongoose": "^6.3.5"
+        "moment-timezone": "^0.5.40",
+        "mongodb": "^4.13.0",
+        "mongoose": "^6.8.3"
     },
     "devDependencies": {
-        "nodemon": "^2.0.16"
+        "nodemon": "^2.0.20"
     },
     "engines": {
         "node": ">=14.0"

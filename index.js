@@ -27,6 +27,7 @@ app.use('/api/', googleRouter);
 app.use('/api/', geolocationRouter);
 
 const uri = process.env.ATLAS_URI;
+mongoose.set('strictQuery', false);
 mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
 const connection = mongoose.connection;
 connection.once('open', () => {
