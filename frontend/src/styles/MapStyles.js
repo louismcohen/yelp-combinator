@@ -12,7 +12,7 @@ import {
 import "@reach/combobox/styles.css";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV, faCircle } from '@fortawesome/free-solid-svg-icons/';
+import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCheckSquare as faCheckSquareRegular } from '@fortawesome/free-regular-svg-icons';
 
 // import MaterialIcon from '@material/react-material-icon';

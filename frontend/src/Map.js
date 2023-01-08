@@ -4,6 +4,7 @@ import axios from 'axios';
 import {
   useLoadScript,
   Marker,
+  MarkerClusterer
 } from "@react-google-maps/api";
 import {Helmet} from "react-helmet";
 import * as Sentry from "@sentry/react";
@@ -20,7 +21,7 @@ import * as S from './styles/MapStyles';
 import GoogleMapStyles from './styles/GoogleMapStyles';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV, faCircle } from '@fortawesome/free-solid-svg-icons/';
+import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCheckSquare as faCheckSquareRegular } from '@fortawesome/free-regular-svg-icons';
 import GeolocationService from './api/geolocation.service';
 
@@ -373,7 +374,11 @@ const Map = () => {
     }
   } 
 
-  
+  const clusterOptions = {
+    imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+    averageCenter: true,
+    enableRetinaIcons: true,
+  }
 
   return (
   <div autoFocus onKeyDown={handleKeyPress} ref={messageListContainerRef}>
