@@ -53,19 +53,9 @@ const Map = () => {
   const [markers, setMarkers] = useState([]);
   useEffect(() => {
     const getAllBusinesses = async () => {
-      // console.log('api', 'process.env.REACT_APP_BACKEND_URL');
       let response = await axios.get('/api');
-      // const businessesJson = await axios.get('./businesses.json');
-      // console.log({businessesJson});
-      // let response = {};
-      // response.data = businessesJson;
       response.data = response.data.filter(business => !!business.name && !!business.coordinates);
-      // response.data.map(business => (
-      //   business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, //easier position parsing 
-      //   business.hours = business.hours[0] //easier hours parsing
-      // ));
       response.data.map(YelpBusinessService.applyExtraBusinessInfo);
-      // const businessesData = applyExtraBusinessInfo(response.data);
       setBusinesses(response.data);
       console.log('useEffect getAllBusinesses', response.data);
       console.log({businesses});

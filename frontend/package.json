@@ -10,6 +10,8 @@
         "@fortawesome/free-regular-svg-icons": "^5.15.4",
         "@fortawesome/free-solid-svg-icons": "^5.15.4",
         "@fortawesome/react-fontawesome": "^0.1.16",
+        "@googlemaps/js-api-loader": "^1.15.2",
+        "@googlemaps/markerclusterer": "^2.1.4",
         "@mui/icons-material": "^5.2.5",
         "@mui/material": "^5.2.5",
         "@mui/styled-engine-sc": "^5.1.0",
