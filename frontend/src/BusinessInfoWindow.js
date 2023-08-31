@@ -4,7 +4,7 @@ import {
 } from '@react-google-maps/api';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimes, faDirections, faCheckSquare as faCheckSquareSolid, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
+import { faTimes, faDirections, faCheckSquare as faCheckSquareSolid, faExternalLinkAlt, faPersonCircleExclamation, faPersonCircleCheck } from '@fortawesome/free-solid-svg-icons';
 import { faCheckSquare } from '@fortawesome/free-regular-svg-icons';
 import { faYelp } from '@fortawesome/free-brands-svg-icons';
 import axios from 'axios';
@@ -292,6 +292,7 @@ const getTravelTime = async (currentPosition, destination) => {
 }
 
 const getPixelPositionOffset = (width, height) => {
+  console.log({width, height})
   return {
     x: -(width / 2),
     y: -(height + 16),
@@ -321,6 +322,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
   const note = props.business.note;
   const hours = props.business.hours;
   const primaryCategory = props.business.categories[0].alias;
+  const isClaimed = props.business.is_claimed;
   
   const [visited, setVisited] = useState(props.business.visited);
   useEffect(() => {
@@ -407,7 +409,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
         <InfoWindowContainer iconColor={determineIconColor}>
           <Image url={props.business.image_url}></Image>
           <Content>
-            <Name>{name}</Name>
+            <Name>{name} <FontAwesomeIcon icon={isClaimed ? faPersonCircleCheck : faPersonCircleExclamation} /></Name>
             <Categories>{categories}</Categories>
             <TravelTime />
             <OpeningInfo hours={hours} travelTime={travelTime} />

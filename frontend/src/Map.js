@@ -3,8 +3,8 @@ import * as U from './utils/utils'
 import axios from 'axios';
 import {
   useLoadScript,
-  Marker,
-  MarkerClusterer
+  MarkerF,
+  MarkerClustererF
 } from "@react-google-maps/api";
 import {Helmet} from "react-helmet";
 import * as Sentry from "@sentry/react";
@@ -24,6 +24,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckSquare, faDoorOpen, faDoorClosed, faTimesCircle, faUserCircle, faEllipsisV, faCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCheckSquare as faCheckSquareRegular } from '@fortawesome/free-regular-svg-icons';
 import GeolocationService from './api/geolocation.service';
+
+import acai from './icons/cluster/m1.png'
 
 console.log({IconMarker});
 
@@ -117,8 +119,8 @@ const Map = () => {
           }
         });
         setCurrentPosition({
-          lat: parseFloat(approximatePositionInfo.geo.latitude),
-          lng: parseFloat(approximatePositionInfo.geo.longitude),
+          lat: parseFloat(approximatePositionInfo?.geo?.latitude),
+          lng: parseFloat(approximatePositionInfo?.geo?.longitude),
         })
       }
 
@@ -439,19 +441,30 @@ const Map = () => {
           />
         )
       })} */}
-      {markers.map(business => {
-        return (
-          <IconMarker 
-            key={business.alias} 
-            business={business} 
-            // animation={window.google.maps.Animation.DROP} 
-            onIconMarkerClick={() => onSelect(business)}  
-            onMouseOver={() => onMarkerMouseover(business)}
-            // icon={RamenDiningIcon}
-            title={business.name}
-          />
-        )
-      })}
+      <MarkerClustererF options={clusterOptions}>
+        {(clusterer) => 
+          {markers.map(business => {
+          return (
+            // <IconMarker 
+            //   key={business.alias} 
+            //   business={business} 
+            //   // animation={window.google.maps.Animation.DROP} 
+            //   onIconMarkerClick={() => onSelect(business)}  
+            //   onMouseOver={() => onMarkerMouseover(business)}
+            //   // icon={RamenDiningIcon}
+            //   title={business.name}
+            //   clusterer={clusterer}
+            // />
+            <MarkerF 
+              // key={business.alias}
+              clusterer={clusterer}
+              position={business.position}
+            />
+          )
+        })}
+      }
+      </MarkerClustererF>
+      
       {/* {businesses.length > 0 && process.env.NODE_ENV !== 'production' ? 
         <IconMarker onIconMarkerClick={() => setSelected(businesses.find(biz => biz.alias === 'homestate-los-angeles-8'))} business={businesses.find(biz => biz.alias === 'homestate-los-angeles-8')} />
         : null} */}
