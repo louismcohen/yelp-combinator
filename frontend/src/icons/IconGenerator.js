@@ -1,11 +1,22 @@
+import * as React from 'react';
 import * as IconSvgs from './svg';
 import iconMapping from './iconMapping';
 import ColorPalette from '../styles/ColorPalette';
+import CssFilterConverter from 'css-filter-converter';
 
 const defaultTotalSize = 23;
 const defaultSize = 16;
 const defaultMargin = defaultTotalSize - defaultSize;
 const defaultColor =  'yelpRed';
+
+let iconPngs = {};
+const iconFiles = require.context('./png', true, /\.png$/);
+iconFiles.keys().map(path => {
+  const name = path.match(/(?<=\.\/).*?(?=\.png$)/)[0];
+  iconPngs[name] = iconFiles(path);
+})
+
+// console.log({iconPngs});
 
 const defaultProps = {
   style: {
@@ -13,11 +24,32 @@ const defaultProps = {
     display: 'block'
   }, 
   fill: '#ffffff',
+  // filter: `${{CssFilterConverter.hexToFilter('#fffffff').color}}`,
   height: `${defaultSize}px`,
   width: `${defaultSize}px`,
 };
 
 const defaultIcon = 'Restaurant';
+
+const convertToKebabCase = (inputString) => {
+  return inputString.replace(/([a-z0–9])([A-Z])/g, "$1-$2").toLowerCase();
+}
+
+const generateIconPngFromCategoryAlias = (categoryAlias, props = defaultProps) => {
+  const category = iconMapping.find(category => category.alias === categoryAlias);
+  const iconName = category
+    ? convertToKebabCase(category.icon)
+    : convertToKebabCase(defaultIcon);
+  const icon = iconPngs[iconName];
+  
+  return (
+    <img 
+      src={icon}
+      alt={icon}
+      {...props}
+    />
+  )
+}
 
 const generateIconFromCategoryAlias = (categoryAlias, props = defaultProps) => {
   const category = iconMapping.find(category => category.alias === categoryAlias);
@@ -40,5 +72,6 @@ const generateHexColorFromCategoryAlias = (categoryAlias) => {
 
 export {
   generateIconFromCategoryAlias,
+  generateIconPngFromCategoryAlias,
   generateHexColorFromCategoryAlias,
 }

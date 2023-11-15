@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef, useCallback, forwardRef } from 'rea
 import { OverlayView } from '@react-google-maps/api';
 import styled from 'styled-components';
 import ColorPalette from './styles/ColorPalette';
+import CssFilterConverter from 'css-filter-converter';
 
 import * as IconGenerator from './icons/IconGenerator';
 
@@ -41,13 +42,27 @@ const IconMarker = (props) => {
 
   const iconHexColor = IconGenerator.generateHexColorFromCategoryAlias(primaryCategoryAlias);
 
-  const iconFillColor = props.business.visited 
-    ? {fill: iconFillVisited}
-    : {fill: iconHexColor}
+  const iconColor = props.business.visited 
+    ? iconFillVisited
+    : iconHexColor
+
+  const iconFillColor = {
+    fill: iconColor,
+  };
+  
+  const iconProps = {
+    ...defaultIconProps,
+    style: {
+      ...defaultIconProps.style,
+      filter: CssFilterConverter.hexToFilter(iconColor).color,
+    },
+  };
 
   const IconGenerated = () => {
     const Icon = IconGenerator.generateIconFromCategoryAlias(primaryCategoryAlias, {...defaultIconProps, ...iconFillColor});
-    return Icon;
+    const IconPng = IconGenerator.generateIconPngFromCategoryAlias(primaryCategoryAlias, {...iconProps});
+    // console.log({IconPng});
+    return IconPng;
   }
 
   const onIconMarkerClick = (event) => {
