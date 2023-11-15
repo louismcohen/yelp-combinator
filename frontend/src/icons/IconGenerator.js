@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as IconSvgs from './svg';
 import iconMapping from './iconMapping';
 import ColorPalette from '../styles/ColorPalette';
-import CssFilterConverter from 'css-filter-converter';
+import { convertToKebabCase } from '../utils';
 
 const defaultTotalSize = 23;
 const defaultSize = 16;
@@ -30,10 +30,6 @@ const defaultProps = {
 };
 
 const defaultIcon = 'Restaurant';
-
-const convertToKebabCase = (inputString) => {
-  return inputString.replace(/([a-z0–9])([A-Z])/g, "$1-$2").toLowerCase();
-}
 
 const generateIconPngFromCategoryAlias = (categoryAlias, props = defaultProps) => {
   const category = iconMapping.find(category => category.alias === categoryAlias);

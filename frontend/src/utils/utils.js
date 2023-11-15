@@ -31,3 +31,7 @@ export const useDebouncedState = (initialState, delay = 200) => {
 export const removeSpaces = (str) => {
   return str.replace(/\s+/g, '');
 }
+
+export const convertToKebabCase = (inputString) => {
+  return inputString.replace(/([a-z0–9])([A-Z])/g, "$1-$2").toLowerCase();
+}
