@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as IconSvgs from './svg';
 import iconMapping from './iconMapping';
 import ColorPalette from '../styles/ColorPalette';
-import { convertToKebabCase } from '../utils';
+import { convertToKebabCase } from '../utils/utils.js';
 
 const defaultTotalSize = 23;
 const defaultSize = 16;
