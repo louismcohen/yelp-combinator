@@ -6,6 +6,8 @@ import ColorPalette from './styles/ColorPalette';
 import * as IconGenerator from './icons/IconGenerator';
 
 const IconMarkerContainer = styled.div`
+  top: -15;
+  left: -20;
   position: absolute;
   background: ${props => props.visited ? props.baseColor || ColorPalette.getHexColorByName('yelpRed') : `#fff`};
   opacity: 0.97;
@@ -55,15 +57,15 @@ const IconMarker = (props) => {
   }
 
   return (
-    <OverlayView 
-      mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-      position={props.business.position}
-      getPixelPositionOffset={getPixelPositionOffset}
-      >
+    // <OverlayView 
+    //   mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
+    //   position={props.business.position}
+    //   getPixelPositionOffset={getPixelPositionOffset}
+    //   >
       <IconMarkerContainer onClick={onIconMarkerClick} baseColor={iconHexColor} visited={props.business.visited}>
         <IconGenerated />
       </IconMarkerContainer>
-    </OverlayView>
+    // </OverlayView>
   )
 }
 

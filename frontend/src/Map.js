@@ -8,6 +8,8 @@ import {
 import {Helmet} from "react-helmet";
 import * as Sentry from "@sentry/react";
 
+import GoogleMapReact from 'google-map-react';
+
 import YelpBusinessService from './api/yelp-business.service';
 
 import BusinessInfoWindow from './BusinessInfoWindow';
@@ -55,17 +57,8 @@ const Map = () => {
     const getAllBusinesses = async () => {
       // console.log('api', 'process.env.REACT_APP_BACKEND_URL');
       let response = await axios.get('/api');
-      // const businessesJson = await axios.get('./businesses.json');
-      // console.log({businessesJson});
-      // let response = {};
-      // response.data = businessesJson;
       response.data = response.data.filter(business => !!business.name && !!business.coordinates);
-      // response.data.map(business => (
-      //   business.position = {lat: business.coordinates.latitude, lng: business.coordinates.longitude}, //easier position parsing 
-      //   business.hours = business.hours[0] //easier hours parsing
-      // ));
       response.data.map(YelpBusinessService.applyExtraBusinessInfo);
-      // const businessesData = applyExtraBusinessInfo(response.data);
       setBusinesses(response.data);
       console.log('useEffect getAllBusinesses', response.data);
       console.log({businesses});
@@ -125,33 +118,6 @@ const Map = () => {
 
     loadLocation();
     console.log({currentPosition});
-
-    // const position = (position) => {
-    //   console.log({position});
-    // }
-    // const error = (error) => {
-    //   console.warn({error});
-    // }
-    
-    // const navigatorResult = navigator.geolocation.getCurrentPosition(position, error);
-    // console.log({navigatorResult});
-    // navigator.geolocation.getCurrentPosition((position, error) => {
-      
-    //   console.log(`getCurrentPosition:`, position, error);
-    //   if (error) console.warn(error);
-    //   setCurrentPosition({
-    //     lat: position.coords.latitude,
-    //     lng: position.coords.longitude
-    //   })
-    //   console.log({position});
-    // });
-
-    // const getGeolocationPermissions = async () => {
-    //   const permissions = await navigator.permissions.query({name: 'geolocation'});
-    //   console.log({permissions});
-    // }
-
-    // getGeolocationPermissions();
   }, [])
 
   const setVisited = async (business) => {
@@ -256,18 +222,7 @@ const Map = () => {
 
     return (
       <S.FilterButton borderColor={'#7a0ebd'} iconColor={iconColor} onClick={() => nextFilterButtonState(showOpen, setShowOpen)}>
-        <FontAwesomeIcon icon={icon} />
-        {/* {showOpen === 0 ?
-            null
-          : showOpen === 1 ?
-          <S.FilterButtonText>Open now</S.FilterButtonText>
-          : <S.FilterButtonText>Open at</S.FilterButtonText>
-            
-        }
-        <Combobox>
-              <S.FilterButtonInput onClick={(e) => e.stopPropagation()}></S.FilterButtonInput>
-            </Combobox> */}
-        
+        <FontAwesomeIcon icon={icon} />        
       </S.FilterButton>
     )
   }
@@ -382,10 +337,8 @@ const Map = () => {
     </Helmet>
     <MapLoading loadError={loadError} isLoaded={isLoaded} businesses={businesses} />
     
-    {/* <StyledMaterialIcon icon='search' /> */}
     <S.ControlsContainer>
       <S.ComboboxContainer>
-      {/* <h1>Yelp Combinator</h1> */}
         <S.StyledCombobox>
           <S.StyledComboboxInput 
             disabled={businesses.length === 0}
@@ -397,11 +350,6 @@ const Map = () => {
             ref={inputFilter}
           />
           <CloseButton />
-          {/* <ComboboxPopover>
-            {businesses.filter(filterBusinesses).map(business => (
-              <ComboboxOption key={business.alias} value={business.name} />
-            ))}
-          </ComboboxPopover> */}
         </S.StyledCombobox>
         <S.FilterButtonsContainer>
           <VisitedFilterButton />
@@ -409,57 +357,61 @@ const Map = () => {
         </S.FilterButtonsContainer>
       </S.ComboboxContainer>
     </S.ControlsContainer> 
-    <S.StyledGoogleMap 
-      mapContainerClassName={'map-container'} 
-      mapContainerStyle={mapContainerStyle} 
-      zoom={defaultZoom} 
-      center={defaultCenter} 
-      options={options} 
-      clickableIcons={false}
-      onLoad={onMapLoad} 
-      onClick={onMapClick} 
-      >
-      {/* {markers.map(business => {
-        return (
-          <Marker 
-            ref={(marker) => markerRefs.current.push(marker)}
-            key={business.alias} 
-            cursor={'pointer'}
-            position={business.position} 
-            // animation={window.google.maps.Animation.DROP} 
-            onClick={() => onSelect(business)}  
-            onMouseOver={() => onMarkerMouseover(business)}
-            // icon={RamenDiningIcon}
-            title={business.name}
-          />
-        )
-      })} */}
-      {markers.map(business => {
-        return (
-          <IconMarker 
-            key={business.alias} 
-            business={business} 
-            // animation={window.google.maps.Animation.DROP} 
-            onIconMarkerClick={() => onSelect(business)}  
-            onMouseOver={() => onMarkerMouseover(business)}
-            // icon={RamenDiningIcon}
-            title={business.name}
-          />
-        )
-      })}
-      {/* {businesses.length > 0 && process.env.NODE_ENV !== 'production' ? 
-        <IconMarker onIconMarkerClick={() => setSelected(businesses.find(biz => biz.alias === 'homestate-los-angeles-8'))} business={businesses.find(biz => biz.alias === 'homestate-los-angeles-8')} />
-        : null} */}
-      {selected ? 
-        <BusinessInfoWindow ref={businessInfoWindowMounted} business={selected} currentPosition={currentPosition} onGetWebsite={() => saveBusinessInfo(selected)} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
-        : null
-      }
-      {
-        currentPosition.lat && (
-          <S.StyledCurrentLocationMarker key={'currentPosition'} position={currentPosition} icon={S.currentPositionIcon} />
-        )
-      }
-    </S.StyledGoogleMap>
+    {/* <GoogleMapReact
+      bootstrapURLKeys={{
+        key: process.env.REACT_APP_GOOGLE_API_KEY,
+        language: 'en',
+        region: 'us',
+        libraries: ['places'],
+      }}
+      defaultZoom={defaultZoom}
+      defaultCenter={defaultCenter}
+    >
+
+    </GoogleMapReact> */}
+    <div style={{ height: '100vh', width: '100%' }}>
+      <S.StyledGoogleMapReact
+        bootstrapURLKeys={{
+          key: process.env.REACT_APP_GOOGLE_API_KEY,
+          language: 'en',
+          region: 'us',
+          libraries: ['places'],
+        }}
+        // mapContainerClassName={'map-container'} 
+        // mapContainerStyle={mapContainerStyle} 
+        zoom={defaultZoom} 
+        center={defaultCenter} 
+        options={options} 
+        clickableIcons={false}
+        // onLoad={onMapLoad} 
+        // onClick={onMapClick} 
+        yesIWantToUseGoogleMapApiInternals
+        >
+          {markers.map(business => {
+            return (
+              <IconMarker 
+                key={business.alias}
+                lat={business.position.lat}
+                lng={business.position.lng}
+                business={business} 
+                // animation={window.google.maps.Animation.DROP} 
+                onIconMarkerClick={() => onSelect(business)}  
+                // onMouseOver={() => onMarkerMouseover(business)}
+                // icon={RamenDiningIcon}
+              />
+            )
+          })}
+          {selected ? 
+            <BusinessInfoWindow ref={businessInfoWindowMounted} business={selected} currentPosition={currentPosition} onGetWebsite={() => saveBusinessInfo(selected)} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
+            : null
+          }
+          {
+            currentPosition.lat && (
+              <S.StyledCurrentLocationMarker key={'currentPosition'} position={currentPosition} icon={S.currentPositionIcon} />
+            )
+          }
+      </S.StyledGoogleMapReact>
+    </div>
   </div>
   )
 }

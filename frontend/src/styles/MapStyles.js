@@ -5,6 +5,8 @@ import {
   Marker,
 } from "@react-google-maps/api";
 
+import GoogleMapReact from 'google-map-react';
+
 import {
   Combobox,
   ComboboxInput,
@@ -192,6 +194,12 @@ export const currentPositionIcon = {
 }
 
 export const StyledGoogleMap = styled(GoogleMap)`
+  &:hover {
+    cursor: default;
+  }
+`
+
+export const StyledGoogleMapReact = styled(GoogleMapReact)`
   &:hover {
     cursor: default;
   }
