@@ -18,6 +18,7 @@
         "@reach/menu-button": "^0.16.2",
         "@react-google-maps/api": "^2.11.8",
         "@sentry/browser": "^7.29.0",
+        "@sentry/integrations": "^7.29.0",
         "@sentry/react": "^7.29.0",
         "@sentry/replay": "^7.29.0",
         "@sentry/tracing": "^7.29.0",
@@ -72,8 +73,9 @@
             "last 1 safari version"
         ]
     },
-    "proxy": "http://localhost:3001",
+    "proxy": "http://yelp-combinator-backend-1:3001",
     "devDependencies": {
+        "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
         "@babel/plugin-transform-arrow-functions": "^7.16.5",
         "css-loader": "^6.5.1",
         "cssnano": "^5.0.14",
