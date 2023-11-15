@@ -7,6 +7,16 @@ const defaultSize = 16;
 const defaultMargin = defaultTotalSize - defaultSize;
 const defaultColor =  'yelpRed';
 
+const iconPngsContext = require.context('./svg', false, /\.png$/i);
+const iconPngs = iconPngsContext.keys().map(path => {
+  return {
+    name: path.match(/(?<=\.\/).*?(?=\.png$)/)[0],
+    path,
+  }
+});
+
+console.log({iconPngs, IconSvgs});
+
 const defaultProps = {
   style: {
     margin: `${defaultMargin}px`, 
@@ -18,6 +28,15 @@ const defaultProps = {
 };
 
 const defaultIcon = 'Restaurant';
+
+const generateIconPngFromCategoryAlias = (categoryAlias, props = defaultProps) => {
+  const category = iconMapping.find(category => category.alias === categoryAlias);
+  const Icon = category
+    ? iconPngs.find(icon => icon.name === category.icon.toLocaleLowerCase() || icon.name === defaultIcon.toLocaleLowerCase())
+    : iconPngs.find(icon => icon.name === defaultIcon.toLocaleLowerCase());
+  const IconWithProps = Icon(props);
+  return IconWithProps;
+}
 
 const generateIconFromCategoryAlias = (categoryAlias, props = defaultProps) => {
   const category = iconMapping.find(category => category.alias === categoryAlias);
@@ -40,5 +59,6 @@ const generateHexColorFromCategoryAlias = (categoryAlias) => {
 
 export {
   generateIconFromCategoryAlias,
+  generateIconPngFromCategoryAlias,
   generateHexColorFromCategoryAlias,
 }
