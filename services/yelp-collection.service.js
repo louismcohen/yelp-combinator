@@ -65,7 +65,7 @@ const loadCollectionPage = async (yelpCollectionId) => {
 
     return collection;
   } catch (error) {
-    console.log('loadCollectionPage error', error);
+    // console.log('loadCollectionPage error', error);
     return {error: error};
   }
 }
@@ -180,6 +180,18 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
     savedCollections.map(async savedCollection => {
       try {
         const loadedCollection = await loadCollectionPage(savedCollection.yelpCollectionId);
+
+        if (loadedCollection.error) {
+          const errorInfo = {
+            code: loadedCollection.error.code,
+            requestUrl: loadedCollection.error.config.url,
+            status: loadedCollection.error.response.status,
+            statusText: loadedCollection.error.response.statusText,
+          };
+          console.warn(`Error: Could not load Yelp Collection ID ${savedCollection.yelpCollectionId}`, errorInfo)
+          return null;
+        }
+
         const mongoSavedDate = moment(savedCollection.lastUpdated);
         const yelpLoadedDate = loadedCollection.lastUpdated;
         const upToDate = !(!yelpLoadedDate.isSame(mongoSavedDate) || !savedCollection.lastUpdated);
@@ -198,7 +210,8 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
       return null;
     })
   );
-
+  
+  console.log({collectionsToUpdate});
   return collectionsToUpdate.filter(collection => !!collection);
 }
 
