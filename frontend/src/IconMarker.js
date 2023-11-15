@@ -30,6 +30,18 @@ const defaultIconProps = {
   width: `${defaultSize}px`,
 };
 
+const arePropsEqual = (oldProps, newProps) => {
+  let result = true;
+
+  if (oldProps.business.visited === newProps.business.visited) {
+    result = true;
+  } else if (oldProps.business.visited !== newProps.business.visited) {
+    result = false;
+  }
+  // console.log({business: oldProps.business, oldProps, newProps, result});
+  return result;
+}
+
 const IconMarker = (props) => {
   const primaryCategoryAlias = props.business.categories[0].alias;
 
@@ -82,4 +94,4 @@ const IconMarker = (props) => {
   )
 }
 
-export default React.memo(IconMarker);
+export default React.memo(IconMarker, arePropsEqual);
