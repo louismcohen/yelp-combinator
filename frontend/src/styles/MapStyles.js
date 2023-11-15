@@ -5,6 +5,9 @@ import {
   Marker,
 } from "@react-google-maps/api";
 
+import {Map} from '@vis.gl/react-google-maps';
+
+
 import {
   Combobox,
   ComboboxInput,

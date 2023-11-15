@@ -8,6 +8,8 @@ import {
 import {Helmet} from "react-helmet";
 import * as Sentry from "@sentry/react";
 
+import { APIProvider } from '@vis.gl/react-google-maps';
+
 import YelpBusinessService from './api/yelp-business.service';
 
 import BusinessInfoWindow from './BusinessInfoWindow';
