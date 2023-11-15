@@ -28,7 +28,7 @@ const updateAllIncompleteBusinesses = async (request, response, next) => {
             console.log(`Successfully updated ${business.addedIndex}: ${data.name}`);
           }
         }
-      )
+      ).clone();
     } catch(error) {
       console.log(`error for ${business.alias}`, error.response.status);
     }   

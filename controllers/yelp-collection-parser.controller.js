@@ -120,7 +120,7 @@ function addToBusinessDatabase(collection, request, response) {
                     console.log(`successfully added ${business.addedIndex}: ${business.alias}`);
                 }            
             }
-        )
+        ).clone();
     }));    
 }
 
@@ -147,7 +147,7 @@ const addNewCollection = (request, response) => {
                         response.json(`A01 new collection added: ${collection.title}`);
                     }
                 }
-            )
+            ).clone();
         })                           
     } else {
         response.status(400).send('A02 missing input parameters');

@@ -37,7 +37,6 @@ const markerClustererAlgorithmOptions = {
 
 const RenderedMap = () => {
   const mapRef = useRef(null);
-  const methodsRef = useRef(null);
   const [map, setMap] = useState(null);
   const [methods, setMethods] = useState(null);
   useEffect(() => {
@@ -103,12 +102,22 @@ const RenderedMap = () => {
   useEffect(() => {
     console.log({map, markers});
     if (!map || !markers) return;
-    const cluster = new MarkerClusterer({
+
+    const onClusterClickHandler = (event, cluster, map) => {
+      console.log({event, cluster, map});
+    }
+
+    const markerCluster = new MarkerClusterer({
       map,
-      markers
+      markers,
+      // onClusterClick: onClusterClickHandler
     })
 
-    setMarkerClusterer(cluster);
+    // markerCluster.addListener('clusterclick', (cluster) => {
+    //   console.log({cluster})
+    // })
+
+    setMarkerClusterer(markerCluster);
   }, [map, markers])
 
   return (

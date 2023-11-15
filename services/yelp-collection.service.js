@@ -43,6 +43,7 @@ const findCollection = async (yelpCollectionId) => {
     const collection = await YelpCollection.find({yelpCollectionId: yelpCollectionId});
     return collection;
   } catch {
+    Sentry.captureException(error);
     error => {throw `Error looking up collection ${yelpCollectionId}: ${error}`};
   }
 }
@@ -65,6 +66,7 @@ const loadCollectionPage = async (yelpCollectionId) => {
 
     return collection;
   } catch (error) {
+    Sentry.captureException(error);
     console.log('loadCollectionPage error', error);
     return {error: error};
   }
@@ -113,6 +115,7 @@ const scrapeAllCollections = async () => {
     ) 
     return scrapedCollections;
   } catch (error) {
+    Sentry.captureException(error);
     return {error: error};
   }
   
@@ -124,6 +127,7 @@ const scrapeEmbeddedCollection = async (yelpCollectionId) => {
     console.log({output});
     return output.data;
   } catch (error) {
+    Sentry.captureException(error);
     return {error};
   }
 }
@@ -135,6 +139,7 @@ const getAllCollections = async () => {
     // collections.map(collection => collection.lastUpdated = moment(collection.lastUpdated)); // convert from epoch to Moment object
     return collections;
   } catch (error) {
+    Sentry.captureException(error);
     return {error: error};
   }
 }
@@ -193,6 +198,7 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
           return loadedCollection;
         }
       } catch (error) {
+        Sentry.captureException(error);
         return {error: error};
       }
       return null;
@@ -249,6 +255,7 @@ const deleteAllCollections = async () => {
     console.log(`Deleted all collections (${response.deletedCount})`);
     return response;
   } catch (error) {
+    Sentry.captureException(error);
     return {error: error};
   }
 }
