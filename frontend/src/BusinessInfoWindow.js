@@ -315,7 +315,7 @@ const getBusinessWebsite = async (business) => {
 }
 
 const BusinessInfoWindow = forwardRef((props, ref) => {
-  console.log({renderBusinessInfoWindow: props});
+  // console.log({renderBusinessInfoWindow: props});
   const name = props.business.name;
   const categories = formatCategories(props.business.categories)
   const note = props.business.note;

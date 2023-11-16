@@ -16,7 +16,7 @@
         "@reach/combobox": "^0.16.5",
         "@reach/listbox": "^0.16.2",
         "@reach/menu-button": "^0.16.2",
-        "@react-google-maps/api": "^2.11.8",
+        "@react-google-maps/api": "^2.19.2",
         "@sentry/browser": "^7.29.0",
         "@sentry/integrations": "^7.29.0",
         "@sentry/react": "^7.29.0",

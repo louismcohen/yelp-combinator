@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useState, useRef, useCallback, memo } from 'react';
 import * as U from './utils/utils'
 import axios from 'axios';
 import {
@@ -66,7 +66,38 @@ const Map = () => {
       // ));
       response.data.map(YelpBusinessService.applyExtraBusinessInfo);
       // const businessesData = applyExtraBusinessInfo(response.data);
-      setBusinesses(response.data);
+      const businessesSanitized = response.data.map(
+        ({
+          alias,
+          name,
+          categories,
+          note,
+          hours,
+          position,
+          website,
+          visited,
+          location,
+          image_url,
+          coordinates,
+          is_closed
+        }) => {
+        return {
+          alias,
+          name,
+          categories,
+          note,
+          hours,
+          position,
+          website,
+          visited,
+          location,
+          image_url,
+          coordinates,
+          is_closed
+        }
+      })
+      setBusinesses(businessesSanitized);
+
       console.log('useEffect getAllBusinesses', response.data);
       console.log({businesses});
     }
@@ -75,7 +106,25 @@ const Map = () => {
   }, []);
 
   useEffect(() => {
-    setMarkers(businesses.filter(filterBusinesses));
+    const filteredBusinesses = businesses.filter(filterBusinesses);
+    const reducedBusinesses = filteredBusinesses.map(
+      ({
+        alias,
+        visited,
+        categories,
+        name,
+        position
+      }) => {
+        return {
+          alias,
+          visited,
+          categories,
+          name,
+          position,
+        }
+      }
+    )
+    setMarkers(reducedBusinesses);
     YelpBusinessService.getAllUniqueCategories(businesses);
   }, [businesses]);
 
@@ -84,7 +133,8 @@ const Map = () => {
     // console.log(mapRef.current);
     // mapRef.current.panTo(item.position)
     console.log('selected', item);
-    setSelected(item);
+    const business = businesses.find(biz => biz.alias === item.alias);
+    setSelected(business);
   }
 
   const onMarkerMouseover = (business) => {
@@ -160,7 +210,8 @@ const Map = () => {
   } 
 
   const saveBusinessInfo = async (business) => {
-    const updatedBusinesses = await YelpBusinessService.saveBusinessInfo(business, businesses);
+    const fullBusinessInfo = businesses.find(biz => biz.alias === business.alias);
+    const updatedBusinesses = await YelpBusinessService.saveBusinessInfo(fullBusinessInfo, businesses);
     setBusinesses(updatedBusinesses);
   }
 
@@ -202,6 +253,10 @@ const Map = () => {
       // return business;
     }
 
+    const hideClosedBusinesses = business.is_closed
+      ? null
+      : business
+
     const textFilteredResult = (
       business.name.toLowerCase().includes(debouncedSearchTerm) // name
       || business.categories.map(category => category.title).some(title => U.removeSpaces(title).toLowerCase().includes(U.removeSpaces(debouncedSearchTerm))) // categories
@@ -226,7 +281,7 @@ const Map = () => {
     
     const attributeFilters = visitedFilteredResult && openFilteredResult;
     
-    const finalFilteredResult = searchTerm && searchTerm !== '' ? textFilteredResult && attributeFilters : attributeFilters;
+    const finalFilteredResult = hideClosedBusinesses && searchTerm && searchTerm !== '' ? textFilteredResult && attributeFilters : attributeFilters;
     return finalFilteredResult;
   }
 
@@ -419,7 +474,7 @@ const Map = () => {
       onLoad={onMapLoad} 
       onClick={onMapClick} 
       >
-      {/* {markers.map(business => {
+      {markers.map(business => {
         return (
           <Marker 
             ref={(marker) => markerRefs.current.push(marker)}
@@ -433,8 +488,8 @@ const Map = () => {
             title={business.name}
           />
         )
-      })} */}
-      {markers.map(business => {
+      })}
+      {/* {markers.map(business => {
         return (
           <IconMarker 
             key={business.alias} 
@@ -446,7 +501,7 @@ const Map = () => {
             title={business.name}
           />
         )
-      })}
+      })} */}
       {/* {businesses.length > 0 && process.env.NODE_ENV !== 'production' ? 
         <IconMarker onIconMarkerClick={() => setSelected(businesses.find(biz => biz.alias === 'homestate-los-angeles-8'))} business={businesses.find(biz => biz.alias === 'homestate-los-angeles-8')} />
         : null} */}
@@ -464,4 +519,4 @@ const Map = () => {
   )
 }
 
-export default Map;
+export default memo(Map);

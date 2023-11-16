@@ -71,9 +71,8 @@ const IconMarker = (props) => {
   };
 
   const IconGenerated = () => {
-    const Icon = IconGenerator.generateIconFromCategoryAlias(primaryCategoryAlias, {...defaultIconProps, ...iconFillColor});
+    // const Icon = IconGenerator.generateIconFromCategoryAlias(primaryCategoryAlias, {...defaultIconProps, ...iconFillColor});
     const IconPng = IconGenerator.generateIconPngFromCategoryAlias(primaryCategoryAlias, {...iconProps});
-    // console.log({IconPng});
     return IconPng;
   }
 
