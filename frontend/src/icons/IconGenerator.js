@@ -31,12 +31,18 @@ const defaultProps = {
 
 const defaultIcon = 'Restaurant';
 
-const generateIconPngFromCategoryAlias = (categoryAlias, props = defaultProps) => {
+const generateIconPngUrl = (categoryAlias) => {
   const category = iconMapping.find(category => category.alias === categoryAlias);
   const iconName = category
     ? convertToKebabCase(category.icon)
     : convertToKebabCase(defaultIcon);
   const icon = iconPngs[iconName];
+
+  return icon;
+}
+
+const generateIconPngFromCategoryAlias = (categoryAlias, props = defaultProps) => {
+  const icon = generateIconPngUrl(categoryAlias);
   
   return (
     <img 
@@ -67,6 +73,7 @@ const generateHexColorFromCategoryAlias = (categoryAlias) => {
 }
 
 export {
+  generateIconPngUrl,
   generateIconFromCategoryAlias,
   generateIconPngFromCategoryAlias,
   generateHexColorFromCategoryAlias,

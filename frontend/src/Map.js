@@ -474,7 +474,8 @@ const Map = () => {
       onLoad={onMapLoad} 
       onClick={onMapClick} 
       >
-      {markers.map(business => {
+      
+      {/* {markers.map(business => { // Google Markers
         return (
           <Marker 
             ref={(marker) => markerRefs.current.push(marker)}
@@ -484,12 +485,12 @@ const Map = () => {
             // animation={window.google.maps.Animation.DROP} 
             onClick={() => onSelect(business)}  
             onMouseOver={() => onMarkerMouseover(business)}
-            // icon={RamenDiningIcon}
+            icon={generateIconPngUrl(business.categories[0].alias)}
             title={business.name}
           />
         )
-      })}
-      {/* {markers.map(business => {
+      })} */}
+      {markers.map(business => { // Custom Markers
         return (
           <IconMarker 
             key={business.alias} 
@@ -501,7 +502,7 @@ const Map = () => {
             title={business.name}
           />
         )
-      })} */}
+      })}
       {/* {businesses.length > 0 && process.env.NODE_ENV !== 'production' ? 
         <IconMarker onIconMarkerClick={() => setSelected(businesses.find(biz => biz.alias === 'homestate-los-angeles-8'))} business={businesses.find(biz => biz.alias === 'homestate-los-angeles-8')} />
         : null} */}

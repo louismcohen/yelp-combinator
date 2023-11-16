@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, useCallback, forwardRef } from 'react';
-import { OverlayView } from '@react-google-maps/api';
+import { OverlayView, OverlayViewF } from '@react-google-maps/api';
 import styled from 'styled-components';
 import ColorPalette from './styles/ColorPalette';
 import CssFilterConverter from 'css-filter-converter';
@@ -81,7 +81,7 @@ const IconMarker = (props) => {
   }
 
   return (
-    <OverlayView 
+    <OverlayViewF 
       mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
       position={props.business.position}
       getPixelPositionOffset={getPixelPositionOffset}
@@ -89,7 +89,7 @@ const IconMarker = (props) => {
       <IconMarkerContainer onClick={onIconMarkerClick} baseColor={iconHexColor} visited={props.business.visited}>
         <IconGenerated />
       </IconMarkerContainer>
-    </OverlayView>
+    </OverlayViewF>
   )
 }
 
