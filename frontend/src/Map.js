@@ -206,8 +206,13 @@ const Map = () => {
 
   const setVisited = async (business) => {
     business.visited = !business.visited;
+    setSelected(business);
     saveBusinessInfo(business);
   } 
+
+  useEffect(() => {
+    console.log({selected})
+  }, [selected]);
 
   const saveBusinessInfo = async (business) => {
     const fullBusinessInfo = businesses.find(biz => biz.alias === business.alias);
@@ -507,7 +512,13 @@ const Map = () => {
         <IconMarker onIconMarkerClick={() => setSelected(businesses.find(biz => biz.alias === 'homestate-los-angeles-8'))} business={businesses.find(biz => biz.alias === 'homestate-los-angeles-8')} />
         : null} */}
       {selected ? 
-        <BusinessInfoWindow ref={businessInfoWindowMounted} business={selected} currentPosition={currentPosition} onGetWebsite={() => saveBusinessInfo(selected)} onVisited={() => setVisited(selected)} onClose={() => setSelected(null)} /> 
+        <BusinessInfoWindow 
+          business={selected} 
+          currentPosition={currentPosition} 
+          onGetWebsite={() => saveBusinessInfo(selected)} 
+          onVisited={() => setVisited(selected)} 
+          onClose={() => setSelected(null)} 
+        /> 
         : null
       }
       {

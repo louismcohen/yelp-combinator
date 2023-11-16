@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, useCallback, forwardRef } from 'react';
 import {
-    OverlayView
+    OverlayView,
+    OverlayViewF
 } from '@react-google-maps/api';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -134,7 +135,7 @@ const OpeningInfo = ({hours, travelTime}) => {
   useEffect(() => {
     if (!!travelTime) {
       setArrivalTime(now.add(travelTime.duration.value, 's'))
-      console.log({arrivalTime: arrivalTime, hours: hours});
+      // console.log({arrivalTime: arrivalTime, hours: hours});
     };
   }, [travelTime])
 
@@ -281,7 +282,7 @@ const getTravelTime = async (currentPosition, destination) => {
   }
   try {
     const response = await axios.get(distanceMatrixUri, {params});
-    console.log({distanceMatrix: response});
+    // console.log({distanceMatrix: response});
     return response;
   } catch(error) {
     console.log({error});
@@ -292,6 +293,7 @@ const getTravelTime = async (currentPosition, destination) => {
 }
 
 const getPixelPositionOffset = (width, height) => {
+  console.log(`calling getPixelPositionOffset`, {width, height});
   return {
     x: -(width / 2),
     y: -(height + 16),
@@ -314,7 +316,7 @@ const getBusinessWebsite = async (business) => {
   }
 }
 
-const BusinessInfoWindow = forwardRef((props, ref) => {
+const BusinessInfoWindow = forwardRef((props, ref) => { 
   // console.log({renderBusinessInfoWindow: props});
   const name = props.business.name;
   const categories = formatCategories(props.business.categories)
@@ -362,7 +364,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
   }, [props.business])
 
   const TravelTime = React.useCallback(() => {
-    console.log('in TravelTime component');
+    // console.log('in TravelTime component');
     // {travelTime && props.currentPosition.lat ? 
     //   <div><strong>{travelTime.duration}</strong> | {travelTime.distance} away</div> 
     //   : 'Calculating travel time...'}
@@ -398,7 +400,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
   const destinationEncoded = encodeURI(destinationAddress);
 
   return (
-    <OverlayView 
+    <OverlayViewF
       mapPaneName={OverlayView.FLOAT_PANE} 
       position={props.business.position}
       getPixelPositionOffset={getPixelPositionOffset}
@@ -416,9 +418,11 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
               <a href={`${yelpBizUrl}${props.business.alias}`} target='_blank' rel='noopener noreferrer' title={`Go to Yelp page`}>
                 <Icon icon={faYelp} hoverColor={yelpRed} />
               </a>
-              {props.business.website ? <a href={props.business.website} target='_blank' rel='noopener noreferrer' title={`Go to business website`}>
-                <Icon icon={faExternalLinkAlt} hoverColor={purpleComplement} />
-              </a> : null}
+              {props.business.website 
+                ? <a href={props.business.website} target='_blank' rel='noopener noreferrer' title={`Go to business website`}>
+                    <Icon icon={faExternalLinkAlt} hoverColor={purpleComplement} />
+                  </a> 
+                : null}
               <a 
                 href={`${googleMapsDirectionsUrl}&origin=${originEncoded}&destination=${destinationEncoded}`} target='_blank' rel='noopener noreferrer' title={`Get Google Maps directions from current location`}>
                 <Icon icon={faDirections} hoverColor={googleMapsYellow} />
@@ -437,8 +441,8 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
           <StyledCloseButton onClick={props.onClose}><CloseButton /></StyledCloseButton>
         </InfoWindowContainer>
       </InfoWindow>
-    </OverlayView>
+    </OverlayViewF>
   )
 })
 
-export default React.memo(BusinessInfoWindow);
+export default React.memo(BusinessInfoWindow, () => true);

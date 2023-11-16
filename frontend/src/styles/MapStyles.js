@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import {
   GoogleMap,
-  Marker,
+  MarkerF,
 } from "@react-google-maps/api";
 
 import {
@@ -197,7 +197,7 @@ export const StyledGoogleMap = styled(GoogleMap)`
   }
 `
 
-export const StyledMarker = styled(Marker)`
+export const StyledMarker = styled(MarkerF)`
   &:hover {
     cursor: pointer;
   }
