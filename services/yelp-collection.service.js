@@ -35,6 +35,7 @@ const parseRequestForId = (request) => {
 
 const getCollectionItems = (collection) => {
   const collectionItems = collection.doc.querySelectorAll('.collection-item');
+  console.log({collectionItems})
   return collectionItems; 
 }
 
@@ -57,6 +58,7 @@ const loadCollectionPage = async (yelpCollectionId) => {
     const dom = new jsdom.JSDOM(response.data);
 
     collection.doc = dom.window.document;
+      console.log({doc: collection.doc});
     collection.itemCount = Number(collection.doc.querySelector(".ylist").getAttribute("data-item-count"));
     collection.lastUpdated = moment.tz(collection.doc.getElementsByTagName("time")[0].dateTime, yelpTimeZone);
     collection.title = collection.doc.querySelector('meta[property="og:title"]').content;
@@ -181,6 +183,7 @@ const compareSavedToLoadedCollections = async (savedCollections) => {
       try {
         const loadedCollection = await loadCollectionPage(savedCollection.yelpCollectionId);
 
+        console.log(loadedCollection)
         if (loadedCollection.error) {
           const errorInfo = {
             code: loadedCollection.error.code,

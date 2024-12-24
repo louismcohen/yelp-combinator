@@ -33,9 +33,7 @@ const yelpBizUrl = 'https://www.yelp.com/biz/';
 const googleMapsDirectionsUrl = 'https://www.google.com/maps/dir/?api=1';
 
 const InfoWindow = styled.div `
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: inherit;
   position: relative;
   ${'' /* left: -50%;
   top: 100%;
@@ -107,10 +105,10 @@ const Categories = styled.div`
 `
 
 const Note = styled.div`
+  font-family: ui-monospace,
   font-size: ${infoWindowTextSize};
   line-height: ${infoWindowTextSize};
   font-weight: 300;
-  font-style: italic;
   margin: 0;
   padding: 0.5em 15px;
   background-color: #eee;
@@ -316,7 +314,7 @@ const getBusinessWebsite = async (business) => {
   }
 }
 
-const BusinessInfoWindow = forwardRef((props, ref) => { 
+const BusinessInfoWindow = (props) => { 
   // console.log({renderBusinessInfoWindow: props});
   const name = props.business.name;
   const categories = formatCategories(props.business.categories)
@@ -405,7 +403,7 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
       position={props.business.position}
       getPixelPositionOffset={getPixelPositionOffset}
       >
-      <InfoWindow onClick={onInfoWindowClick} ref={ref}>
+      <InfoWindow onClick={onInfoWindowClick}>
         <InfoWindowContainer iconColor={determineIconColor}>
           <Image url={props.business.image_url}></Image>
           <Content>
@@ -443,6 +441,6 @@ const BusinessInfoWindow = forwardRef((props, ref) => {
       </InfoWindow>
     </OverlayViewF>
   )
-})
+};
 
-export default React.memo(BusinessInfoWindow, () => true);
+export default React.memo(BusinessInfoWindow);

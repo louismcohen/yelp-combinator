@@ -33,8 +33,8 @@ const mapContainerStyle = {
 };
 const defaultZoom = 12;
 const defaultCenter = {
-  lat: 34.01747899558564,
-  lng: -118.40530146733245,
+  lat: 34.04254543148141,
+  lng: -118.26313305415515,
 }
 const options = {
   styles: GoogleMapStyles.appleMapsEsquePlus,
